@@ -1,0 +1,62 @@
+{
+  "source": "ECB euro foreign exchange reference rates",
+  "series": "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A",
+  "rates": {
+    "2024-01-12": {
+      "usd_per_eur": 1.0942,
+      "ecb_date": "2024-01-12"
+    },
+    "2024-02-16": {
+      "usd_per_eur": 1.0768,
+      "ecb_date": "2024-02-16"
+    },
+    "2024-02-23": {
+      "usd_per_eur": 1.0834,
+      "ecb_date": "2024-02-23"
+    },
+    "2024-02-24": {
+      "usd_per_eur": 1.0834,
+      "ecb_date": "2024-02-23"
+    },
+    "2024-02-29": {
+      "usd_per_eur": 1.0826,
+      "ecb_date": "2024-02-29"
+    },
+    "2024-03-01": {
+      "usd_per_eur": 1.0813,
+      "ecb_date": "2024-03-01"
+    },
+    "2024-04-24": {
+      "usd_per_eur": 1.0686,
+      "ecb_date": "2024-04-24"
+    },
+    "2024-06-13": {
+      "usd_per_eur": 1.0784,
+      "ecb_date": "2024-06-13"
+    },
+    "2024-10-22": {
+      "usd_per_eur": 1.0821,
+      "ecb_date": "2024-10-22"
+    },
+    "2024-10-23": {
+      "usd_per_eur": 1.0767,
+      "ecb_date": "2024-10-23"
+    },
+    "2024-10-24": {
+      "usd_per_eur": 1.0801,
+      "ecb_date": "2024-10-24"
+    },
+    "2025-02-24": {
+      "usd_per_eur": 1.0466,
+      "ecb_date": "2025-02-24"
+    },
+    "2025-04-24": {
+      "usd_per_eur": 1.1376,
+      "ecb_date": "2025-04-24"
+    },
+    "2025-12-18": {
+      "usd_per_eur": 1.1719,
+      "ecb_date": "2025-12-18"
+    }
+  }
+}

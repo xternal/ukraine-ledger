@@ -54,8 +54,9 @@
   tip.setAttribute("aria-hidden", "true");
   tip.hidden = true;
   document.body.append(tip);
+  const usd = document.getElementById("cur-usd");
   const show = (el, x, y) => {
-    tip.textContent = el.dataset.tip;
+    tip.textContent = usd?.checked && el.dataset.tipUsd ? el.dataset.tipUsd : el.dataset.tip;
     tip.hidden = false;
     const r = tip.getBoundingClientRect();
     tip.style.left = `${Math.max(8, Math.min(x + 14, innerWidth - r.width - 8)) + scrollX}px`;
@@ -66,6 +67,7 @@
     const owner = t.parentElement;
     const target = owner.closest("a") ?? owner;
     target.dataset.tip = t.textContent;
+    if (owner.dataset.tipUsd) target.dataset.tipUsd = owner.dataset.tipUsd;
     target.setAttribute("aria-label", owner.getAttribute("aria-label") ? `${owner.getAttribute("aria-label")}. ${t.textContent}` : t.textContent);
     if (target !== owner) owner.removeAttribute("aria-label");
     t.remove();

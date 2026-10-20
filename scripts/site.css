@@ -64,10 +64,18 @@ main.main--wide { max-width: 72rem; }
   .sb-body { grid-template-columns: minmax(0, 23rem) minmax(0, 1fr); align-items: start; }
   .sb-panel { max-height: 25rem; overflow-y: auto; }
 }
-/* Without :has() only the count view shows, and the switch does nothing. */
+/* Without :has() only the count view shows, in euros, and the switches do nothing. */
 .sb-view--amount { display: none; }
 .sb:has(#sb-mode-amount:checked) .sb-view--amount { display: block; }
 .sb:has(#sb-mode-amount:checked) .sb-view--count { display: none; }
+.sb-view--amount-usd { display: none; }
+.home-charts:has(#sb-mode-amount:checked):has(#cur-usd:checked) .sb-view--amount { display: none; }
+.home-charts:has(#sb-mode-amount:checked):has(#cur-usd:checked) .sb-view--amount-usd { display: block; }
+.cur-usd { display: none; }
+.home-charts:has(#cur-usd:checked) .cur-usd { display: inline; }
+.home-charts:has(#cur-usd:checked) .cur-eur { display: none; }
+.chart-currency { margin: 1.25rem 0 0; }
+.chart-currency legend { position: static; width: auto; height: auto; overflow: visible; clip: auto; margin-right: 0.5rem; padding: 0 0 0 0.5rem; color: var(--op-muted); font-size: 0.875rem; float: left; }
 .sb-svg { display: block; width: 100%; max-width: 23rem; height: auto; margin: 0 auto; }
 @media (min-width: 60rem) {
   .sb-body { grid-template-columns: minmax(0, 31rem) minmax(0, 1fr); gap: 2rem; }
