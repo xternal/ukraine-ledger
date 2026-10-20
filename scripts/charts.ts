@@ -535,8 +535,8 @@ export function timelineMarks(ctx: ChartContext, rows: readonly Row[], gapPx: nu
  * 20 January 2025; a deadline is a line from the promise to it, solid once ended, dashed while open, with a cross
  * where it passed with no delivery. A moved deadline shows its old end faintly.
  */
-export function timelineSvg(ctx: ChartContext, rows: readonly Row[], across: boolean): ReactNode {
-  const LENGTH = across ? 720 : 760;
+export function timelineSvg(ctx: ChartContext, rows: readonly Row[], across: boolean, length = 720): ReactNode {
+  const LENGTH = across ? length : 760;
   const AXIS = across ? 8 : 34;
   const HEAD = across ? 20 : 26;
   const SLOT = across ? 13 : 12;
@@ -622,7 +622,7 @@ export function timelineSvg(ctx: ChartContext, rows: readonly Row[], across: boo
   return h(
     "svg",
     {
-      className: `tl-svg tl-svg--${across ? "across" : "down"}`,
+      className: `tl-svg tl-svg--${across ? (length > 720 ? "wide" : "across") : "down"}`,
       viewBox: across ? `0 0 ${LENGTH} ${fx(breadth)}` : `0 0 300 ${fx(bottom + 12)}`,
       role: "group",
       "aria-label": "Timeline: each commitment on the day it was made, with a line to its deadline",
@@ -640,6 +640,7 @@ export function timeline(ctx: ChartContext, rows: readonly Row[]): ReactNode {
   return h(
     "figure",
     { className: "tl", "aria-labelledby": "tl-caption" },
+    timelineSvg(ctx, rows, true, 1100),
     timelineSvg(ctx, rows, true),
     timelineSvg(ctx, rows, false),
     h(
@@ -712,8 +713,8 @@ export function charts(ctx: ChartContext, views: readonly CardView[], pill: (sta
   const { rows, unattributed } = chartRows(views, ctx.config);
   if (!rows.length) return null;
   return h(
-    Fragment,
-    null,
+    "div",
+    { className: "home-charts" },
     figures(ctx, rows),
     h("section", { className: "chart-section", "aria-labelledby": "sb-h" }, h("h2", { id: "sb-h" }, "Who has promised what"), sunburst(ctx, rows, pill)),
     h("section", { className: "chart-section", "aria-labelledby": "tl-h" }, h("h2", { id: "tl-h" }, "When, and by when"), timeline(ctx, rows)),
