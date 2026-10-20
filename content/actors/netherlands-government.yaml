@@ -1,0 +1,14 @@
+format: openpromises/1
+id: netherlands-government
+kind: government
+name:
+  en: Government of the Netherlands
+short_name:
+  en: Netherlands
+standing: in_power
+same_as:
+  - "https://www.government.nl/"
+x:
+  donor: netherlands
+  donor_name: Netherlands
+  group: europe
