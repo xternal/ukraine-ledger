@@ -29,6 +29,18 @@
     "checked_on": "2026-10-20",
     "sha256": "b6f06cc52c042a78281a30e132fcb1ec7e2c4885722677f99e7d9e0e62594a5d"
   },
+  "2df1d929d3f392a166980813e9f3964a66289cdb5bd40a547b4322e8eb8b4c64|https://eur-lex.europa.eu/eli/reg/2025/2600/oj": {
+    "match": "exact",
+    "url": "https://eur-lex.europa.eu/eli/reg/2025/2600/oj",
+    "checked_on": "2026-10-20",
+    "sha256": "037a9aba3830a8fcd724f2fad1927c4a0ab68d8a75b5b59d24a7f549de2297f9"
+  },
+  "53920e86b027407a116cb550b2e8c94106baad0f74026289b38871c0e1d55703|https://eur-lex.europa.eu/eli/dec/2024/1470/oj": {
+    "match": "exact",
+    "url": "https://eur-lex.europa.eu/eli/dec/2024/1470/oj",
+    "checked_on": "2026-10-20",
+    "sha256": "bee22848693d07ac736a030ded9d97fe52d3f55fa105ffeddf5c3ed1badc0dd4"
+  },
   "7e34b95c81dbf5adbb4d671f88669aba92253e09b75d68f17b18b16eaa6efb37|https://www.aljazeera.com/news/2025/8/20/no-us-troops-in-ukraine-trump-says": {
     "match": "exact",
     "url": "https://www.aljazeera.com/news/2025/8/20/no-us-troops-in-ukraine-trump-says",
@@ -40,6 +52,12 @@
     "url": "https://www.presidency.ucsb.edu/node/378339",
     "checked_on": "2026-10-20",
     "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
+  },
+  "a34bb60e1160a81cfac10f4170f1ac66b9555d42190fe76846282d8a3013bb8d|https://eur-lex.europa.eu/eli/dec_impl/2024/2760/oj": {
+    "match": "exact",
+    "url": "https://eur-lex.europa.eu/eli/dec_impl/2024/2760/oj",
+    "checked_on": "2026-10-20",
+    "sha256": "259737a908a778104d1885390c300e19be61f76c85c2a29b1e30499927986c3f"
   },
   "a3e6c814b555c60892bcfab82c7dd69f9e78d526e6f1b7d90c65ab65ef2c4a8f|https://www.govinfo.gov/content/pkg/DCPD-202500304/html/DCPD-202500304.htm": {
     "match": "exact",
