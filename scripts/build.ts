@@ -15,6 +15,7 @@ import { Breadcrumbs, JsonLd, PromiseCard, PromiseList, PromiseSpotlight, Promis
 import { createElement as h, Fragment, type ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { charts } from "./charts.ts";
+import { readFx } from "./fx.ts";
 
 const ROOT = join(import.meta.dirname, "..");
 /** `--preview` builds drafts too, into public-preview/, so the editor sees a page before approving it; never deployed. */
@@ -51,6 +52,15 @@ async function main() {
   const views = PREVIEW ? all.map((v) => ({ ...v, where: "promises" as const })) : all.filter((v) => v.where === "promises");
   const p = paths(config);
   const name = config.site.name;
+  // Dollars for the charts, at the ECB rate on the day each costed card was made (data/fx, filled by `pnpm fx`).
+  const fx = readFx();
+  const usdPerEur = (day: string) => fx.rates[day]?.usd_per_eur;
+  const unrated = views.filter((v) => v.current.parameters?.cost && "range" in v.current.parameters.cost && v.current.parameters.cost.range && !usdPerEur(v.card.made_on)).map((v) => v.id);
+  if (unrated.length) {
+    const message = `No dollar rate for ${unrated.join(", ")}: run pnpm fx`;
+    if (!PREVIEW) throw new Error(message);
+    console.warn(message);
+  }
   const people = [...result.actors.values()].filter((a) => a.kind === "person").sort((a, b) => a.id.localeCompare(b.id));
   const actorName = (a: Actor) => a.name[L] ?? a.id;
   const headline = (v: CardView) => v.card.headline?.[L] ?? v.id;
@@ -130,7 +140,7 @@ async function main() {
       h("h1", null, "What is promised to Ukraine"),
       h("p", { className: "lede" }, "What every government and the EU has committed to since 24 February 2022, in their exact words, with the deadline they gave and what has happened since. A status moves only when a document shows it moved."),
       // The whole picture, as rings and a timeline (docs/DESIGN_BRIEF.md); charts.js adds zoom and tooltips only.
-      charts({ config, w, L, today, href: (id) => p.card(id, L) }, views, (status) => h(StatusPill, { status, config })),
+      charts({ config, w, L, today, usdPerEur, href: (id) => p.card(id, L) }, views, (status) => h(StatusPill, { status, config })),
       h("script", { src: "/charts.js", defer: true }),
       platform.length
         ? h(

@@ -39,13 +39,15 @@ export interface Row {
   bucket: Bucket;
   /** Low, central and high, in EUR bn; null when the card states no amount. */
   amount: readonly [number, number, number] | null;
+  /** The same in USD bn, at the ECB rate on the day the commitment was made; null with no amount or no rate. */
+  usd: readonly [number, number, number] | null;
 }
 
 type DonorX = { donor?: string; donor_name?: string; group?: string };
 const donorOf = (a: Actor | null | undefined): DonorX => ((a as { x?: DonorX } | null | undefined)?.x ?? {}) as DonorX;
 
 /** Every card whose `responsible` actor says which donor and group it is (`x` in openpromises.config.ts). */
-export function chartRows(views: readonly CardView[], config: Config): { rows: Row[]; unattributed: CardView[] } {
+export function chartRows(views: readonly CardView[], config: Config, usdPerEur: (day: string) => number | undefined = () => undefined): { rows: Row[]; unattributed: CardView[] } {
   const rows: Row[] = [];
   const unattributed: CardView[] = [];
   for (const view of views) {
@@ -57,7 +59,17 @@ export function chartRows(views: readonly CardView[], config: Config): { rows: R
     }
     const cost = view.current.parameters?.cost;
     const range = cost && "range" in cost && cost.range ? cost.range : null;
-    rows.push({ view, group: d.group as Group, donor: d.donor, donorName: d.donor_name ?? d.donor, government, bucket: bucketOf(config, view.card.status), amount: range ? [range[0], range[1], range[2]] : null });
+    const rate = usdPerEur(view.card.made_on);
+    rows.push({
+      view,
+      group: d.group as Group,
+      donor: d.donor,
+      donorName: d.donor_name ?? d.donor,
+      government,
+      bucket: bucketOf(config, view.card.status),
+      amount: range ? [range[0], range[1], range[2]] : null,
+      usd: range && rate ? [range[0] * rate, range[1] * rate, range[2] * rate] : null,
+    });
   }
   return { rows, unattributed };
 }
@@ -144,8 +156,11 @@ export function tree(rows: readonly Row[], L: string): Node {
   return root;
 }
 
-export type Mode = "count" | "amount";
-const weight = (r: Row, mode: Mode) => (mode === "count" ? 1 : (r.amount?.[1] ?? 0));
+/** How segments are sized: one each, or by the central figure in euros or in dollars. */
+export type Mode = "count" | Cur;
+export type Cur = "eur" | "usd";
+const amountIn = (r: Row, cur: Cur) => (cur === "eur" ? r.amount : r.usd);
+const weight = (r: Row, mode: Mode) => (mode === "count" ? 1 : (amountIn(r, mode)?.[1] ?? 0));
 const valueOf = (n: Node, mode: Mode) => n.rows.reduce((s, r) => s + weight(r, mode), 0);
 
 export interface Placed {
@@ -227,6 +242,8 @@ export function labelPlan(a0: number, a1: number, ri: number, ro: number, full: 
 
 export interface ChartContext {
   config: Config;
+  /** Dollars per euro on a day (data/fx/usd-per-eur.json, filled by `pnpm fx`). */
+  usdPerEur: (day: string) => number | undefined;
   w: Words;
   L: string;
   today: string;
@@ -235,7 +252,11 @@ export interface ChartContext {
 
 const sum = (xs: readonly number[]) => xs.reduce((a, b) => a + b, 0);
 const count = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
-const amountOf = (ctx: ChartContext, a: readonly [number, number, number]) => `${money(ctx.w, ctx.config, a[1])} (${money(ctx.w, ctx.config, a[0])} to ${money(ctx.w, ctx.config, a[2])})`;
+/** An amount in bn, in euros as the engine writes it, or in dollars the same way. */
+const cash = (ctx: ChartContext, v: number, cur: Cur) => (cur === "eur" ? money(ctx.w, ctx.config, v) : money(ctx.w, ctx.config, v).replace("€", "$"));
+const amountOf = (ctx: ChartContext, a: readonly [number, number, number], cur: Cur) => `${cash(ctx, a[1], cur)} (${cash(ctx, a[0], cur)} to ${cash(ctx, a[2], cur)})`;
+/** Both currencies in the page; the currency switch shows one (CSS; euros only where :has() is missing). */
+const both = (eur: ReactNode, usd: ReactNode) => h(Fragment, null, h("span", { className: "cur-eur" }, eur), h("span", { className: "cur-usd" }, usd));
 
 /** The statuses that occur, in ladder order, with how many: the engine's labels. */
 function statusTally(ctx: ChartContext, rows: readonly Row[]): { status: string; bucket: Bucket; n: number }[] {
@@ -252,26 +273,27 @@ export function statusCounts(ctx: ChartContext, rows: readonly Row[]): string {
 }
 
 /** The amounts stated, added up by end: the central figures together, and the low and high ends apart. */
-export function amountText(ctx: ChartContext, rows: readonly Row[]): string {
-  const costed = rows.filter((r) => r.amount);
+export function amountText(ctx: ChartContext, rows: readonly Row[], cur: Cur): string {
+  const costed = rows.filter((r) => amountIn(r, cur));
   if (!costed.length) return "No amount stated";
-  const a = [0, 1, 2].map((i) => sum(costed.map((r) => r.amount![i]!))) as [number, number, number];
-  return `${amountOf(ctx, a)}${costed.length < rows.length ? `, for the ${costed.length} with an amount` : ""}`;
+  const a = [0, 1, 2].map((i) => sum(costed.map((r) => amountIn(r, cur)![i]!))) as [number, number, number];
+  return `${amountOf(ctx, a, cur)}${costed.length < rows.length ? `, for the ${costed.length} with an amount` : ""}`;
 }
 
-function tipOf(ctx: ChartContext, n: Node): string {
+function tipOf(ctx: ChartContext, n: Node, cur: Cur): string {
   if (n.row) {
     const r = n.row;
-    return `${n.name}. ${fullName(r.government, ctx.L)}. ${statusLabel(ctx.config, r.view.card.status, ctx.L)}. ${r.amount ? amountOf(ctx, r.amount) : "No amount stated"}. Made ${longDate(ctx.w, r.view.card.made_on)}.`;
+    const a = amountIn(r, cur);
+    return `${n.name}. ${fullName(r.government, ctx.L)}. ${statusLabel(ctx.config, r.view.card.status, ctx.L)}. ${a ? amountOf(ctx, a, cur) : "No amount stated"}. Made ${longDate(ctx.w, r.view.card.made_on)}.`;
   }
-  return `${n.name}: ${count(n.rows.length, "commitment", "commitments")}. ${statusCounts(ctx, n.rows)}. ${amountText(ctx, n.rows)}.`;
+  return `${n.name}: ${count(n.rows.length, "commitment", "commitments")}. ${statusCounts(ctx, n.rows)}. ${amountText(ctx, n.rows, cur)}.`;
 }
 
 /** What the centre says when a segment is zoomed into: a short name, a figure and its unit, on three lines. */
 function centre(ctx: ChartContext, n: Node, mode: Mode): Record<string, string> {
   return {
     "data-centre-label": n.short,
-    "data-centre-value": mode === "count" ? String(n.rows.length) : money(ctx.w, ctx.config, sum(n.rows.map((r) => r.amount?.[1] ?? 0))),
+    "data-centre-value": mode === "count" ? String(n.rows.length) : cash(ctx, sum(n.rows.map((r) => amountIn(r, mode)?.[1] ?? 0)), mode),
     "data-centre-unit": mode === "count" ? (n.rows.length === 1 ? "commitment" : "commitments") : "central figures",
   };
 }
@@ -294,15 +316,16 @@ export function sunburstSvg(ctx: ChartContext, root: Node, mode: Mode): { svg: R
     const [, ro] = ring(n.r1);
     if ((a1 - a0) * ri * phone < 6) thin = true;
     const at = { "data-node": n.id, "data-path": n.path.join(" "), "data-a0": num(a0), "data-a1": num(a1), "data-r0": n.r0, "data-r1": n.r1 };
-    const tip = tipOf(ctx, n);
+    const tip = tipOf(ctx, n, mode === "usd" ? "usd" : "eur");
+    const tipUsd = { "data-tip-usd": tipOf(ctx, n, "usd") };
     if (n.row) {
-      segs.push(h("a", { key: n.id, href: ctx.href(n.row.view.id), className: "sb-link" }, h("path", { ...at, className: "sb-seg sb-seg--card", "data-kind": "seg", "data-bucket": n.row.bucket, d: arc(a0, a1, ri, ro) }, h("title", null, tip))));
+      segs.push(h("a", { key: n.id, href: ctx.href(n.row.view.id), className: "sb-link" }, h("path", { ...at, ...tipUsd, className: "sb-seg sb-seg--card", "data-kind": "seg", "data-bucket": n.row.bucket, d: arc(a0, a1, ri, ro) }, h("title", null, tip))));
       continue;
     }
     segs.push(
       h(
         "path",
-        { key: n.id, ...at, ...centre(ctx, n, mode), className: `sb-seg sb-seg--inner sb-seg--r${n.r0}`, "data-kind": "seg", tabIndex: 0, role: "button", "aria-label": `Zoom into ${n.name}`, d: arc(a0, a1, ri, ro) },
+        { key: n.id, ...at, ...tipUsd, ...centre(ctx, n, mode), className: `sb-seg sb-seg--inner sb-seg--r${n.r0}`, "data-kind": "seg", tabIndex: 0, role: "button", "aria-label": `Zoom into ${n.name}`, d: arc(a0, a1, ri, ro) },
         h("title", null, tip),
       ),
     );
@@ -337,7 +360,7 @@ export function sunburstSvg(ctx: ChartContext, root: Node, mode: Mode): { svg: R
       "data-mode": mode,
       "data-geometry": JSON.stringify(GEOMETRY),
       role: "group",
-      "aria-label": mode === "count" ? "Rings: every commitment the same size" : "Rings: sized by amount, in euros",
+      "aria-label": mode === "count" ? "Rings: every commitment the same size" : `Rings: sized by amount, in ${mode === "eur" ? "euros" : "dollars"}`,
     },
     h("defs", null, paths),
     h("g", null, segs),
@@ -346,7 +369,7 @@ export function sunburstSvg(ctx: ChartContext, root: Node, mode: Mode): { svg: R
     h(
       "g",
       { className: "sb-centre", "data-node": root.id, ...c },
-      h("circle", { cx: C, cy: C, r: GEOMETRY.centre - 4 }, h("title", null, tipOf(ctx, root))),
+      h("circle", { cx: C, cy: C, r: GEOMETRY.centre - 4, "data-tip-usd": tipOf(ctx, root, "usd") }, h("title", null, tipOf(ctx, root, mode === "usd" ? "usd" : "eur"))),
       h("text", { className: "sb-centre__label", x: C, y: C - 22 }, c["data-centre-label"]),
       h("text", { className: "sb-centre__value", x: C, y: C + 1 }, c["data-centre-value"]),
       h("text", { className: "sb-centre__unit", x: C, y: C + 23 }, c["data-centre-unit"]),
@@ -377,7 +400,7 @@ function panel(ctx: ChartContext, root: Node, pill: (status: string) => ReactNod
   const sections: ReactNode[] = [];
   const walk = (n: Node) => {
     if (n.row) return;
-    const amount = amountText(ctx, n.rows);
+    const amount = both(amountText(ctx, n.rows, "eur"), amountText(ctx, n.rows, "usd"));
     sections.push(
       h(
         "section",
@@ -400,7 +423,7 @@ function panel(ctx: ChartContext, root: Node, pill: (status: string) => ReactNod
                   "li",
                   { key: c.id, "data-row": c.id },
                   h("a", { href: ctx.href(c.row.view.id), className: "sb-panel__card" }, h("span", { className: "swatch", "data-bucket": c.row.bucket, "aria-hidden": "true" }), h("span", { className: "sb-panel__name" }, c.label)),
-                  h("span", { className: "sb-panel__meta" }, pill(c.row.view.card.status), c.row.amount ? ` ${money(ctx.w, ctx.config, c.row.amount[1])}` : ""),
+                  h("span", { className: "sb-panel__meta" }, pill(c.row.view.card.status), c.row.amount ? " " : "", c.row.amount ? both(cash(ctx, c.row.amount[1], "eur"), c.row.usd ? cash(ctx, c.row.usd[1], "usd") : "no dollar rate") : ""),
                 )
               : h(
                   "li",
@@ -441,8 +464,13 @@ export function legend(ctx: ChartContext): ReactNode {
 export function sunburst(ctx: ChartContext, rows: readonly Row[], pill: (status: string) => ReactNode): ReactNode {
   const root = tree(rows, ctx.L);
   const byCount = sunburstSvg(ctx, root, "count");
-  const byAmount = sunburstSvg(ctx, root, "amount");
+  const byEur = sunburstSvg(ctx, root, "eur");
+  const byUsd = sunburstSvg(ctx, root, "usd");
   const costed = rows.filter((r) => r.amount).length;
+  const left = (cur: Cur) => {
+    const n = rows.length - rows.filter((r) => amountIn(r, cur)).length;
+    return h("p", { className: "chart-note" }, n ? `${count(n, "commitment states", "commitments state")} no amount${cur === "usd" ? " or has no dollar rate" : ""} and ${n === 1 ? "is" : "are"} left out here. ` : "", "Each counts at the central figure of its range.");
+  };
   return h(
     "figure",
     { className: "sb", "aria-labelledby": "sb-caption" },
@@ -456,7 +484,7 @@ export function sunburst(ctx: ChartContext, rows: readonly Row[], pill: (status:
         h("input", { type: "radio", name: "sb-mode", id: "sb-mode-count", value: "count", defaultChecked: true }),
         h("label", { htmlFor: "sb-mode-count" }, "Count"),
         h("input", { type: "radio", name: "sb-mode", id: "sb-mode-amount", value: "amount", disabled: costed === 0 }),
-        h("label", { htmlFor: "sb-mode-amount" }, "Amount (€)"),
+        h("label", { htmlFor: "sb-mode-amount" }, "Amount"),
       ),
       h("nav", { className: "sb-crumbs", "aria-label": "Zoom", hidden: true }),
     ),
@@ -467,13 +495,8 @@ export function sunburst(ctx: ChartContext, rows: readonly Row[], pill: (status:
         "div",
         { className: "sb-rings" },
         h("div", { className: `sb-view sb-view--count${byCount.thin ? " sb-view--thin" : ""}` }, byCount.svg, groupBars(ctx, root, "count")),
-        h(
-          "div",
-          { className: `sb-view sb-view--amount${byAmount.thin ? " sb-view--thin" : ""}` },
-          byAmount.svg,
-          groupBars(ctx, root, "amount"),
-          h("p", { className: "chart-note" }, costed < rows.length ? `${count(rows.length - costed, "commitment states", "commitments state")} no amount and ${rows.length - costed === 1 ? "is" : "are"} left out here. ` : "", "Each counts at the central figure of its range."),
-        ),
+        h("div", { className: `sb-view sb-view--amount${byEur.thin ? " sb-view--thin" : ""}` }, byEur.svg, groupBars(ctx, root, "eur"), left("eur")),
+        h("div", { className: `sb-view sb-view--amount-usd${byUsd.thin ? " sb-view--thin" : ""}` }, byUsd.svg, groupBars(ctx, root, "usd"), left("usd")),
       ),
       panel(ctx, root, pill),
     ),
@@ -669,7 +692,7 @@ export function chartTable(ctx: ChartContext, rows: readonly Row[], pill: (statu
       "table",
       null,
       h("caption", null, "Every commitment in the charts"),
-      h("thead", null, h("tr", null, ["Group", "Donor", "Government", "Commitment", "Status", "Amount, EUR", "Made", "Due"].map((c) => h("th", { key: c, scope: "col" }, c)))),
+      h("thead", null, h("tr", null, ["Group", "Donor", "Government", "Commitment", "Status", "Amount", "Made", "Due"].map((c) => h("th", { key: c, scope: "col" }, c)))),
       h(
         "tbody",
         null,
@@ -682,7 +705,7 @@ export function chartTable(ctx: ChartContext, rows: readonly Row[], pill: (statu
             h("td", null, shortName(r.government, ctx.L)),
             h("th", { scope: "row" }, h("a", { href: ctx.href(r.view.id) }, headline(r.view, ctx.L))),
             h("td", null, pill(r.view.card.status)),
-            h("td", { className: "num" }, r.amount ? amountOf(ctx, r.amount) : "Not stated"),
+            h("td", { className: "num" }, r.amount ? both(amountOf(ctx, r.amount, "eur"), r.usd ? amountOf(ctx, r.usd, "usd") : "No dollar rate") : "Not stated"),
             h("td", { className: "num" }, r.view.card.made_on),
             h("td", { className: "num" }, r.view.current.parameters?.deadline ?? "None"),
           ),
@@ -697,24 +720,33 @@ function figures(ctx: ChartContext, rows: readonly Row[]): ReactNode {
   const costed = rows.filter((r) => r.amount);
   const delivered = rows.filter((r) => r.bucket === "delivered").length;
   const progress = rows.filter((r) => r.bucket === "progress").length;
-  const tile = (label: string, value: string, sub: string) => h("div", { key: label, className: "figure-tile" }, h("dt", null, label), h("dd", null, h("span", { className: "figure-tile__value" }, value), h("span", { className: "figure-tile__sub" }, sub)));
+  const tile = (label: string, value: ReactNode, sub: string) => h("div", { key: label, className: "figure-tile" }, h("dt", null, label), h("dd", null, h("span", { className: "figure-tile__value" }, value), h("span", { className: "figure-tile__sub" }, sub)));
   return h(
     "dl",
     { className: "figure-tiles" },
     tile("Commitments", String(rows.length), "since 24 February 2022"),
     tile("Donors", String(new Set(rows.map((r) => r.donor)).size), `in ${new Set(rows.map((r) => r.group)).size} groups`),
-    tile("Amounts stated", money(ctx.w, ctx.config, sum(costed.map((r) => r.amount![1]))), `central figures of ${costed.length}`),
+    tile("Amounts stated", both(cash(ctx, sum(costed.map((r) => r.amount![1])), "eur"), cash(ctx, sum(rows.map((r) => r.usd?.[1] ?? 0)), "usd")), `central figures of ${costed.length}`),
     tile("Delivered", String(delivered), `${progress} more under way`),
   );
 }
 
 /** Both charts, the table and where the figures come from: the home page's opening section. */
 export function charts(ctx: ChartContext, views: readonly CardView[], pill: (status: string) => ReactNode): ReactNode {
-  const { rows, unattributed } = chartRows(views, ctx.config);
+  const { rows, unattributed } = chartRows(views, ctx.config, ctx.usdPerEur);
   if (!rows.length) return null;
   return h(
     "div",
     { className: "home-charts" },
+    h(
+      "fieldset",
+      { className: "chart-modes chart-currency" },
+      h("legend", null, "Currency"),
+      h("input", { type: "radio", name: "cur", id: "cur-eur", value: "eur", defaultChecked: true }),
+      h("label", { htmlFor: "cur-eur" }, "€ Euro"),
+      h("input", { type: "radio", name: "cur", id: "cur-usd", value: "usd" }),
+      h("label", { htmlFor: "cur-usd" }, "$ Dollar"),
+    ),
     figures(ctx, rows),
     h("section", { className: "chart-section", "aria-labelledby": "sb-h" }, h("h2", { id: "sb-h" }, "Who has promised what"), sunburst(ctx, rows, pill)),
     h("section", { className: "chart-section", "aria-labelledby": "tl-h" }, h("h2", { id: "tl-h" }, "When, and by when"), timeline(ctx, rows)),
@@ -722,7 +754,7 @@ export function charts(ctx: ChartContext, views: readonly CardView[], pill: (sta
     h(
       "p",
       { className: "chart-note" },
-      "Amounts are each card's own figure in euros, with its source and the exchange rate on the card. For what each donor has delivered, compare the ",
+      "Amounts are each card's own figure in euros, with its source and the exchange rate on the card. Dollars use the ECB's rate on the day each commitment was made, so a pledge made in dollars shows its own figure. For what each donor has delivered, compare the ",
       h("a", { href: "https://www.kielinstitut.de/topics/war-against-ukraine/ukraine-support-tracker/" }, "Kiel Institute's Ukraine Support Tracker"),
       ".",
       unattributed.length ? ` ${count(unattributed.length, "commitment names", "commitments name")} no government that must deliver it, so the charts leave ${unattributed.length === 1 ? "it" : "them"} out.` : "",
