@@ -71,6 +71,24 @@ async function main() {
     mkdirSync(dirname(file), { recursive: true });
     writeFileSync(file, body);
   };
+  /**
+   * The menu, with the section a page belongs to marked by aria-current: "page" on the section's own page, "true" on
+   * the pages under it (a card's page and story are under Promises; an area's page under Areas, not Promises).
+   */
+  const trim = (x: string) => x.replace(/\/+$/, "") || "/";
+  const menu = [
+    { href: p.promises(L), label: "Promises", owns: (x: string) => /^\/promises?(\/|$)/.test(x) && !x.startsWith("/promises/area") },
+    { href: "/actor/", label: "People", owns: (x: string) => x.startsWith("/actor") },
+    { href: "/promises/area/", label: "Areas", owns: (x: string) => x.startsWith("/promises/area") },
+    { href: "/about/", label: "How it works", owns: (x: string) => x.startsWith("/about") },
+  ];
+  const nav = (path: string) =>
+    h(
+      "nav",
+      { "aria-label": "Site" },
+      menu.map((m) => h("a", { key: m.href, href: m.href, "aria-current": trim(path) === trim(m.href) ? "page" : m.owns(trim(path)) ? "true" : undefined }, m.label)),
+    );
+
   /** `wide`: the home page, whose charts use the full width while its text keeps the reading measure. */
   const page = (path: string, title: string, body: ReactNode, opts: { wide?: boolean } = {}) =>
     write(
@@ -98,7 +116,7 @@ async function main() {
                 "header",
                 { className: "site-header" },
                 h("a", { href: "/", className: "site-name" }, name),
-                h("nav", { "aria-label": "Site" }, h("a", { href: p.promises(L) }, "Promises"), " ", h("a", { href: "/actor/" }, "People"), " ", h("a", { href: "/promises/area/" }, "Areas"), " ", h("a", { href: "/about/" }, "How it works")),
+                nav(path),
               ),
               PREVIEW ? h("p", { className: "preview-banner", role: "note" }, "Preview: drafts included. Nothing on this page is published or approved.") : null,
               h("main", { className: opts.wide ? "main--wide" : undefined }, body),
@@ -108,6 +126,7 @@ async function main() {
                 h("p", null, "Our writing is under ", h("a", { href: config.publish.licence!.url }, config.publish.licence!.name), ". Quotes keep their own terms, named beside each source."),
                 h("p", null, h("a", { href: "/data/promises.json" }, "Open data (JSON)"), " · ", h("a", { href: "/data/promises.csv" }, "CSV"), " · ", h("a", { href: "/feeds/all.xml" }, "Every change (Atom)"), " · ", h("a", { href: "/llms.txt" }, "llms.txt")),
                 h("p", null, "Built on ", h("a", { href: "https://github.com/xternal/openpromises" }, "OpenPromises"), ", like ", h("a", { href: "https://ledgergov.uk" }, "LedgerGov.UK"), " and ", h("a", { href: "https://russialedger.com" }, "RussiaLedger.com"), "."),
+                h("p", { className: "site-footer__maker" }, "Made by ", h("a", { href: "https://guzh.uk" }, "Pavel Guzhikov"), " · ", h("a", { href: "https://ko-fi.com/pavelg" }, "Buy me a coffee")),
               ),
             ),
           ),

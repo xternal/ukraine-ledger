@@ -7,7 +7,14 @@ main.main--wide { max-width: 72rem; }
 .main--wide > :not(.home-charts) { max-width: 46rem; }
 .site-header { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: baseline; padding-top: 1rem; padding-bottom: 1rem; }
 .site-name { font-weight: 700; text-decoration: none; color: inherit; }
-.site-header nav a { margin-right: 1rem; }
+/* Every link takes the engine's accent, which passes 4.5:1 on every surface in both modes (light 5.7–6.5:1, dark
+   brown 6.5–8.4:1), visited or not, so none falls back to the browser's blue. :where() keeps it below every class. */
+:where(a, a:visited) { color: var(--op-accent); text-underline-offset: 2px; }
+.site-header nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.site-header nav a { text-decoration: none; }
+.site-header nav a:hover { text-decoration: underline; }
+/* The section the page is in: ink, heavier, and underlined, so it is not marked by colour alone. */
+.site-header nav a[aria-current] { color: var(--op-ink); font-weight: 650; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .site-footer { margin-top: 3rem; padding-bottom: 2rem; font-size: 0.9rem; }
 .lede { font-size: 1.1rem; }
 .coverage { border-collapse: collapse; width: 100%; margin: 1.5rem 0; }
