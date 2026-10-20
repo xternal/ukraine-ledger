@@ -4,7 +4,7 @@
 
 Since the full-scale invasion of 24 February 2022, governments have committed weapons, money, sanctions, security guarantees and deadlines for peace. This site keeps each commitment as said, with what has happened since, and draws them all as one picture: the EU, European countries, the United States (the Biden and Trump administrations apart) and other countries ([docs/DESIGN_BRIEF.md](docs/DESIGN_BRIEF.md)).
 
-It runs on [OpenPromises](https://github.com/xternal/openpromises) 0.13, the engine behind [LedgerGov.UK](https://ledgergov.uk), [BoroughBook.UK](https://boroughbook.uk) and [RussiaLedger.com](https://russialedger.com), with the same rules:
+It runs on [OpenPromises](https://github.com/xternal/openpromises) 0.14, the engine behind [LedgerGov.UK](https://ledgergov.uk), [BoroughBook.UK](https://boroughbook.uk) and [RussiaLedger.com](https://russialedger.com), with the same rules:
 
 1. **Exact words.** A commitment is what the speaker or the agreement said, with a link to it. Opinions about the war, its leaders or its causes are not commitments.
 2. **Evidence moves status.** Every step after "promised" links to its document: a signed agreement, a delivery, a sanctions designation, a law, an appropriation. A deadline that passes with no evidence of delivery is recorded automatically (`openpromises deadlines`).
