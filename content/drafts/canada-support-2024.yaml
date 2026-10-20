@@ -1,0 +1,57 @@
+format: openpromises/1
+id: canada-support-2024
+headline:
+  en: C$3.02bn of Canadian support in 2024
+actor_id: canada-government
+made_on: "2024-02-24"
+venue: agreement
+venue_label:
+  en: Agreement on security cooperation between Canada and Ukraine, Part I
+area: money_and_deals
+status: delivering
+status_note:
+  en: "Ukraine received C$2.4bn of loans from Canada in 2024: C$2bn in March and C$400m in October. The agreement does not split the C$3.02bn, so whether the rest arrived as military aid is unconfirmed."
+responsible:
+  actor_id: canada-government
+origin: manual
+sources:
+  - title: "Ukraine’s Ministry of Finance: C$400m from Canada (17 October 2024)"
+    url: "https://www.kmu.gov.ua/en/news/minfin-ukrainy-zaluchyv-400-mln-kanadskykh-dolariv-pilhovoho-finansuvannia-vid-uriadu-kanady"
+versions:
+  - version: 1
+    text: To this end, in 2024, Canada will provide $3.02B in macroeconomic and military support to Ukraine.
+    recorded_on: "2026-10-20"
+    source_url: "https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/agreement-ukraine-accord.aspx?lang=eng"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: "Ukraine: macroeconomic and military support"
+      cost:
+        range: [1.86, 2.07, 2.28]
+        quality: sourced
+        by:
+          kind: official
+          name: Government of Canada
+        note:
+          en: "C$3.02bn as worded, at the ECB rate of 1.4587 Canadian dollars to the euro on 23 February 2024, the last rate before the Saturday signing: €2.07bn. Low–high is an editorial ±10% because the agreement gives one figure."
+        sources:
+          - title: Agreement on security cooperation between Canada and Ukraine
+            url: "https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/agreement-ukraine-accord.aspx?lang=eng"
+          - title: ECB euro reference rate, CAD, 2024-02-23
+            url: "https://data-api.ecb.europa.eu/service/data/EXR/D.CAD.EUR.SP00.A?startPeriod=2024-02-23&endPeriod=2024-02-23&format=csvdata"
+      when:
+        en: In 2024
+      deadline: "2024-12-31"
+events:
+  - date: "2024-02-24"
+    type: promised
+    text:
+      en: Canada and Ukraine sign the agreement in Kyiv
+  - date: "2024-03-21"
+    type: delivering
+    text:
+      en: Ukraine’s Ministry of Finance says the state budget has received a C$2bn loan from Canada
+    evidence_url: "https://www.kmu.gov.ua/en/news/minfin-ukraina-otrymala-vid-kanady-2-mlrd-kanadskykh-dolariv"
+replies: []
+corrections: []
+reviews: []

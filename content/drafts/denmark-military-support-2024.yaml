@@ -1,0 +1,52 @@
+format: openpromises/1
+id: denmark-military-support-2024
+headline:
+  en: "Danish military aid in 2024: at least €1.8bn"
+actor_id: denmark-government
+made_on: "2024-02-23"
+venue: agreement
+venue_label:
+  en: Agreement on Security Cooperation and Long-term Support between Denmark and Ukraine, paragraph 11
+area: weapons
+status: funded
+status_note:
+  en: "“billon” is as written in the agreement. In April 2024 Parliament added DKK 4.4bn (about €590m) to military support for 2024. No figure for what was spent in 2024 was found by 20 October 2026."
+responsible:
+  actor_id: denmark-government
+origin: manual
+versions:
+  - version: 1
+    text: In 2024, the military support will amount to at least EUR 1.8 billon.
+    recorded_on: "2026-10-20"
+    source_url: "https://um.dk/media/utbgawq4/agreement-on-security-cooperation.pdf"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: Ukraine’s armed forces
+      cost:
+        range: [1.8, 1.8, 1.98]
+        quality: sourced
+        by:
+          kind: official
+          name: Government of Denmark
+        note:
+          en: At least €1.8bn as worded. The low end is that floor; the high end is an editorial +10%.
+        sources:
+          - title: Agreement on Security Cooperation and Long-term Support
+            url: "https://um.dk/media/utbgawq4/agreement-on-security-cooperation.pdf"
+      when:
+        en: In 2024
+      deadline: "2024-12-31"
+events:
+  - date: "2024-02-23"
+    type: promised
+    text:
+      en: Denmark and Ukraine sign the agreement in Lviv
+  - date: "2024-04-26"
+    type: funded
+    text:
+      en: Parliament adds DKK 4.4bn (about €590m) to Denmark’s military support for Ukraine in 2024
+    evidence_url: "https://um.dk/ukraine/en/news/denmark-increases-military-support-to-ukraine-by-4-4-billion-dkk-590-million-euro-in-2024/"
+replies: []
+corrections: []
+reviews: []
