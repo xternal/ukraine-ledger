@@ -107,6 +107,12 @@
     "checked_on": "2026-10-20",
     "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
   },
+  "b9f0d3baf9911240ad02a5e2e0f6dcc5d810895d9eaa323fec47d69efd85feda|https://data.consilium.europa.eu/doc/document/ST-24-2025-INIT/en/pdf": {
+    "match": "exact",
+    "url": "https://data.consilium.europa.eu/doc/document/ST-24-2025-INIT/en/pdf",
+    "checked_on": "2026-10-20",
+    "sha256": "6a61e99c9ea9c60d13f77352ed1eefe4c673fb81ecfc426855ca5bbc04c16dc1"
+  },
   "bb59ece413d6cc7be9623e3eac2ebf1bdca82476abb88946f1fd5532a9e57457|https://www.bundesregierung.de/resource/blob/975228/2260158/d84fa168bdd3747913c4e8618bd196af/2024-02-16-ukraine-sicherheitsvereinbarung-eng-data.pdf?download=1": {
     "match": "exact",
     "url": "https://www.bundesregierung.de/resource/blob/975228/2260158/d84fa168bdd3747913c4e8618bd196af/2024-02-16-ukraine-sicherheitsvereinbarung-eng-data.pdf?download=1",
@@ -142,6 +148,12 @@
     "url": "https://japan.kantei.go.jp/content/ukraine_en.pdf",
     "checked_on": "2026-10-20",
     "sha256": "f930360de582cd9dc4977b2243613b99dd16f89ae491d28735a4b54951edb6ee"
+  },
+  "f159eec5f890c6bc605b3dbfd9fad281c94495ac240471f0743744e910abb8df|https://eur-lex.europa.eu/eli/reg/2024/792/oj": {
+    "match": "exact",
+    "url": "https://eur-lex.europa.eu/eli/reg/2024/792/oj",
+    "checked_on": "2026-10-20",
+    "sha256": "2edc54a6d80f0d521ccde3b23fb1379f21aef88367c0c11669afab18d96a1efe"
   },
   "fa842289c871649c745091d000b8c0cb30bba9b3ab19c2964176f993435f2afe|https://www.government.nl/site/binaries/site-content/collections/documents/2024/03/01/security-cooperation-between-the-netherlands-and-ukraine/Agreement+on+Security+Cooperation+between+the+Netherlands+and+Ukraine.pdf": {
     "match": "exact",
