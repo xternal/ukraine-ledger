@@ -18,11 +18,11 @@
     "preview": "node scripts/build.ts --preview"
   },
   "devDependencies": {
-    "@openpromises/cli": "0.11.0",
-    "@openpromises/core": "0.11.0",
-    "@openpromises/files": "0.11.0",
-    "@openpromises/publish": "0.11.0",
-    "@openpromises/react": "0.11.0",
+    "@openpromises/cli": "0.13.0",
+    "@openpromises/core": "0.13.0",
+    "@openpromises/files": "0.13.0",
+    "@openpromises/publish": "0.13.0",
+    "@openpromises/react": "0.13.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "zod": "4.6.5"
