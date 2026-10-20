@@ -1,0 +1,40 @@
+format: openpromises/1
+id: eu-russian-assets-immobilised-2025
+headline:
+  en: Russian central bank assets stay immobilised
+actor_id: european-union
+made_on: "2025-12-12"
+venue_label:
+  en: Council Regulation (EU) 2025/2600, Article 2(1)
+area: sanctions
+status: legislated
+status_note:
+  en: "In force since 14 December 2025. The Regulation calls the measures temporary: they end only when Russia ends its war, pays reparations and no longer poses a serious risk to the EU economy (Article 6). The Council reviews them by 31 December 2026 and every 12 months after."
+responsible:
+  actor_id: european-union
+origin: manual
+versions:
+  - version: 1
+    text: Any direct or indirect transfer of assets or reserves of the Central Bank of Russia, or of any legal person, entity or body acting on behalf of, or at the direction of, the Central Bank of Russia, such as the Russian National Wealth Fund, shall be prohibited.
+    recorded_on: "2026-10-20"
+    source_url: "https://eur-lex.europa.eu/eli/reg/2025/2600/oj"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: The assets and reserves of the Central Bank of Russia held in the EU
+      when:
+        en: Until the conditions in Article 6 are met
+      deadline: null
+events:
+  - date: "2025-12-12"
+    type: promised
+    text:
+      en: The Council adopts the Regulation
+  - date: "2025-12-13"
+    type: legislated
+    text:
+      en: The Regulation is published in the Official Journal and applies from the next day
+    evidence_url: "https://eur-lex.europa.eu/eli/reg/2025/2600/oj"
+replies: []
+corrections: []
+reviews: []
