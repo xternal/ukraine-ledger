@@ -1,0 +1,14 @@
+format: openpromises/1
+id: germany-government
+kind: government
+name:
+  en: Federal Government of Germany
+short_name:
+  en: Germany
+standing: in_power
+same_as:
+  - "https://www.bundesregierung.de/breg-en"
+x:
+  donor: germany
+  donor_name: Germany
+  group: europe

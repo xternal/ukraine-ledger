@@ -1,0 +1,54 @@
+format: openpromises/1
+id: japan-support-2024
+headline:
+  en: $4.5bn of Japanese support for 2024
+actor_id: japan-government
+made_on: "2024-06-13"
+venue: agreement
+venue_label:
+  en: Accord on Support for Ukraine and Cooperation between Japan and Ukraine, item (4)
+area: money_and_deals
+status: delivering
+status_note:
+  en: Ukraine’s Ministry of Finance counts $4.3bn of budget financing from Japan in 2024. Japanese humanitarian aid is not in that figure, so whether the full $4.5bn arrived in 2024 is unconfirmed.
+responsible:
+  actor_id: japan-government
+origin: manual
+versions:
+  - version: 1
+    text: Japan has committed and provided to Ukraine the financial, humanitarian and other assistance worth a total value of over 12 billion US dollars since March 2022, including 4.5 billion US dollars support for 2024.
+    recorded_on: "2026-10-20"
+    source_url: "https://japan.kantei.go.jp/content/ukraine_en.pdf"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: "Ukraine: financial, humanitarian and other assistance"
+      cost:
+        range: [3.75, 4.17, 4.59]
+        quality: sourced
+        by:
+          kind: official
+          name: Government of Japan
+        note:
+          en: "$4.5bn as worded, at the ECB rate of 1.0784 dollars to the euro on 13 June 2024: €4.17bn. Low–high is an editorial ±10% because the accord gives one figure."
+        sources:
+          - title: Accord on Support for Ukraine and Cooperation
+            url: "https://japan.kantei.go.jp/content/ukraine_en.pdf"
+          - title: ECB euro reference rate, USD, 2024-06-13
+            url: "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?startPeriod=2024-06-13&endPeriod=2024-06-13&format=csvdata"
+      when:
+        en: For 2024
+      deadline: "2024-12-31"
+events:
+  - date: "2024-06-13"
+    type: promised
+    text:
+      en: Japan and Ukraine sign the accord at the G7 summit in Apulia
+  - date: "2025-01-02"
+    type: delivering
+    text:
+      en: Ukraine’s Ministry of Finance lists $4.3bn of budget financing from Japan in 2024
+    evidence_url: "https://www.kmu.gov.ua/en/news/minfin-partnery-z-rozvytku-iaki-nadaly-biudzhetnu-pidtrymku-ukraini-u-2024-rotsi-zahalnym-obsiahom-ponad-41-mlrd-ta-napriam-spriamuvannia-koshtiv"
+replies: []
+corrections: []
+reviews: []

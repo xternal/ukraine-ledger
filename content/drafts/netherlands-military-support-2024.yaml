@@ -1,0 +1,52 @@
+format: openpromises/1
+id: netherlands-military-support-2024
+headline:
+  en: €2bn of Dutch military support in 2024
+actor_id: netherlands-government
+made_on: "2024-03-01"
+venue: agreement
+venue_label:
+  en: Agreement on Security Cooperation between the Netherlands and Ukraine, paragraph 2
+area: weapons
+status: delivering
+status_note:
+  en: The Defence Minister’s letter of October 2024 counts about €3.76bn of Dutch military support delivered since 2022, with no figure for 2024 alone. No figure for what was spent in 2024 was found by 20 October 2026.
+responsible:
+  actor_id: netherlands-government
+origin: manual
+versions:
+  - version: 1
+    text: In 2024, the Netherlands will provide EUR 2 billion of military support.
+    recorded_on: "2026-10-20"
+    source_url: "https://www.government.nl/site/binaries/site-content/collections/documents/2024/03/01/security-cooperation-between-the-netherlands-and-ukraine/Agreement+on+Security+Cooperation+between+the+Netherlands+and+Ukraine.pdf"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: Ukraine’s armed forces
+      cost:
+        range: [1.8, 2, 2.2]
+        quality: sourced
+        by:
+          kind: official
+          name: Government of the Netherlands
+        note:
+          en: €2bn as worded. Low–high is an editorial ±10% because the agreement gives one figure.
+        sources:
+          - title: Agreement on Security Cooperation between the Netherlands and Ukraine
+            url: "https://www.government.nl/site/binaries/site-content/collections/documents/2024/03/01/security-cooperation-between-the-netherlands-and-ukraine/Agreement+on+Security+Cooperation+between+the+Netherlands+and+Ukraine.pdf"
+      when:
+        en: In 2024
+      deadline: "2024-12-31"
+events:
+  - date: "2024-03-01"
+    type: promised
+    text:
+      en: The Netherlands and Ukraine sign the agreement in Kharkiv
+  - date: "2024-10-06"
+    type: delivering
+    text:
+      en: The Defence Minister reports about €3.76bn of Dutch military support delivered since 2022, as of 29 September 2024
+    evidence_url: "https://zoek.officielebekendmakingen.nl/kst-22054-432.html"
+replies: []
+corrections: []
+reviews: []

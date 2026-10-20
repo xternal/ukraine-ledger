@@ -1,0 +1,14 @@
+format: openpromises/1
+id: denmark-government
+kind: government
+name:
+  en: Government of Denmark
+short_name:
+  en: Denmark
+standing: in_power
+same_as:
+  - "https://www.stm.dk/en/"
+x:
+  donor: denmark
+  donor_name: Denmark
+  group: europe
