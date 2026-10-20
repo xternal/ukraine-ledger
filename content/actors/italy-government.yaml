@@ -1,0 +1,14 @@
+format: openpromises/1
+id: italy-government
+kind: government
+name:
+  en: Government of Italy
+short_name:
+  en: Italy
+standing: in_power
+same_as:
+  - "https://www.governo.it/en"
+x:
+  donor: italy
+  donor_name: Italy
+  group: europe

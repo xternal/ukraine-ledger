@@ -1,0 +1,14 @@
+format: openpromises/1
+id: poland-government
+kind: government
+name:
+  en: Government of Poland
+short_name:
+  en: Poland
+standing: in_power
+same_as:
+  - "https://www.gov.pl/web/primeminister"
+x:
+  donor: poland
+  donor_name: Poland
+  group: europe
