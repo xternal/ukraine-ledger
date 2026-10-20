@@ -731,6 +731,20 @@ function figures(ctx: ChartContext, rows: readonly Row[]): ReactNode {
   );
 }
 
+/**
+ * Why some cards are not in the charts: a joint commitment by an alliance such as the G7, whose members' own cards
+ * carry their shares (so nothing is counted twice), or a card that names no government that must deliver it.
+ */
+function leftOut(ctx: ChartContext, views: readonly CardView[]): string {
+  const alliance = views.filter((v) => v.responsible?.kind === "alliance");
+  const names = [...new Set(alliance.map((v) => shortName(v.responsible!, ctx.L)))].join(", ");
+  const other = views.length - alliance.length;
+  return [
+    alliance.length ? ` ${count(alliance.length, "joint commitment", "joint commitments")} by ${names} ${alliance.length === 1 ? "is" : "are"} left out of the charts and totals, since each member's own card carries its share.` : "",
+    other ? ` ${count(other, "commitment names", "commitments name")} no government that must deliver it, so the charts leave ${other === 1 ? "it" : "them"} out.` : "",
+  ].join("");
+}
+
 /** Both charts, the table and where the figures come from: the home page's opening section. */
 export function charts(ctx: ChartContext, views: readonly CardView[], pill: (status: string) => ReactNode): ReactNode {
   const { rows, unattributed } = chartRows(views, ctx.config, ctx.usdPerEur);
@@ -757,7 +771,7 @@ export function charts(ctx: ChartContext, views: readonly CardView[], pill: (sta
       "Amounts are each card's own figure in euros, with its source and the exchange rate on the card. Dollars use the ECB's rate on the day each commitment was made, so a pledge made in dollars shows its own figure. For what each donor has delivered, compare the ",
       h("a", { href: "https://www.kielinstitut.de/topics/war-against-ukraine/ukraine-support-tracker/" }, "Kiel Institute's Ukraine Support Tracker"),
       ".",
-      unattributed.length ? ` ${count(unattributed.length, "commitment names", "commitments name")} no government that must deliver it, so the charts leave ${unattributed.length === 1 ? "it" : "them"} out.` : "",
+      leftOut(ctx, unattributed),
     ),
   );
 }
