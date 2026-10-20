@@ -1,0 +1,21 @@
+format: openpromises/1
+id: steve-witkoff
+kind: person
+name:
+  en: Steve Witkoff
+short_name:
+  en: Witkoff
+roles:
+  - title:
+      en: Special Envoy for Peace Missions
+    from: "2025-06-30"
+    source:
+      url: https://www.whitehouse.gov/wp-content/uploads/2025/09/Witkoff-Steven.pdf
+      quote: "Assistant to the President and Special Envoy for Peace Missions"
+same_as:
+  - https://www.whitehouse.gov/wp-content/uploads/2025/09/Witkoff-Steven.pdf
+same_as_checked_on: "2026-10-20"
+x:
+  unverified:
+    - "An earlier role as Special Envoy to the Middle East from 2025: its start date differs between sources, so it is not listed."
+    - "Party: not stated on an official page."

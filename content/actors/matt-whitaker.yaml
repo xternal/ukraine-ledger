@@ -1,0 +1,20 @@
+format: openpromises/1
+id: matt-whitaker
+kind: person
+name:
+  en: Matthew Whitaker
+short_name:
+  en: Whitaker
+roles:
+  - title:
+      en: US Ambassador to NATO
+    from: "2025-04-03"
+    source:
+      url: https://nato.usmission.gov/ambassador-usnato/
+      quote: "Matthew G. Whitaker assumed his role as the Permanent Representative of the United States to NATO on April 3, 2025."
+same_as:
+  - https://nato.usmission.gov/ambassador-usnato/
+same_as_checked_on: "2026-10-20"
+x:
+  unverified:
+    - "Party: not stated on an official page."

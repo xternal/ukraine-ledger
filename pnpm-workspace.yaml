@@ -1,0 +1,5 @@
+# OpenPromises' own packages install as soon as they are published (OpenPromises decision 32): they are published only
+# by the engine's Release workflow, with provenance, after the owner approves each one, and CI checks that provenance
+# (scripts/openpromises-provenance.ts). Every other package still waits pnpm's 1,440 minutes.
+minimumReleaseAgeExclude:
+  - "@openpromises/*"

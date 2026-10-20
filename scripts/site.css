@@ -1,0 +1,19 @@
+/* The site's own layout around the engine's components; colours come from the engine's tokens (styles.css). */
+body { margin: 0; background: var(--op-bg); color: var(--op-ink); font-family: system-ui, sans-serif; line-height: 1.5; }
+.site-header, main, .site-footer { max-width: 46rem; margin: 0 auto; padding: 0 16px; }
+.site-header { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: baseline; padding-top: 1rem; padding-bottom: 1rem; }
+.site-name { font-weight: 700; text-decoration: none; color: inherit; }
+.site-header nav a { margin-right: 1rem; }
+.site-footer { margin-top: 3rem; padding-bottom: 2rem; font-size: 0.9rem; }
+.lede { font-size: 1.1rem; }
+.coverage { border-collapse: collapse; width: 100%; margin: 1.5rem 0; }
+.coverage caption { text-align: left; font-weight: 600; padding-bottom: 0.5rem; }
+.coverage th, .coverage td { text-align: left; padding: 0.3rem 0.5rem; border-bottom: 1px solid currentColor; border-bottom-color: color-mix(in srgb, currentColor 15%, transparent); }
+.coverage td { text-align: right; white-space: nowrap; }
+.coverage__none td { opacity: 0.75; }
+.platform { margin: 2rem 0; }
+.platform__promise { margin: 0 0 1.5rem; padding: 1rem 1.25rem; border-left: 4px solid var(--op-accent); background: color-mix(in srgb, var(--op-accent) 6%, transparent); }
+.platform__promise blockquote { margin: 0 0 0.75rem; font-size: 1.15rem; font-weight: 600; }
+.platform__promise blockquote p { margin: 0; }
+.platform__promise figcaption { font-size: 0.95rem; }
+.preview-banner { max-width: 46rem; margin: 0 auto 1rem; padding: 0.5rem 16px; background: color-mix(in srgb, var(--op-accent) 12%, transparent); font-weight: 600; }

@@ -1,0 +1,24 @@
+format: openpromises/1
+id: jd-vance
+kind: person
+name:
+  en: JD Vance
+short_name:
+  en: Vance
+party_id: republican-party
+roles:
+  - title:
+      en: US Senator for Ohio
+    from: "2023-01-03"
+    to: "2025-01-09"
+  - title:
+      en: Vice President
+    from: "2025-01-20"
+    source:
+      url: https://www.whitehouse.gov/administration/jd-vance/
+      quote: "Vice President of the United States"
+identifiers:
+  bioguide_id: V000137
+same_as:
+  - https://www.whitehouse.gov/administration/jd-vance/
+same_as_checked_on: "2026-10-20"

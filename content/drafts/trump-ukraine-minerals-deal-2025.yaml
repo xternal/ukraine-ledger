@@ -1,0 +1,45 @@
+format: openpromises/1
+id: trump-ukraine-minerals-deal-2025
+headline:
+  en: Sign a minerals agreement with Ukraine on Friday
+actor_id: donald-trump
+made_on: "2025-02-26"
+venue: press_conference
+venue_label:
+  en: Remarks before a Cabinet meeting
+area: money_and_deals
+status: delivered
+status_note:
+  en: Signed on 30 April 2025, not on Friday 28 February, when the Oval Office meeting ended without a signing. The fund said on 18 December 2025 that it was fully operational; no investment by it was found
+    in public sources by 20 October 2026.
+responsible:
+  actor_id: us-trump-administration
+origin: manual
+sources:
+- title: 'DFC: US-Ukraine Reconstruction Investment Fund fully operational'
+  url: https://dfc.gov/media/press-releases/dfc-announces-us-ukraine-reconstruction-investment-fund-fully-operational-and
+- title: White House statement of 28 February 2025
+  url: https://www.govinfo.gov/content/pkg/DCPD-202500312/html/DCPD-202500312.htm
+versions:
+- version: 1
+  text: President Zelenskyy is going to be coming on Friday. That's now confirmed. And we're going to be signing an agreement, which will be a very big agreement.
+  recorded_on: "2026-10-20"
+  source_url: https://www.govinfo.gov/content/pkg/DCPD-202500304/html/DCPD-202500304.htm
+  quote_checked_on: null
+  parameters:
+    when:
+      en: Friday 28 February 2025
+    deadline: "2025-02-28"
+events:
+- date: "2025-02-26"
+  type: promised
+  text:
+    en: The President says an agreement with Ukraine will be signed on Friday
+- date: "2025-04-30"
+  type: delivered
+  text:
+    en: The US and Ukraine sign the agreement setting up the US-Ukraine Reconstruction Investment Fund
+  evidence_url: https://home.treasury.gov/news/press-releases/sb0126
+replies: []
+corrections: []
+reviews: []

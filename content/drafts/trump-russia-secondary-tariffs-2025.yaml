@@ -1,0 +1,71 @@
+format: openpromises/1
+id: trump-russia-secondary-tariffs-2025
+headline:
+  en: Secondary tariffs on Russia if no deal
+actor_id: donald-trump
+made_on: "2025-07-14"
+venue: press_conference
+venue_label:
+  en: Oval Office, with NATO Secretary General Mark Rutte
+area: sanctions
+status: legislated
+status_note:
+  en: An executive order of 16 October 2026 waived the Act's tariffs before they took effect, and the 25% tariff on India was removed on 6 February 2026, so no tariff on buyers of Russian goods was in effect
+    on 20 October 2026. On deadline day, 8 August 2025, the President announced the Alaska meeting with President Putin instead.
+responsible:
+  actor_id: us-trump-administration
+origin: manual
+sources:
+- title: 'CBS News: Trump waives sanctions and tariffs on Russian oil'
+  url: https://www.cbsnews.com/news/trump-waives-sanctions-tariffs-russian-oil-lindsey-graham/
+- title: 'ABC7: Trump''s deadline arrives'
+  url: https://abc7.com/post/trumps-deadline-arrives-putin-agree-ceasefire-face-sanctions/17472643/
+- title: Treasury sanctions Rosneft and Lukoil, 22 October 2025
+  url: https://home.treasury.gov/news/press-releases/sb0290
+versions:
+- version: 1
+  text: And we're going to be doing very severe tariffs if we don't have a deal in 50 days—tariffs at about 100 percent. You'd call them secondary tariffs.
+  recorded_on: "2026-10-20"
+  source_url: https://www.presidency.ucsb.edu/node/378339
+  quote_checked_on: null
+  parameters:
+    who:
+      en: Countries that buy Russian goods
+    when:
+      en: If there is no deal within 50 days
+    deadline: "2025-09-02"
+- version: 2
+  text: I'm going to make a new deadline of about 10 or 12 days from today. There's no reason in waiting.
+  recorded_on: "2026-10-20"
+  source_url: https://www.govinfo.gov/content/pkg/DCPD-202500802/html/DCPD-202500802.htm
+  quote_checked_on: null
+  parameters:
+    who:
+      en: Countries that buy Russian goods
+    when:
+      en: About 10 or 12 days from 28 July 2025; on 29 July, ten days
+    deadline: "2025-08-08"
+events:
+- date: "2025-07-14"
+  type: promised
+  text:
+    en: The President says tariffs of about 100% follow if there is no deal in 50 days
+- date: "2025-07-28"
+  type: reworded
+  text:
+    en: In Turnberry, Scotland, the deadline moves to about 10 or 12 days
+  evidence_url: https://www.govinfo.gov/content/pkg/DCPD-202500802/html/DCPD-202500802.htm
+  subtype: deadline_moved
+- date: "2025-08-06"
+  type: in_plan
+  text:
+    en: An executive order adds a 25% tariff on imports from India, a buyer of Russian oil
+  evidence_url: https://www.whitehouse.gov/fact-sheets/2025/08/fact-sheet-president-donald-j-trump-addresses-threats-to-the-united-states-by-the-government-of-the-russian-federation/
+- date: "2026-09-18"
+  type: legislated
+  text:
+    en: The President signs the Sanctioning Russia and Iran Act, allowing tariffs of up to 100% on the largest buyers of Russian oil and gas
+  evidence_url: https://www.cbsnews.com/news/trump-signs-russia-sanctions-bill-lindsey-graham/
+replies: []
+corrections: []
+reviews: []

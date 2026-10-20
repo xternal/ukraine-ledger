@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The append-only check compares published cards with the base branch.
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      # Node 22's bundled Corepack cannot run pnpm 12.
+      - run: npm install -g corepack@0.34.5 && corepack enable pnpm
+      - run: pnpm install --frozen-lockfile
+      # OpenPromises packages skip pnpm's one-day wait (OpenPromises decision 32), so check where they came from:
+      # registry signatures and attestations, then that each was built by the engine's Release workflow from its own tag.
+      - run: npm audit signatures
+      - run: pnpm openpromises:provenance
+      # Every card, draft, actor and the editors list against format v1; published cards against the base branch.
+      - run: pnpm validate
+      # Judgement words in our own text (quotes are skipped).
+      - run: pnpm lint:words
+      # The static site, drafts never included.
+      - run: pnpm build

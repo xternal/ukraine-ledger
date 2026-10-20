@@ -1,0 +1,10 @@
+format: openpromises/1
+id: republican-party
+kind: party
+name:
+  en: Republican Party
+short_name:
+  en: Republicans
+standing: in_power
+same_as:
+  - https://gop.com

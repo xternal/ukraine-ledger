@@ -1,0 +1,74 @@
+{
+  "04e9456181eeac676589bcbe41dad5bbf88003eabb13fdf06ff479bacf4b0a04|https://www.tribuneindia.com/news/world/ahead-of-alaska-summit-jd-vance-says-us-is-done-with-funding-ukraine-war-business/amp": {
+    "match": "exact",
+    "url": "https://www.tribuneindia.com/news/world/ahead-of-alaska-summit-jd-vance-says-us-is-done-with-funding-ukraine-war-business/amp",
+    "checked_on": "2026-10-20",
+    "sha256": "9e8557e8ce8e4bb6dc2fb462caf5d8dea12aa07396bb67b4dbc302b7388e98cf"
+  },
+  "0784e44844e78bcb1b0d2a03b552c32805348fff6e501d31b09d243c3ffbb0b2|https://www.govinfo.gov/content/pkg/DCPD-202500802/html/DCPD-202500802.htm": {
+    "match": "exact",
+    "url": "https://www.govinfo.gov/content/pkg/DCPD-202500802/html/DCPD-202500802.htm",
+    "checked_on": "2026-10-20",
+    "sha256": "06d3e13eac96cece4b700522a8aff8fbdb13a6977fde8f35bb0eb23ca69462b5"
+  },
+  "0885a0016f39be230e8699331c102c57ad5d7d6b7b243c3cc5f6f38ab7e32769|https://www.kurdistan24.net/en/story/946791/rubio-says-russia-sanctions-waiver-is-60-day-pause-to-analyze-global-economy": {
+    "match": "exact",
+    "url": "https://www.kurdistan24.net/en/story/946791/rubio-says-russia-sanctions-waiver-is-60-day-pause-to-analyze-global-economy",
+    "checked_on": "2026-10-20",
+    "sha256": "d06b0ba90be4b1d06de151dca7e330d3bfda62e7d2f6399a2620a0550e51947b"
+  },
+  "1841f6eba84f42e45a15c6cc11204354654a7ca2eaff0efa6127691fff5c0781|https://ktvz.com/politics/cnn-us-politics/2025/04/25/fact-check-it-wasnt-in-jest-here-are-53-times-trump-said-hed-end-ukraine-war-within-24-hours-or-before-taking-office/": {
+    "match": "exact",
+    "url": "https://ktvz.com/politics/cnn-us-politics/2025/04/25/fact-check-it-wasnt-in-jest-here-are-53-times-trump-said-hed-end-ukraine-war-within-24-hours-or-before-taking-office/",
+    "checked_on": "2026-10-20",
+    "sha256": "f18c7c7b364692ea75f2b85ee4c1dbef69ff051998edb724a3429565cda7e5e9"
+  },
+  "2091d245e10d6d675859a6f26a3f88cf3587adfa4d4efef56176cb6fcb6d429c|https://www.presidency.ucsb.edu/node/378899": {
+    "match": "exact",
+    "url": "https://www.presidency.ucsb.edu/node/378899",
+    "checked_on": "2026-10-20",
+    "sha256": "b6f06cc52c042a78281a30e132fcb1ec7e2c4885722677f99e7d9e0e62594a5d"
+  },
+  "7e34b95c81dbf5adbb4d671f88669aba92253e09b75d68f17b18b16eaa6efb37|https://www.aljazeera.com/news/2025/8/20/no-us-troops-in-ukraine-trump-says": {
+    "match": "exact",
+    "url": "https://www.aljazeera.com/news/2025/8/20/no-us-troops-in-ukraine-trump-says",
+    "checked_on": "2026-10-20",
+    "sha256": "ba80abf79930da22b1a68be91362ff6b9cb5eb6dfc37bed1cf2ef006ad350ff9"
+  },
+  "7fd754f8799ac6ef0efd3dc47c705b3d0ad4e7377f18110e37b477a0d6f48d08|https://www.presidency.ucsb.edu/node/378339": {
+    "match": "exact",
+    "url": "https://www.presidency.ucsb.edu/node/378339",
+    "checked_on": "2026-10-20",
+    "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
+  },
+  "a3e6c814b555c60892bcfab82c7dd69f9e78d526e6f1b7d90c65ab65ef2c4a8f|https://www.govinfo.gov/content/pkg/DCPD-202500304/html/DCPD-202500304.htm": {
+    "match": "exact",
+    "url": "https://www.govinfo.gov/content/pkg/DCPD-202500304/html/DCPD-202500304.htm",
+    "checked_on": "2026-10-20",
+    "sha256": "5e46acc70b89b58fcb423408c18aa7d1c14b9992149752b64b0ea9d160e6f65d"
+  },
+  "b0a22d157e6c43c8605ad8fb025d47ea3e3d6786183a20ce9f5a01023dcf2ed4|https://www.presidency.ucsb.edu/node/378339": {
+    "match": "close",
+    "url": "https://www.presidency.ucsb.edu/node/378339",
+    "checked_on": "2026-10-20",
+    "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
+  },
+  "bc7d90c1d5f19942bb788079ca5c1fa3de8cfa5b7e285e0c815ec391d32cf6af|https://www.presidency.ucsb.edu/node/378339": {
+    "match": "exact",
+    "url": "https://www.presidency.ucsb.edu/node/378339",
+    "checked_on": "2026-10-20",
+    "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
+  },
+  "bf5677f8c9393d0faf53e9e1eb7187ded90f82ddb9e9ed53617757e417347e76|https://www.govinfo.gov/content/pkg/DCPD-202500856/html/DCPD-202500856.htm": {
+    "match": "exact",
+    "url": "https://www.govinfo.gov/content/pkg/DCPD-202500856/html/DCPD-202500856.htm",
+    "checked_on": "2026-10-20",
+    "sha256": "b6eb00bc214dd6718c0fe37dafcf42190395b36e7d37191d22fa762fb401358e"
+  },
+  "cbddd07eccb5138cec88a92b9060f5123c68258b973881f6e165a2d6c324a5f3|https://abcnews.go.com/Politics/harris-trump-presidential-debate-transcript/story?id=113560542": {
+    "match": "exact",
+    "url": "https://abcnews.go.com/Politics/harris-trump-presidential-debate-transcript/story?id=113560542",
+    "checked_on": "2026-10-20",
+    "sha256": "1ca5ae5d327b0b56b9d042413b5977e76d8d6418784c386f158f46925ccce63e"
+  }
+}

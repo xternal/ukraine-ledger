@@ -1,0 +1,22 @@
+format: openpromises/1
+id: keith-kellogg
+kind: person
+name:
+  en: Keith Kellogg
+short_name:
+  en: Kellogg
+roles:
+  - title:
+      en: Special Envoy for Ukraine and Russia
+    from: "2025-01-20"
+    to: "2025-12-31"
+    source:
+      url: https://www.whitehouse.gov/wp-content/uploads/2025/07/2025-Annual-Report-to-Congress-on-White-House-Staff.pdf
+      quote: "SPECIAL ENVOY FOR UKRAINE AND RUSSIA"
+same_as:
+  - https://www.whitehouse.gov/wp-content/uploads/2025/07/2025-Annual-Report-to-Congress-on-White-House-Staff.pdf
+same_as_checked_on: "2026-10-20"
+x:
+  unverified:
+    - "The dates: he is in the White House staff report of 1 July 2025 and not in that of 1 July 2026; 31 December 2025 comes from the Kyiv Independent, not an official page."
+    - "Party: not stated on an official page."

@@ -1,0 +1,6 @@
+# Who may approve cards, and their declared US party (FORMAT.md §12 in the engine).
+editors:
+  - handle: Pavel Guzhikov
+    since: "2026-10-20"
+    party: null
+    named: true

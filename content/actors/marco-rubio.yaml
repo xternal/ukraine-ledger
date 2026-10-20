@@ -1,0 +1,30 @@
+format: openpromises/1
+id: marco-rubio
+kind: person
+name:
+  en: Marco Rubio
+short_name:
+  en: Rubio
+party_id: republican-party
+roles:
+  - title:
+      en: US Senator for Florida
+    from: "2011-01-05"
+    to: "2025-01-20"
+  - title:
+      en: Secretary of State
+    from: "2025-01-21"
+    source:
+      url: https://www.state.gov/biographies/marco-rubio/
+      quote: "Rubio was sworn in as the 72nd Secretary of State on January 21, 2025."
+  - title:
+      en: National Security Adviser
+    from: "2025-05-01"
+    source:
+      url: https://www.state.gov/releases/office-of-the-spokesman/2026/10/secretary-of-state-marco-rubio-remarks-to-the-press-19/
+      quote: "I'm also here in my capacity as the National Security Advisor."
+identifiers:
+  bioguide_id: R000595
+same_as:
+  - https://www.state.gov/biographies/marco-rubio/
+same_as_checked_on: "2026-10-20"

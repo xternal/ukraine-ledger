@@ -1,0 +1,18 @@
+format: openpromises/1
+id: us-trump-administration
+kind: government
+name:
+  en: United States, Trump administration
+short_name:
+  en: US (Trump)
+standing: in_power
+roles:
+  - title:
+      en: Executive branch of the United States
+    from: "2025-01-20"
+same_as:
+  - https://www.whitehouse.gov
+x:
+  donor: united-states
+  donor_name: United States
+  group: us

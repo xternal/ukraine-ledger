@@ -1,0 +1,24 @@
+format: openpromises/1
+id: mike-waltz
+kind: person
+name:
+  en: Mike Waltz
+short_name:
+  en: Waltz
+party_id: republican-party
+roles:
+  - title:
+      en: National Security Adviser
+    from: "2025-01-20"
+    to: "2025-05-01"
+  - title:
+      en: US Ambassador to the United Nations
+    from: "2025-09-20"
+    source:
+      url: https://usun.usmission.gov/ambassador-michael-waltz/
+      quote: "Ambassador Mike Waltz serves as the 32nd U.S. Representative to the United Nations."
+identifiers:
+  bioguide_id: W000823
+same_as:
+  - https://usun.usmission.gov/ambassador-michael-waltz/
+same_as_checked_on: "2026-10-20"

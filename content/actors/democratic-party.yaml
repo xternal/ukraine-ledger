@@ -1,0 +1,10 @@
+format: openpromises/1
+id: democratic-party
+kind: party
+name:
+  en: Democratic Party
+short_name:
+  en: Democrats
+standing: opposition
+same_as:
+  - https://democrats.org

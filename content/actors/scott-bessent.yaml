@@ -1,0 +1,18 @@
+format: openpromises/1
+id: scott-bessent
+kind: person
+name:
+  en: Scott Bessent
+short_name:
+  en: Bessent
+party_id: republican-party
+roles:
+  - title:
+      en: Secretary of the Treasury
+    from: "2025-01-28"
+    source:
+      url: https://home.treasury.gov/about/general-information/officials/scott-bessent
+      quote: "Scott K. H. Bessent is the 79th Secretary of the Treasury of the United States."
+same_as:
+  - https://home.treasury.gov/about/general-information/officials/scott-bessent
+same_as_checked_on: "2026-10-20"

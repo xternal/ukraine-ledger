@@ -1,0 +1,18 @@
+format: openpromises/1
+id: pete-hegseth
+kind: person
+name:
+  en: Pete Hegseth
+short_name:
+  en: Hegseth
+party_id: republican-party
+roles:
+  - title:
+      en: Secretary of Defense, styled Secretary of War since 5 September 2025
+    from: "2025-01-25"
+    source:
+      url: https://www.whitehouse.gov/administration/cabinet/
+      quote: "Secretary of War"
+same_as:
+  - https://www.whitehouse.gov/administration/cabinet/
+same_as_checked_on: "2026-10-20"

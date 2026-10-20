@@ -1,0 +1,44 @@
+format: openpromises/1
+id: trump-nato-weapons-ukraine-2025
+headline:
+  en: Make weapons for Ukraine, sent through NATO
+actor_id: donald-trump
+made_on: "2025-07-14"
+venue: press_conference
+venue_label:
+  en: Oval Office, with NATO Secretary General Mark Rutte
+area: weapons
+status: delivering
+status_note:
+  en: NATO's Secretary General said on 26 March 2026 that deliveries continue to flow.
+responsible:
+  actor_id: us-trump-administration
+origin: manual
+sources:
+- title: 'European Pravda: PURL deliveries continue, 26 March 2026'
+  url: https://www.eurointegration.com.ua/eng/news/2026/03/26/7234100/
+versions:
+- version: 1
+  text: So, in a nutshell, we're going to make top-of-the-line weapons, and they'll be sent to NATO.
+  recorded_on: "2026-10-20"
+  source_url: https://www.presidency.ucsb.edu/node/378339
+  quote_checked_on: null
+  parameters:
+    who:
+      en: Ukraine, with NATO allies paying
+    when:
+      en: Not stated
+    deadline: null
+events:
+- date: "2025-07-14"
+  type: promised
+  text:
+    en: The President says US-made weapons will be sent to NATO for Ukraine
+- date: "2025-08-04"
+  type: delivering
+  text:
+    en: The Netherlands funds the first package of US weapons for Ukraine through NATO's PURL scheme
+  evidence_url: https://defence-industry.eu/netherlands-becomes-first-nato-member-to-support-ukraine-through-new-u-s-initiative/
+replies: []
+corrections: []
+reviews: []

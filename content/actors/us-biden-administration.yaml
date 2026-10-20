@@ -1,0 +1,19 @@
+format: openpromises/1
+id: us-biden-administration
+kind: government
+name:
+  en: United States, Biden administration
+short_name:
+  en: US (Biden)
+standing: opposition
+roles:
+  - title:
+      en: Executive branch of the United States
+    from: "2021-01-20"
+    to: "2025-01-20"
+same_as:
+  - https://bidenwhitehouse.archives.gov
+x:
+  donor: united-states
+  donor_name: United States
+  group: us

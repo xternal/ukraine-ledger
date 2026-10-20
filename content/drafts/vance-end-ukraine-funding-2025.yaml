@@ -1,0 +1,42 @@
+format: openpromises/1
+id: vance-end-ukraine-funding-2025
+headline:
+  en: End US funding of the war in Ukraine
+actor_id: jd-vance
+made_on: "2025-08-10"
+venue: interview
+venue_label:
+  en: Fox News, Sunday Morning Futures
+area: weapons
+status: promised
+status_note:
+  en: Allies buy US weapons for Ukraine through NATO's PURL scheme. The defense authorization the President signed on 18 December 2025 authorizes $400 million a year for Ukraine in fiscal 2026 and 2027.
+responsible:
+  actor_id: us-trump-administration
+origin: manual
+sources:
+- title: 'Kyiv Independent: Trump signs defense bill with $400 million a year for Ukraine'
+  url: https://kyivindependent.com/trump-signs-defense-spending-bill-into-law-providing-400-million-annually-in-military-assistance-to-ukraine-through-2027/
+versions:
+- version: 1
+  text: We're done with the funding of the Ukraine war business. We want to bring about a peaceful settlement to this thing,
+  recorded_on: "2026-10-20"
+  source_url: https://www.tribuneindia.com/news/world/ahead-of-alaska-summit-jd-vance-says-us-is-done-with-funding-ukraine-war-business/amp
+  quote_checked_on: null
+  parameters:
+    when:
+      en: Not stated
+    deadline: null
+events:
+- date: "2025-08-10"
+  type: promised
+  text:
+    en: The Vice President says the US is done funding the war
+- date: "2026-04-14"
+  type: restated
+  text:
+    en: The Vice President says the US no longer buys weapons to send to Ukraine
+  evidence_url: https://www.kyivpost.com/amp/post/73966
+replies: []
+corrections: []
+reviews: []

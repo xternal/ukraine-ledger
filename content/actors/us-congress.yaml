@@ -1,0 +1,12 @@
+format: openpromises/1
+id: us-congress
+kind: legislature
+name:
+  en: US Congress
+standing: public_body
+same_as:
+  - https://www.congress.gov
+x:
+  donor: united-states
+  donor_name: United States
+  group: us

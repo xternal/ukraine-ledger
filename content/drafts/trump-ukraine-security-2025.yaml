@@ -1,0 +1,44 @@
+format: openpromises/1
+id: trump-ukraine-security-2025
+headline:
+  en: Very good protection and security for Ukraine
+actor_id: donald-trump
+made_on: "2025-08-18"
+venue: press_conference
+venue_label:
+  en: Oval Office, with President Zelensky
+area: security_guarantees
+status: promised
+status_note:
+  en: Ukraine's President said on 25 January 2026 that a US–Ukraine security document was ready to sign. No signing was found in public sources by 20 October 2026.
+responsible:
+  actor_id: us-trump-administration
+origin: manual
+sources:
+- title: 'PBS: Zelenskyy says US security agreement is 100% ready'
+  url: https://www.pbs.org/newshour/world/zelenskyy-says-u-s-security-agreement-for-ukraine-is-100-ready-to-be-signed
+versions:
+- version: 1
+  text: But we will give them very good protection, very good security.
+  recorded_on: "2026-10-20"
+  source_url: https://www.govinfo.gov/content/pkg/DCPD-202500856/html/DCPD-202500856.htm
+  quote_checked_on: null
+  parameters:
+    who:
+      en: Ukraine
+    when:
+      en: As part of a peace settlement
+    deadline: null
+events:
+- date: "2025-08-18"
+  type: promised
+  text:
+    en: The President says the US will help give Ukraine protection and security
+- date: "2025-12-28"
+  type: restated
+  text:
+    en: The President says Europe will take a large part and the US will help Europe fully
+  evidence_url: https://www.govinfo.gov/content/pkg/DCPD-202501223/html/DCPD-202501223.htm
+replies: []
+corrections: []
+reviews: []

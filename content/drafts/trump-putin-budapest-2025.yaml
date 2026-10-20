@@ -1,0 +1,39 @@
+format: openpromises/1
+id: trump-putin-budapest-2025
+headline:
+  en: Meet Putin in Budapest to end the war
+actor_id: donald-trump
+made_on: "2025-10-16"
+venue: social
+venue_label:
+  en: Truth Social post
+area: negotiations
+status: failed
+status_note:
+  en: The two Presidents had not met in person since Alaska, 15 August 2025, by 20 October 2026.
+responsible:
+  actor_id: us-trump-administration
+origin: manual
+versions:
+- version: 1
+  text: President Putin and I will then meet in an agreed upon location, Budapest, Hungary, to see if we can bring this "inglorious" War, between Russia and Ukraine, to an end.
+  recorded_on: "2026-10-20"
+  source_url: https://www.presidency.ucsb.edu/node/378899
+  quote_checked_on: null
+  parameters:
+    when:
+      en: After a meeting of senior advisers the following week
+    deadline: null
+events:
+- date: "2025-10-16"
+  type: promised
+  text:
+    en: The President announces a meeting with President Putin in Budapest
+- date: "2025-10-22"
+  type: failed
+  text:
+    en: The President says the meeting is cancelled; Treasury sanctions Rosneft and Lukoil the same day
+  evidence_url: https://www.foxbusiness.com/politics/trump-administration-hits-russias-top-oil-firms-sanctions-stunt-war-funding-urges-ceasefire
+replies: []
+corrections: []
+reviews: []

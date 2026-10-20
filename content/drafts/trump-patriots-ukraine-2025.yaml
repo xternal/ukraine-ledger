@@ -1,0 +1,42 @@
+format: openpromises/1
+id: trump-patriots-ukraine-2025
+headline:
+  en: Patriot systems for Ukraine within days
+actor_id: donald-trump
+made_on: "2025-07-14"
+venue: press_conference
+venue_label:
+  en: Oval Office, with NATO Secretary General Mark Rutte
+area: weapons
+status: delivering
+status_note:
+  en: The first launchers arrived 57 days after the statement. Replacement of the allies' systems by the US was not found in public sources by 20 October 2026.
+responsible:
+  actor_id: us-trump-administration
+origin: manual
+versions:
+- version: 1
+  text: Well, we're going to have some come very soon, within days, actually, because a couple of the countries that have Patriots are going to swap over, and we'll replace the Patriots with the ones they
+    have.
+  recorded_on: "2026-10-20"
+  source_url: https://www.presidency.ucsb.edu/node/378339
+  quote_checked_on: null
+  parameters:
+    who:
+      en: Ukraine, from allies' Patriot stocks that the US replaces
+    when:
+      en: Very soon, within days
+    deadline: null
+events:
+- date: "2025-07-14"
+  type: promised
+  text:
+    en: The President says Patriot systems will come within days, swapped from allies' stocks
+- date: "2025-09-09"
+  type: delivering
+  text:
+    en: Germany says the first launchers of two Patriot systems have reached Ukraine
+  evidence_url: https://www.yahoo.com/news/articles/germany-delivered-first-launchers-two-150447870.html
+replies: []
+corrections: []
+reviews: []
