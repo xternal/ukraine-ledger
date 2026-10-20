@@ -1,0 +1,62 @@
+format: openpromises/1
+id: eu-ukraine-facility-2024-2027
+headline:
+  en: €50bn Ukraine Facility for 2024 to 2027
+actor_id: european-union
+made_on: "2024-02-29"
+venue: parliament
+venue_label:
+  en: Regulation (EU) 2024/792 establishing the Ukraine Facility, Article 6(3)
+area: money_and_deals
+status: delivering
+status_note:
+  en: The Commission had paid €29.5bn under Pillar I (pre-financing, bridge financing and seven regular payments) before an eighth payment of €2.9bn on 2 October 2026. Of the €50bn, up to €33bn is loans and up to €17bn non-repayable support, much of which pays for guarantees and interest subsidies rather than grants.
+responsible:
+  actor_id: european-union
+origin: manual
+sources:
+  - title: "European Commission: the Ukraine Facility"
+    url: "https://enlargement.ec.europa.eu/funding-technical-assistance/ukraine-facility_en"
+versions:
+  - version: 1
+    text: The sum of the resources made available pursuant to paragraphs 1 and 2 shall not exceed EUR 50 000 000 000 for the period 2024 to 2027.
+    recorded_on: "2026-10-20"
+    source_url: "https://eur-lex.europa.eu/eli/reg/2024/792/oj"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: "Ukraine: its state budget, reforms and investment"
+      cost:
+        range: [45.0, 50, 50]
+        quality: sourced
+        by:
+          kind: official
+          name: European Union
+        note:
+          en: "Up to €50bn for 2024 to 2027 as worded: up to €33bn in loans (Article 6(2)) and up to €17bn from the Ukraine Reserve (Article 6(1)). The high end is that ceiling; the low end is an editorial −10%."
+        sources:
+          - title: Regulation (EU) 2024/792
+            url: "https://eur-lex.europa.eu/eli/reg/2024/792/oj"
+      when:
+        en: "2024 to 2027"
+      deadline: "2027-12-31"
+      funded_by:
+        en: Up to €17bn from the Ukraine Reserve in the EU budget, and up to €33bn in loans (Article 6)
+events:
+  - date: "2024-02-29"
+    type: promised
+    text:
+      en: The European Parliament and the Council adopt the Regulation
+  - date: "2024-02-29"
+    type: legislated
+    text:
+      en: The Regulation is published in the Official Journal
+    evidence_url: "https://eur-lex.europa.eu/eli/reg/2024/792/oj"
+  - date: "2026-10-02"
+    type: delivering
+    text:
+      en: The Commission pays €2.9bn, the eighth regular payment under the Ukraine Plan
+    evidence_url: "https://enlargement.ec.europa.eu/news/commission-disburses-eur29-billion-under-ukraine-facility-support-financial-stability-and-reforms-2026-10-02_en"
+replies: []
+corrections: []
+reviews: []

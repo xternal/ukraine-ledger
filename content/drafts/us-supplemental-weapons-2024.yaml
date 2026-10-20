@@ -1,0 +1,48 @@
+format: openpromises/1
+id: us-supplemental-weapons-2024
+headline:
+  en: Send Ukraine the supplies it needs to fight
+actor_id: joe-biden
+made_on: "2024-04-24"
+venue: speech
+venue_label:
+  en: Remarks on signing the national security supplemental, White House
+area: weapons
+status: delivering
+status_note:
+  en: On 30 December 2024 the President said the Department of Defense had allocated all remaining USAI funds from the April supplemental. When the administration left office, about $3.86bn of drawdown authority was still unused, according to the Special Inspector General for Operation Atlantic Resolve.
+responsible:
+  actor_id: us-biden-administration
+origin: manual
+sources:
+  - title: Special Inspector General for Operation Atlantic Resolve, report for April–June 2025
+    url: "https://oig.usaid.gov/sites/default/files/2025-08/OAR_Q3_FY25_Final_508.pdf"
+versions:
+  - version: 1
+    text: And now Americans are going to send Ukraine the supplies they need to keep them in the fight.
+    recorded_on: "2026-10-20"
+    source_url: "https://bidenwhitehouse.archives.gov/briefing-room/speeches-remarks/2024/04/24/remarks-by-president-biden-on-the-passage-of-h-r-815-the-national-security-supplemental/"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: Ukraine’s armed forces
+      cost:
+        note:
+          en: The words name no amount. The Act he had just signed provides $60.78bn in its Ukraine division (Public Law 118-50, Division B), not all of it for Ukraine itself.
+        sources:
+          - title: Public Law 118-50
+            url: "https://www.govinfo.gov/app/details/PLAW-118publ50"
+      deadline: null
+events:
+  - date: "2024-04-24"
+    type: promised
+    text:
+      en: The President signs the national security supplemental and speaks at the White House
+  - date: "2024-12-30"
+    type: delivering
+    text:
+      en: The President says the Department of Defense has allocated all remaining USAI funds from the April supplemental
+    evidence_url: "https://www.govinfo.gov/content/pkg/DCPD-202401109/html/DCPD-202401109.htm"
+replies: []
+corrections: []
+reviews: []

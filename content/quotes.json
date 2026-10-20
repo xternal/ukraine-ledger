@@ -17,6 +17,12 @@
     "checked_on": "2026-10-20",
     "sha256": "d06b0ba90be4b1d06de151dca7e330d3bfda62e7d2f6399a2620a0550e51947b"
   },
+  "129fc23d02145cb0bac5f86ed7dfc1ce4269a8ecf22f022cf3abca9cbd29af66|https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2024/10/23/statement-from-president-joe-biden-on-historic-decision-to-leverage-russian-sovereign-assets-to-support-ukraine/": {
+    "match": "exact",
+    "url": "https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2024/10/23/statement-from-president-joe-biden-on-historic-decision-to-leverage-russian-sovereign-assets-to-support-ukraine/",
+    "checked_on": "2026-10-20",
+    "sha256": "13820fdb1179292cf106e3e418176b6bd32177c2d30b61bd8a37f496be4f27bb"
+  },
   "1443083783e06e4208dd3740d66b562f0b1f114969a0c5d5a2a48c9d959188ac|https://um.dk/media/utbgawq4/agreement-on-security-cooperation.pdf": {
     "match": "exact",
     "url": "https://um.dk/media/utbgawq4/agreement-on-security-cooperation.pdf",
@@ -29,11 +35,23 @@
     "checked_on": "2026-10-20",
     "sha256": "f18c7c7b364692ea75f2b85ee4c1dbef69ff051998edb724a3429565cda7e5e9"
   },
+  "1f76847fc2427021a03c5537f968dc301995653566e704fd09e422d85562d836|https://www.govinfo.gov/content/pkg/PLAW-118publ50/uslm/PLAW-118publ50.xml": {
+    "match": "exact",
+    "url": "https://www.govinfo.gov/content/pkg/PLAW-118publ50/uslm/PLAW-118publ50.xml",
+    "checked_on": "2026-10-20",
+    "sha256": "9bbe459e967a14803435bd970e0e27fcb2767caf4b73a23e041b8459d506d28a"
+  },
   "2091d245e10d6d675859a6f26a3f88cf3587adfa4d4efef56176cb6fcb6d429c|https://www.presidency.ucsb.edu/node/378899": {
     "match": "exact",
     "url": "https://www.presidency.ucsb.edu/node/378899",
     "checked_on": "2026-10-20",
     "sha256": "b6f06cc52c042a78281a30e132fcb1ec7e2c4885722677f99e7d9e0e62594a5d"
+  },
+  "2564cad6449ac28c90ac4aad64d1c25083341b568f9af49329abb0a3e99d57ab|https://www.pm.gc.ca/en/news/backgrounders/2025/02/24/just-and-lasting-peace-ukraine": {
+    "match": "exact",
+    "url": "https://www.pm.gc.ca/en/news/backgrounders/2025/02/24/just-and-lasting-peace-ukraine",
+    "checked_on": "2026-10-20",
+    "sha256": "f4f37a7ce7f79b63c9ad610c9903a258991d300dc7a7e7e327661c5046b36546"
   },
   "2df1d929d3f392a166980813e9f3964a66289cdb5bd40a547b4322e8eb8b4c64|https://eur-lex.europa.eu/eli/reg/2025/2600/oj": {
     "match": "exact",
@@ -41,11 +59,29 @@
     "checked_on": "2026-10-20",
     "sha256": "037a9aba3830a8fcd724f2fad1927c4a0ab68d8a75b5b59d24a7f549de2297f9"
   },
+  "383b6614e611b84ff1207e9f000ef103d5ae88a08d5b0804c5763399e6f6c03f|https://eur-lex.europa.eu/eli/reg/2024/2773/oj": {
+    "match": "exact",
+    "url": "https://eur-lex.europa.eu/eli/reg/2024/2773/oj",
+    "checked_on": "2026-10-20",
+    "sha256": "aebdda4ed0b24af4609e3974c0d98da29357671a8773db0a50ec6f2768ce4487"
+  },
+  "4a859f108a3e50bd5de1b21e4fb70be8403779678363a780d6f5957690f8d828|https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2024/06/13/bilateral-security-agreement-between-the-united-states-of-america-and-ukraine/": {
+    "match": "exact",
+    "url": "https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2024/06/13/bilateral-security-agreement-between-the-united-states-of-america-and-ukraine/",
+    "checked_on": "2026-10-20",
+    "sha256": "17f93d45e7b947c3c4b90d9d4a109191bae6d5bc652455225c1cf94c3dc372d3"
+  },
   "53920e86b027407a116cb550b2e8c94106baad0f74026289b38871c0e1d55703|https://eur-lex.europa.eu/eli/dec/2024/1470/oj": {
     "match": "exact",
     "url": "https://eur-lex.europa.eu/eli/dec/2024/1470/oj",
     "checked_on": "2026-10-20",
     "sha256": "bee22848693d07ac736a030ded9d97fe52d3f55fa105ffeddf5c3ed1badc0dd4"
+  },
+  "6868bf18f8510057bc2d8f0bb1ebcaea34bf48ea9a7425a858f283bfc99369f7|https://www.g7italy.it/wp-content/uploads/Apulia-G7-Leaders-Communique.pdf": {
+    "match": "exact",
+    "url": "https://www.g7italy.it/wp-content/uploads/Apulia-G7-Leaders-Communique.pdf",
+    "checked_on": "2026-10-21",
+    "sha256": "7ef7ad6ed2b0f21b902e72ac2445309c4488be54d60b148134f67b9fa449f272"
   },
   "722c55ce8b11953da220e9c9af116c3708a576ac871bbe3b40fcbfe691054129|https://www.elysee.fr/emmanuel-macron/2024/02/16/accord-de-cooperation-en-matiere-de-securite-entre-la-france-et-lukraine": {
     "match": "exact",
@@ -64,6 +100,12 @@
     "url": "https://www.presidency.ucsb.edu/node/378339",
     "checked_on": "2026-10-20",
     "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
+  },
+  "82a2e504b601e4d3e8d15eddefc390a80ea26c1c078c020ae2815cd388d3395d|https://bidenwhitehouse.archives.gov/briefing-room/speeches-remarks/2024/04/24/remarks-by-president-biden-on-the-passage-of-h-r-815-the-national-security-supplemental/": {
+    "match": "exact",
+    "url": "https://bidenwhitehouse.archives.gov/briefing-room/speeches-remarks/2024/04/24/remarks-by-president-biden-on-the-passage-of-h-r-815-the-national-security-supplemental/",
+    "checked_on": "2026-10-20",
+    "sha256": "e25cdcc3711d6efea0503a7d7d80b0f8cb6e68f39cf641958062bb0d469f27cd"
   },
   "8ea7dc5d368795dd783216852862ad5c7bfd90cc1bd56e229f6430a19e19b075|https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/agreement-ukraine-accord.aspx?lang=eng": {
     "match": "exact",
@@ -89,6 +131,12 @@
     "checked_on": "2026-10-20",
     "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
   },
+  "b9f0d3baf9911240ad02a5e2e0f6dcc5d810895d9eaa323fec47d69efd85feda|https://data.consilium.europa.eu/doc/document/ST-24-2025-INIT/en/pdf": {
+    "match": "exact",
+    "url": "https://data.consilium.europa.eu/doc/document/ST-24-2025-INIT/en/pdf",
+    "checked_on": "2026-10-20",
+    "sha256": "6a61e99c9ea9c60d13f77352ed1eefe4c673fb81ecfc426855ca5bbc04c16dc1"
+  },
   "bb59ece413d6cc7be9623e3eac2ebf1bdca82476abb88946f1fd5532a9e57457|https://www.bundesregierung.de/resource/blob/975228/2260158/d84fa168bdd3747913c4e8618bd196af/2024-02-16-ukraine-sicherheitsvereinbarung-eng-data.pdf?download=1": {
     "match": "exact",
     "url": "https://www.bundesregierung.de/resource/blob/975228/2260158/d84fa168bdd3747913c4e8618bd196af/2024-02-16-ukraine-sicherheitsvereinbarung-eng-data.pdf?download=1",
@@ -113,6 +161,12 @@
     "checked_on": "2026-10-20",
     "sha256": "1ca5ae5d327b0b56b9d042413b5977e76d8d6418784c386f158f46925ccce63e"
   },
+  "d780d2c96ef6e25da3e31ba165b679b5db8d1ffae8041bcf67fb5ca58bde92d3|https://www.gov.uk/government/news/uk-strengthens-national-security-and-bolsters-ukraines-war-chest-with-226-billion-military-loan": {
+    "match": "exact",
+    "url": "https://www.gov.uk/government/news/uk-strengthens-national-security-and-bolsters-ukraines-war-chest-with-226-billion-military-loan",
+    "checked_on": "2026-10-20",
+    "sha256": "a5d2678945c9a24b0ef5e35f22c2eab2374de6776436f2650aa1b2537085c333"
+  },
   "eb039114f99bdecad42d7db7a38e4269ab3e4a1694f3b3008e419286322d6dda|https://assets.publishing.service.gov.uk/media/65a14a6ae96df50014f845d2/UK-Ukraine_Agreement_on_Security_Co-operation.pdf": {
     "match": "exact",
     "url": "https://assets.publishing.service.gov.uk/media/65a14a6ae96df50014f845d2/UK-Ukraine_Agreement_on_Security_Co-operation.pdf",
@@ -124,6 +178,18 @@
     "url": "https://japan.kantei.go.jp/content/ukraine_en.pdf",
     "checked_on": "2026-10-20",
     "sha256": "f930360de582cd9dc4977b2243613b99dd16f89ae491d28735a4b54951edb6ee"
+  },
+  "f159eec5f890c6bc605b3dbfd9fad281c94495ac240471f0743744e910abb8df|https://eur-lex.europa.eu/eli/reg/2024/792/oj": {
+    "match": "exact",
+    "url": "https://eur-lex.europa.eu/eli/reg/2024/792/oj",
+    "checked_on": "2026-10-20",
+    "sha256": "2edc54a6d80f0d521ccde3b23fb1379f21aef88367c0c11669afab18d96a1efe"
+  },
+  "f8e5ef5443821b41cc533a6f8a5e1296a2ef1a30b694838ded3ae1cdcccf9bf6|https://www.mof.go.jp/english/policy/international_policy/imf/dc/20241023190212.html": {
+    "match": "exact",
+    "url": "https://www.mof.go.jp/english/policy/international_policy/imf/dc/20241023190212.html",
+    "checked_on": "2026-10-20",
+    "sha256": "731093aff83ca504c0e994a16245e47905c43017e822b8da6839a275293bb3a6"
   },
   "fa842289c871649c745091d000b8c0cb30bba9b3ab19c2964176f993435f2afe|https://www.government.nl/site/binaries/site-content/collections/documents/2024/03/01/security-cooperation-between-the-netherlands-and-ukraine/Agreement+on+Security+Cooperation+between+the+Netherlands+and+Ukraine.pdf": {
     "match": "exact",

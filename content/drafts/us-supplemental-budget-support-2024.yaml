@@ -1,0 +1,59 @@
+format: openpromises/1
+id: us-supplemental-budget-support-2024
+headline:
+  en: $7.85bn in US aid, including budget support
+actor_id: us-congress
+made_on: "2024-04-24"
+venue: parliament
+venue_label:
+  en: Ukraine Security Supplemental Appropriations Act, 2024 (Public Law 118-50, Division B), Economic Support Fund
+area: money_and_deals
+status: delivered
+status_note:
+  en: The Treasury called its $3.4bn of 30 December 2024 the final disbursement of the funds appropriated under the Act.
+responsible:
+  actor_id: us-biden-administration
+origin: manual
+versions:
+  - version: 1
+    text: "For an additional amount for “Economic Support Fund”, $7,899,000,000, to remain available until September 30, 2025: Provided, That of the total amount provided under this heading in this division, $7,849,000,000 shall be for assistance for Ukraine, which may include budget support"
+    recorded_on: "2026-10-20"
+    source_url: "https://www.govinfo.gov/content/pkg/PLAW-118publ50/uslm/PLAW-118publ50.xml"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: Ukraine, including its state budget
+      cost:
+        range: [6.62, 7.35, 8.09]
+        quality: sourced
+        by:
+          kind: official
+          name: US Congress
+        note:
+          en: "$7.849bn as worded, at the ECB rate of 1.0686 dollars to the euro on 24 April 2024: €7.35bn. Low–high is an editorial ±10% because the Act gives one figure."
+        sources:
+          - title: Public Law 118-50
+            url: "https://www.govinfo.gov/app/details/PLAW-118publ50"
+          - title: ECB euro reference rate, USD, 2024-04-24
+            url: "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?startPeriod=2024-04-24&endPeriod=2024-04-24&format=csvdata"
+      when:
+        en: Available until 30 September 2025
+      deadline: "2025-09-30"
+events:
+  - date: "2024-04-24"
+    type: promised
+    text:
+      en: Congress passes the Act and the President signs it
+  - date: "2024-04-24"
+    type: legislated
+    text:
+      en: Public Law 118-50 is enacted
+    evidence_url: "https://www.govinfo.gov/app/details/PLAW-118publ50"
+  - date: "2024-12-30"
+    type: delivered
+    text:
+      en: The Treasury disburses $3.4bn, which it calls the final disbursement of the Act’s funds
+    evidence_url: "https://home.treasury.gov/news/press-releases/jy2764"
+replies: []
+corrections: []
+reviews: []

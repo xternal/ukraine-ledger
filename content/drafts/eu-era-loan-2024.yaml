@@ -1,0 +1,67 @@
+format: openpromises/1
+id: eu-era-loan-2024
+headline:
+  en: "EU share of G7 loans: up to €35bn"
+actor_id: european-union
+made_on: "2024-10-24"
+venue: parliament
+venue_label:
+  en: Regulation (EU) 2024/2773 on exceptional macro-financial assistance to Ukraine, Article 10(1)
+area: money_and_deals
+status: delivered
+status_note:
+  en: The G7 term sheet of 25 October 2024 set the EU’s share at €18.115bn, and the Commission paid €18.1bn between 10 January and 13 November 2025, within the Regulation’s deadline of 31 December 2025.
+responsible:
+  actor_id: european-union
+origin: manual
+sources:
+  - title: Apulia G7 Leaders’ Communiqué, 14 June 2024
+    url: "https://www.g7italy.it/wp-content/uploads/Apulia-G7-Leaders-Communique.pdf"
+versions:
+  - version: 1
+    text: The MFA Loan shall be for a maximum amount of EUR 35 billion.
+    recorded_on: "2026-10-20"
+    source_url: "https://eur-lex.europa.eu/eli/reg/2024/2773/oj"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: Ukraine, as a loan repaid from the profits on immobilised Russian assets
+      cost:
+        range: [18.1, 18.1, 35]
+        quality: sourced
+        by:
+          kind: official
+          name: G7 finance ministers
+        note:
+          en: Up to €35bn as worded; the ceiling falls when the EU loan and the G7 members’ own loans together pass €45bn (Article 10(1)). The G7 term sheet set the EU’s share at €18.115bn, the low and central figure here; the high end is the ceiling.
+        sources:
+          - title: Regulation (EU) 2024/2773
+            url: "https://eur-lex.europa.eu/eli/reg/2024/2773/oj"
+          - title: G7 ERA loans term sheet, 25 October 2024 (Japan Ministry of Finance copy)
+            url: "https://www.mof.go.jp/english/policy/international_policy/convention/g7/g7_20241028.pdf"
+      when:
+        en: Available until 31 December 2024; paid by 31 December 2025
+      deadline: "2025-12-31"
+events:
+  - date: "2024-10-24"
+    type: promised
+    text:
+      en: The European Parliament and the Council adopt the Regulation
+  - date: "2024-10-28"
+    type: legislated
+    text:
+      en: The Regulation is published in the Official Journal
+    evidence_url: "https://eur-lex.europa.eu/eli/reg/2024/2773/oj"
+  - date: "2025-01-10"
+    type: delivering
+    text:
+      en: The Commission pays the first €3bn of the EU’s share
+    evidence_url: "https://enlargement.ec.europa.eu/news/commission-disburses-first-eu3-billion-ukraine-its-part-g7-loan-be-repaid-proceeds-immobilised-2025-01-10_en"
+  - date: "2025-11-13"
+    type: delivered
+    text:
+      en: The Commission pays the last €4.1bn, completing €18.1bn
+    evidence_url: "https://enlargement.ec.europa.eu/news/eu-steps-support-ukraine-almost-eu6-billion-cover-its-financial-needs-2025-11-13_en"
+replies: []
+corrections: []
+reviews: []

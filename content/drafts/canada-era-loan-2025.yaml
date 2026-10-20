@@ -1,0 +1,57 @@
+format: openpromises/1
+id: canada-era-loan-2025
+headline:
+  en: C$5bn Canadian loan in the G7 plan
+actor_id: canada-government
+made_on: "2025-02-24"
+venue: statement
+venue_label:
+  en: Prime Minister’s backgrounder, 24 February 2025
+area: money_and_deals
+status: delivering
+status_note:
+  en: Canada first announced the C$5bn at the G7 summit on 13 June 2024. It paid C$2.5bn in March 2025; a further C$2.3bn was listed as being paid in August 2025, with no payment date confirmed.
+responsible:
+  actor_id: canada-government
+origin: manual
+sources:
+  - title: Canada reinforces its support for a just and lasting peace in Ukraine (24 August 2025)
+    url: "https://www.pm.gc.ca/en/news/news-releases/2025/08/24/canada-reinforces-its-support-just-and-lasting-peace"
+  - title: Apulia G7 Leaders’ Communiqué, 14 June 2024
+    url: "https://www.g7italy.it/wp-content/uploads/Apulia-G7-Leaders-Communique.pdf"
+versions:
+  - version: 1
+    text: Last year, at the G7 Summit in Apulia, Italy, Canada announced a $5 billion contribution toward the G7 Extraordinary Revenue Acceleration (ERA) Loans mechanism.
+    recorded_on: "2026-10-20"
+    source_url: "https://www.pm.gc.ca/en/news/backgrounders/2025/02/24/just-and-lasting-peace-ukraine"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: Ukraine, as a loan
+      cost:
+        range: [3.03, 3.37, 3.71]
+        quality: sourced
+        by:
+          kind: official
+          name: Government of Canada
+        note:
+          en: "C$5bn as worded, at the ECB rate of 1.4823 Canadian dollars to the euro on 13 June 2024, when Canada announced it: €3.37bn. Low–high is an editorial ±10% because the announcement gives one figure."
+        sources:
+          - title: Canada’s contribution to G7 ERA loans (13 June 2024)
+            url: "https://www.pm.gc.ca/en/news/backgrounders/2024/06/13/g7-extraordinary-revenue-acceleration-loans"
+          - title: ECB euro reference rate, CAD, 2024-06-13
+            url: "https://data-api.ecb.europa.eu/service/data/EXR/D.CAD.EUR.SP00.A?startPeriod=2024-06-13&endPeriod=2024-06-13&format=csvdata"
+      deadline: null
+events:
+  - date: "2025-02-24"
+    type: promised
+    text:
+      en: The Prime Minister’s office restates Canada’s C$5bn share of the G7 loans
+  - date: "2025-06-17"
+    type: delivering
+    text:
+      en: The Prime Minister’s office says Canada paid the first C$2.5bn in March 2025
+    evidence_url: "https://www.pm.gc.ca/en/news/backgrounders/2025/06/17/prime-minister-carney-concludes-2025-g7-leaders-summit"
+replies: []
+corrections: []
+reviews: []
