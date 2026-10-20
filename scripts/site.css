@@ -1,6 +1,10 @@
 /* The site's own layout around the engine's components; colours come from the engine's tokens (styles.css). */
 body { margin: 0; background: var(--op-bg); color: var(--op-ink); font-family: system-ui, sans-serif; line-height: 1.5; }
-.site-header, main, .site-footer { max-width: 46rem; margin: 0 auto; padding: 0 16px; }
+.site-header, main, .site-footer { max-width: 72rem; margin: 0 auto; padding: 0 16px; }
+/* Text keeps a reading measure; the home page's charts use the full width. */
+main { max-width: 46rem; }
+main.main--wide { max-width: 72rem; }
+.main--wide > :not(.home-charts) { max-width: 46rem; }
 .site-header { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: baseline; padding-top: 1rem; padding-bottom: 1rem; }
 .site-name { font-weight: 700; text-decoration: none; color: inherit; }
 .site-header nav a { margin-right: 1rem; }
@@ -16,7 +20,7 @@ body { margin: 0; background: var(--op-bg); color: var(--op-ink); font-family: s
 .platform__promise blockquote { margin: 0 0 0.75rem; font-size: 1.15rem; font-weight: 600; }
 .platform__promise blockquote p { margin: 0; }
 .platform__promise figcaption { font-size: 0.95rem; }
-.preview-banner { max-width: 46rem; margin: 0 auto 1rem; padding: 0.5rem 16px; background: color-mix(in srgb, var(--op-accent) 12%, transparent); font-weight: 600; }
+.preview-banner { max-width: 72rem; margin: 0 auto 1rem; padding: 0.5rem 16px; background: color-mix(in srgb, var(--op-accent) 12%, transparent); font-weight: 600; }
 
 /* The charts on the home page (scripts/charts.ts). Every colour is an engine token, so dark mode follows the engine.
    Status buckets take the status tokens; rings and lanes are ink mixed into the background, a step per ring. */
@@ -65,6 +69,11 @@ body { margin: 0; background: var(--op-bg); color: var(--op-ink); font-family: s
 .sb:has(#sb-mode-amount:checked) .sb-view--amount { display: block; }
 .sb:has(#sb-mode-amount:checked) .sb-view--count { display: none; }
 .sb-svg { display: block; width: 100%; max-width: 23rem; height: auto; margin: 0 auto; }
+@media (min-width: 60rem) {
+  .sb-body { grid-template-columns: minmax(0, 31rem) minmax(0, 1fr); gap: 2rem; }
+  .sb-svg { max-width: 31rem; }
+  .sb-panel { max-height: 31rem; }
+}
 .sb-seg { fill: var(--b); stroke: var(--op-bg); stroke-width: 2; fill-rule: evenodd; transition: opacity 0.15s; }
 .sb-seg--inner { cursor: zoom-in; }
 .sb-seg--r1 { fill: color-mix(in srgb, var(--op-ink) 11%, var(--op-bg)); }
@@ -123,7 +132,12 @@ body { margin: 0; background: var(--op-bg); color: var(--op-ink); font-family: s
 
 /* The timeline: across on a wide screen, down on a phone. */
 .tl-svg { display: block; width: 100%; height: auto; }
-.tl-svg--down { display: none; max-width: 22rem; margin: 0 auto; }
+.tl-svg--down, .tl-svg--wide { display: none; }
+.tl-svg--down { max-width: 22rem; margin: 0 auto; }
+@media (min-width: 64rem) {
+  .tl-svg--wide { display: block; }
+  .tl-svg--across { display: none; }
+}
 @media (max-width: 40rem) {
   .tl-svg--across { display: none; }
   .tl-svg--down { display: block; }

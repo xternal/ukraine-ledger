@@ -61,7 +61,8 @@ async function main() {
     mkdirSync(dirname(file), { recursive: true });
     writeFileSync(file, body);
   };
-  const page = (path: string, title: string, body: ReactNode) =>
+  /** `wide`: the home page, whose charts use the full width while its text keeps the reading measure. */
+  const page = (path: string, title: string, body: ReactNode, opts: { wide?: boolean } = {}) =>
     write(
       path.endsWith("/") ? `${path}index.html` : `${path}/index.html`,
       "<!doctype html>\n" +
@@ -90,7 +91,7 @@ async function main() {
                 h("nav", { "aria-label": "Site" }, h("a", { href: p.promises(L) }, "Promises"), " ", h("a", { href: "/actor/" }, "People"), " ", h("a", { href: "/promises/area/" }, "Areas"), " ", h("a", { href: "/about/" }, "How it works")),
               ),
               PREVIEW ? h("p", { className: "preview-banner", role: "note" }, "Preview: drafts included. Nothing on this page is published or approved.") : null,
-              h("main", null, body),
+              h("main", { className: opts.wide ? "main--wide" : undefined }, body),
               h(
                 "footer",
                 { className: "site-footer" },
@@ -150,6 +151,7 @@ async function main() {
         ? h(PromiseSpotlight, { views, today, actors: result.actors, config })
         : h("p", null, "No promise is published yet. The first cards are being checked against their sources."),
     ),
+    { wide: true },
   );
 
   page(p.promises(L), "Promises", h(Fragment, null, h("h1", null, "Every promise"), h(PromiseList, { views, today, actors: result.actors, config, empty: "No promise is published yet." })));
