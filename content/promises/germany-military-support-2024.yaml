@@ -19,7 +19,7 @@ versions:
     text: In 2024, Germany has decided to provide financial means for military assistance worth a total value of 7.1 billion euro.
     recorded_on: "2026-10-20"
     source_url: "https://www.bundesregierung.de/resource/blob/975228/2260158/d84fa168bdd3747913c4e8618bd196af/2024-02-16-ukraine-sicherheitsvereinbarung-eng-data.pdf?download=1"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine’s armed forces
@@ -54,4 +54,15 @@ events:
     evidence_url: "https://www.bundeshaushalt.de/static/daten/2026/soll/epl60.pdf"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

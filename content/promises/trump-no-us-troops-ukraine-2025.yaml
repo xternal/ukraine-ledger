@@ -10,7 +10,7 @@ venue_label:
 area: security_guarantees
 status: promised
 status_note:
-  en: No deployment of US ground troops to Ukraine was found in public sources by 20 October 2026.
+  en: No deployment of US troops to Ukraine was found in public sources by 20 October 2026.
 responsible:
   actor_id: us-trump-administration
 origin: manual
@@ -19,10 +19,10 @@ versions:
   text: You have my assurance, and I am president. I am just trying to stop people from being killed.
   recorded_on: "2026-10-20"
   source_url: https://www.aljazeera.com/news/2025/8/20/no-us-troops-in-ukraine-trump-says
-  quote_checked_on: null
+  quote_checked_on: "2026-10-21"
   parameters:
     who:
-      en: US ground forces
+      en: US troops, to defend Ukraine's borders
     when:
       en: While he is President
     deadline: null
@@ -33,4 +33,15 @@ events:
     en: Asked about US troops in Ukraine, the President gives his assurance
 replies: []
 corrections: []
-reviews: []
+reviews:
+- by: AI Journalist
+  kind: automated
+  "on": "2026-10-21"
+  note:
+    en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+- by: Pavel Guzhikov
+  kind: editor
+  "on": "2026-10-21"
+  approves: true
+  note:
+    en: Approved for the first publication on the AI Journalist's check.

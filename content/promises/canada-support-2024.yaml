@@ -22,7 +22,7 @@ versions:
     text: To this end, in 2024, Canada will provide $3.02B in macroeconomic and military support to Ukraine.
     recorded_on: "2026-10-20"
     source_url: "https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/agreement-ukraine-accord.aspx?lang=eng"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: "Ukraine: macroeconomic and military support"
@@ -59,4 +59,15 @@ events:
     evidence_url: "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-results-report/2024-25-index.html"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

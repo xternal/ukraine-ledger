@@ -1,7 +1,7 @@
 format: openpromises/1
 id: poland-military-support-2024
 headline:
-  en: Several Polish military aid packages in 2024
+  en: Several substantial Polish military aid packages in 2024
 actor_id: poland-government
 made_on: "2024-07-08"
 venue: agreement
@@ -24,7 +24,7 @@ versions:
     text: Bearing above in mind, in 2024 Poland will provide several substantial military assistance packages and will continue with a robust support within the next decade.
     recorded_on: "2026-10-20"
     source_url: "https://www.gov.pl/attachment/75d2e925-db41-4810-89fd-d6302ec53908"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine’s armed forces
@@ -39,8 +39,19 @@ events:
   - date: "2024-07-25"
     type: delivering
     text:
-      en: Ukraine’s ambassador to Poland says the 45th package, mostly ammunition, is being delivered
+      en: Ukraine’s ambassador to Poland says the 45th package, including a significant amount of ammunition, is being delivered
     evidence_url: "https://www.ukrinform.net/rubric-defense/3888753-poland-sending-45th-package-of-defense-aid-to-ukraine-ambassador-zvarych.html"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

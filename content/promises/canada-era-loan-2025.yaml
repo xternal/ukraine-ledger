@@ -8,9 +8,9 @@ venue: statement
 venue_label:
   en: Prime Minister’s backgrounder, 24 February 2025
 area: money_and_deals
-status: delivering
+status: delivered
 status_note:
-  en: Canada first announced the C$5bn at the G7 summit on 13 June 2024. It paid C$2.5bn in March 2025; a further C$2.3bn was listed as being paid in August 2025, with no payment date confirmed.
+  en: Canada first announced the C$5bn at the G7 summit on 13 June 2024. Ukraine received C$2.5bn in March 2025 and C$2.3bn in June 2025; on 16 February 2026 Ukraine’s Ministry of Finance called a $146m World Bank grant the final Canadian tranche.
 responsible:
   actor_id: canada-government
 origin: manual
@@ -21,10 +21,10 @@ sources:
     url: "https://www.g7italy.it/wp-content/uploads/Apulia-G7-Leaders-Communique.pdf"
 versions:
   - version: 1
-    text: Last year, at the G7 Summit in Apulia, Italy, Canada announced a $5 billion contribution toward the G7 Extraordinary Revenue Acceleration (ERA) Loans mechanism.
+    text: Canada has concluded negotiations with Ukraine on the terms of its $5 billion contribution and will disburse half of the funds, totalling $2.5 billion, in the coming days, with the remaining sum soon to follow.
     recorded_on: "2026-10-20"
     source_url: "https://www.pm.gc.ca/en/news/backgrounders/2025/02/24/just-and-lasting-peace-ukraine"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine, as a loan
@@ -41,17 +41,40 @@ versions:
             url: "https://www.pm.gc.ca/en/news/backgrounders/2024/06/13/g7-extraordinary-revenue-acceleration-loans"
           - title: ECB euro reference rate, CAD, 2024-06-13
             url: "https://data-api.ecb.europa.eu/service/data/EXR/D.CAD.EUR.SP00.A?startPeriod=2024-06-13&endPeriod=2024-06-13&format=csvdata"
+      when:
+        en: Half in the coming days, the rest soon after
       deadline: null
 events:
   - date: "2025-02-24"
     type: promised
     text:
-      en: The Prime Minister’s office restates Canada’s C$5bn share of the G7 loans
+      en: The Prime Minister’s office says Canada will pay half of its C$5bn share of the G7 loans in the coming days and the rest soon after
   - date: "2025-06-17"
     type: delivering
     text:
       en: The Prime Minister’s office says Canada paid the first C$2.5bn in March 2025
     evidence_url: "https://www.pm.gc.ca/en/news/backgrounders/2025/06/17/prime-minister-carney-concludes-2025-g7-leaders-summit"
+  - date: "2025-06-30"
+    type: delivering
+    text:
+      en: Ukraine’s Ministry of Finance says it has received a second C$2.3bn, bringing Canada’s payments to C$4.8bn
+    evidence_url: "https://www.globalsecurity.org/wmd/library/news/ukraine/2025/06/ukraine-250630-govua01.htm"
+  - date: "2026-02-16"
+    type: delivered
+    text:
+      en: Ukraine’s Ministry of Finance calls a $146m Canadian grant through the World Bank the final tranche of Canada’s share
+    evidence_url: "https://www.ukrinform.net/amp/rubric-economy/4091945-ukraine-receives-usd-690m-grant-from-japan-and-canada.html"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

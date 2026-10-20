@@ -24,7 +24,7 @@ versions:
     text: In 2024, the UK will provide a further £2.5bn of support.
     recorded_on: "2026-10-20"
     source_url: "https://assets.publishing.service.gov.uk/media/65a14a6ae96df50014f845d2/UK-Ukraine_Agreement_on_Security_Co-operation.pdf"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine, in the agreement’s part on defence and military cooperation
@@ -61,4 +61,15 @@ events:
     evidence_url: "https://assets.publishing.service.gov.uk/media/6909c86b14b040dfe829220f/Ministry_of_Defence_annual_report_and_accounts_2024_to_2025.pdf"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

@@ -10,7 +10,7 @@ venue_label:
 area: weapons
 status: in_plan
 status_note:
-  en: "Two packages were published in 2024, the ninth (Official Gazette, 10 July) and the tenth (23 December), against eight in 2022 and 2023. Italy keeps the lists of its packages confidential, so whether 2024 matched the level of 2022 and 2023 cannot be checked from public sources. The agreement is published as a scan: its words were read by machine (OCR) and checked against the page images."
+  en: "Two packages were published in 2024, the ninth (Official Gazette, 10 July) and the tenth (23 December), against eight in 2022 and 2023. Italy keeps the lists of its packages classified, so whether 2024 matched the level of 2022 and 2023 cannot be checked from public sources. The agreement is published as a scan: its words were read by machine (OCR) and checked against the page images."
 responsible:
   actor_id: italy-government
 origin: manual
@@ -22,7 +22,7 @@ versions:
     text: Italy provided Ukraine with 8 packages of military aid in 2022 and 2023 and will intend to maintain the same level of additional military support in 2024, which shall be determined in detail through consultations between the participants and taking into account Ukraine’s contingent needs.
     recorded_on: "2026-10-20"
     source_url: "https://www.governo.it/sites/governo.it/files/Accordo_Italia-Ucraina_20240224_1.pdf"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine’s armed forces
@@ -34,11 +34,22 @@ events:
     type: promised
     text:
       en: Italy and Ukraine sign the agreement in Kyiv
-  - date: "2024-12-16"
+  - date: "2024-12-23"
     type: in_plan
     text:
-      en: The cabinet approves Italy’s tenth package of military aid for Ukraine; its list is confidential
-    evidence_url: "https://www.ansa.it/english/news/2024/12/16/cabinet-oks-10th-package-of-military-aid-for-ukraine_0fc5619f-02ac-45cc-a5cc-96d7bfaa31ee.html"
+      en: Italy’s tenth package of military aid for Ukraine, a ministerial decree of 12 December 2024, is published in the Official Gazette; its list is classified
+    evidence_url: "https://temi.camera.it/leg19/temi/19_cessioni-di-materiali-d-armamento-alle-autorit-governative-dell-ucraina"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

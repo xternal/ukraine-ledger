@@ -22,7 +22,7 @@ versions:
     text: The European Council agrees to provide a loan to Ukraine of EUR 90 billion for the years 2026-2027 based on EU borrowing on the capital markets backed by the EU budget headroom.
     recorded_on: "2026-10-20"
     source_url: "https://data.consilium.europa.eu/doc/document/ST-24-2025-INIT/en/pdf"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: "Ukraine: its budget and its defence industry"
@@ -61,4 +61,15 @@ events:
     evidence_url: "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1452"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

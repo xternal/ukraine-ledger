@@ -19,7 +19,7 @@ versions:
     text: In 2024, the Netherlands will provide EUR 2 billion of military support.
     recorded_on: "2026-10-20"
     source_url: "https://www.government.nl/site/binaries/site-content/collections/documents/2024/03/01/security-cooperation-between-the-netherlands-and-ukraine/Agreement+on+Security+Cooperation+between+the+Netherlands+and+Ukraine.pdf"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine’s armed forces
@@ -54,4 +54,15 @@ events:
     evidence_url: "https://zoek.officielebekendmakingen.nl/kst-36725-X-6.html"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

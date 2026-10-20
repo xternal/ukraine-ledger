@@ -19,12 +19,14 @@ sources:
   url: https://ktvz.com/politics/cnn-us-politics/2025/04/25/fact-check-it-wasnt-in-jest-here-are-53-times-trump-said-hed-end-ukraine-war-within-24-hours-or-before-taking-office/
 - title: 'Time: the President''s interview of 22 April 2025'
   url: https://time.com/7280114/donald-trump-2025-interview-transcript/
+- title: 'CNBC: Trump says he would meet with Putin and Xi (19 October 2026)'
+  url: https://www.cnbc.com/2026/10/19/trump-putin-xi-zelenskyy.html
 versions:
 - version: 1
   text: If I’m president, I will have that war settled in one day, 24 hours.
   recorded_on: "2026-10-20"
   source_url: https://ktvz.com/politics/cnn-us-politics/2025/04/25/fact-check-it-wasnt-in-jest-here-are-53-times-trump-said-hed-end-ukraine-war-within-24-hours-or-before-taking-office/
-  quote_checked_on: null
+  quote_checked_on: "2026-10-21"
   parameters:
     when:
       en: Within one day of becoming President
@@ -33,7 +35,7 @@ versions:
   text: I will get it settled before I even become president. If I win, when I'm President-Elect, and what I'll do is I'll speak to one, I'll speak to the other, I'll get them together.
   recorded_on: "2026-10-20"
   source_url: https://abcnews.go.com/Politics/harris-trump-presidential-debate-transcript/story?id=113560542
-  quote_checked_on: null
+  quote_checked_on: "2026-10-21"
   parameters:
     when:
       en: Before taking office, as President-elect
@@ -52,8 +54,19 @@ events:
 - date: "2025-01-20"
   type: failed
   text:
-    en: Inauguration day passes without a settlement; the Alaska summit of August 2025 ends without an agreement
-  evidence_url: https://www.govinfo.gov/content/pkg/DCPD-202500855/html/DCPD-202500855.htm
+    en: Inauguration day passes without a settlement
+  evidence_url: https://ktvz.com/politics/cnn-us-politics/2025/04/25/fact-check-it-wasnt-in-jest-here-are-53-times-trump-said-hed-end-ukraine-war-within-24-hours-or-before-taking-office/
 replies: []
 corrections: []
-reviews: []
+reviews:
+- by: AI Journalist
+  kind: automated
+  "on": "2026-10-21"
+  note:
+    en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+- by: Pavel Guzhikov
+  kind: editor
+  "on": "2026-10-21"
+  approves: true
+  note:
+    en: Approved for the first publication on the AI Journalist's check.
