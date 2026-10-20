@@ -1,0 +1,59 @@
+format: openpromises/1
+id: us-era-loan-2024
+headline:
+  en: $20bn US loan repaid from Russian assets
+actor_id: joe-biden
+made_on: "2024-10-23"
+venue: statement
+venue_label:
+  en: Statement from President Biden on the G7 decision to use Russian sovereign assets
+area: money_and_deals
+status: delivering
+status_note:
+  en: On 10 December 2024 the Treasury moved the $20bn to a World Bank fund (the F.O.R.T.I.S. Ukraine FIF), through which it is to be made available to Ukraine. Payments from the fund to Ukraine are not yet checked.
+responsible:
+  actor_id: us-biden-administration
+origin: manual
+sources:
+  - title: Apulia G7 Leaders’ Communiqué, 14 June 2024
+    url: "https://www.g7italy.it/wp-content/uploads/Apulia-G7-Leaders-Communique.pdf"
+  - title: G7 ERA loans term sheet, 25 October 2024 (Japan Ministry of Finance copy)
+    url: "https://www.mof.go.jp/english/policy/international_policy/convention/g7/g7_20241028.pdf"
+versions:
+  - version: 1
+    text: As part of the G7 package, the United States is announcing today that we will provide $20 billion in loans to Ukraine that will be paid back by the interest earned from immobilized Russian sovereign assets.
+    recorded_on: "2026-10-20"
+    source_url: "https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2024/10/23/statement-from-president-joe-biden-on-historic-decision-to-leverage-russian-sovereign-assets-to-support-ukraine/"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: Ukraine, as a loan
+      cost:
+        range: [16.72, 18.58, 20.44]
+        quality: sourced
+        by:
+          kind: official
+          name: US Government
+        note:
+          en: "$20bn as worded, at the ECB rate of 1.0767 dollars to the euro on 23 October 2024: €18.58bn. Low–high is an editorial ±10% because the statement gives one figure."
+        sources:
+          - title: Statement from President Biden, 23 October 2024
+            url: "https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2024/10/23/statement-from-president-joe-biden-on-historic-decision-to-leverage-russian-sovereign-assets-to-support-ukraine/"
+          - title: ECB euro reference rate, USD, 2024-10-23
+            url: "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?startPeriod=2024-10-23&endPeriod=2024-10-23&format=csvdata"
+      deadline: null
+      funded_by:
+        en: Paid back by the interest earned on immobilised Russian sovereign assets
+events:
+  - date: "2024-10-23"
+    type: promised
+    text:
+      en: The President announces the US share of the G7 loans
+  - date: "2024-12-10"
+    type: delivering
+    text:
+      en: The Treasury transfers the $20bn to the World Bank’s F.O.R.T.I.S. Ukraine fund
+    evidence_url: "https://home.treasury.gov/news/press-releases/jy2744"
+replies: []
+corrections: []
+reviews: []

@@ -34,10 +34,12 @@ export default defineConfig({
   // A commitment made in another currency gives its own figure in the note and the rate used.
   money: { currency: "EUR", unit: "bn", period: "total", qualities: ["sourced", "approx", "modelled"], costedBy: "required" },
   actors: {
-    kinds: ["person", "party", "government", "union", "legislature"],
+    kinds: ["person", "party", "government", "union", "legislature", "alliance"],
     standing: "manual",
-    // Who must deliver is a government, the EU or a legislature, never a person or a party (decision 14).
-    responsible: ["government", "union", "legislature"],
+    // Who must deliver is a government, the EU, a legislature or an alliance such as the G7, never a person or a
+    // party (decision 14). An alliance has no donor (x), so its joint commitments stay out of the charts and the totals:
+    // each member's own card carries its share.
+    responsible: ["government", "union", "legislature", "alliance"],
     responsibleRequired: true,
     ids: { bioguide_id: "https://bioguide.congress.gov/search/bio/{id}" },
   },

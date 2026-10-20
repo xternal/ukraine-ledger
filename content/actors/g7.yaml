@@ -1,0 +1,10 @@
+format: openpromises/1
+id: g7
+kind: alliance
+name:
+  en: Group of Seven (G7)
+short_name:
+  en: G7
+standing: public_body
+same_as:
+  - "https://www.g7italy.it/en/"
