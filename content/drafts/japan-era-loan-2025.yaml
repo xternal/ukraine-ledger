@@ -1,0 +1,59 @@
+format: openpromises/1
+id: japan-era-loan-2025
+headline:
+  en: ¥471.9bn Japanese loan in the G7 plan
+actor_id: japan-government
+made_on: "2025-04-24"
+venue: statement
+venue_label:
+  en: Statement to the IMF and World Bank Development Committee, 24 April 2025
+area: money_and_deals
+status: funded
+status_note:
+  en: JICA signed the loan agreement with Ukraine on 5 June 2025, for up to ¥471.9bn over 30 years. Payments were not yet checked by 20 October 2026.
+responsible:
+  actor_id: japan-government
+origin: manual
+sources:
+  - title: Apulia G7 Leaders’ Communiqué, 14 June 2024
+    url: "https://www.g7italy.it/wp-content/uploads/Apulia-G7-Leaders-Communique.pdf"
+  - title: G7 ERA loans term sheet, 25 October 2024 (Japan Ministry of Finance copy)
+    url: "https://www.mof.go.jp/english/policy/international_policy/convention/g7/g7_20241028.pdf"
+versions:
+  - version: 1
+    text: Japan contributes to supporting Ukraine through providing Ukraine with a yen loan of 471.9 billion yen through a World Bank Financial Intermediary Fund, under the Extraordinary Revenue Acceleration (ERA) Loan initiative for Ukraine, which was agreed by the G7 Leaders last year and is to be repaid by future flows of extraordinary revenues stemming from immobilized Russian sovereign assets.
+    recorded_on: "2026-10-20"
+    source_url: "https://www.mof.go.jp/english/policy/international_policy/imf/dc/20241023190212.html"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: Ukraine, as a loan through a World Bank fund
+      cost:
+        range: [2.62, 2.91, 3.2]
+        quality: sourced
+        by:
+          kind: official
+          name: Government of Japan
+        note:
+          en: "¥471.9bn as worded, at the ECB rate of 162.16 yen to the euro on 24 April 2025: €2.91bn. Low–high is an editorial ±10% because the statement gives one figure."
+        sources:
+          - title: Japan Ministry of Finance statement, 24 April 2025
+            url: "https://www.mof.go.jp/english/policy/international_policy/imf/dc/20241023190212.html"
+          - title: ECB euro reference rate, JPY, 2025-04-24
+            url: "https://data-api.ecb.europa.eu/service/data/EXR/D.JPY.EUR.SP00.A?startPeriod=2025-04-24&endPeriod=2025-04-24&format=csvdata"
+      deadline: null
+      funded_by:
+        en: Repaid by future flows of extraordinary revenues from immobilised Russian sovereign assets
+events:
+  - date: "2025-04-24"
+    type: promised
+    text:
+      en: Japan’s Ministry of Finance states the loan to the Development Committee
+  - date: "2025-06-05"
+    type: funded
+    text:
+      en: JICA signs the loan agreement with Ukraine’s Ministry of Finance, up to ¥471.9bn
+    evidence_url: "https://www.jica.go.jp/english/information/press/2025/20250605_11.html"
+replies: []
+corrections: []
+reviews: []

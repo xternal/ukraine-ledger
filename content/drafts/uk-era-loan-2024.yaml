@@ -1,0 +1,57 @@
+format: openpromises/1
+id: uk-era-loan-2024
+headline:
+  en: £2.26bn UK loan repaid from Russian assets
+actor_id: uk-government
+made_on: "2024-10-22"
+venue: statement
+venue_label:
+  en: Government announcement, 22 October 2024
+area: weapons
+status: delivering
+status_note:
+  en: "Paid in three tranches of £752m: the first on 6 March 2025 and the second on 14 April 2025. The third was due in 2026 and is not yet confirmed."
+responsible:
+  actor_id: uk-government
+origin: manual
+sources:
+  - title: Apulia G7 Leaders’ Communiqué, 14 June 2024
+    url: "https://www.g7italy.it/wp-content/uploads/Apulia-G7-Leaders-Communique.pdf"
+  - title: G7 ERA loans term sheet, 25 October 2024 (Japan Ministry of Finance copy)
+    url: "https://www.mof.go.jp/english/policy/international_policy/convention/g7/g7_20241028.pdf"
+versions:
+  - version: 1
+    text: The new £2.26 billion is the UK’s contribution to the G7 Extraordinary Revenue Acceleration (ERA) Loans to Ukraine scheme, in which $50 billion from G7 countries will be delivered to Ukraine for its military, budget and reconstruction needs.
+    recorded_on: "2026-10-20"
+    source_url: "https://www.gov.uk/government/news/uk-strengthens-national-security-and-bolsters-ukraines-war-chest-with-226-billion-military-loan"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: Ukraine, as a loan for military equipment
+      cost:
+        range: [2.44, 2.71, 2.98]
+        quality: sourced
+        by:
+          kind: official
+          name: Government of the United Kingdom
+        note:
+          en: "£2.26bn as worded, at the ECB rate of 0.8334 pounds to the euro on 22 October 2024: €2.71bn. Low–high is an editorial ±10% because the announcement gives one figure."
+        sources:
+          - title: GOV.UK, 22 October 2024
+            url: "https://www.gov.uk/government/news/uk-strengthens-national-security-and-bolsters-ukraines-war-chest-with-226-billion-military-loan"
+          - title: ECB euro reference rate, GBP, 2024-10-22
+            url: "https://data-api.ecb.europa.eu/service/data/EXR/D.GBP.EUR.SP00.A?startPeriod=2024-10-22&endPeriod=2024-10-22&format=csvdata"
+      deadline: null
+events:
+  - date: "2024-10-22"
+    type: promised
+    text:
+      en: The government announces the UK share of the G7 loans
+  - date: "2025-03-06"
+    type: delivering
+    text:
+      en: The first £752m is paid
+    evidence_url: "https://www.gov.uk/government/news/uk-sends-multi-million-pound-military-equipment-loan-to-ukraine"
+replies: []
+corrections: []
+reviews: []
