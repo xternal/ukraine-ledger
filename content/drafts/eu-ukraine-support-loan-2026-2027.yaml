@@ -1,0 +1,64 @@
+format: openpromises/1
+id: eu-ukraine-support-loan-2026-2027
+headline:
+  en: €90bn EU loan to Ukraine for 2026–2027
+actor_id: european-union
+made_on: "2025-12-18"
+venue: summit
+venue_label:
+  en: European Council conclusions, 18 December 2025 (EUCO 24/25), point 3
+area: money_and_deals
+status: delivering
+status_note:
+  en: "€19.8bn had been paid by 14 October 2026: €3.2bn of macro-financial assistance, €15.8bn for defence procurement and €800m through the Ukraine Facility. The loan is enhanced cooperation of 24 member states; Czechia, Hungary and Slovakia are not part of it."
+responsible:
+  actor_id: european-union
+origin: manual
+sources:
+  - title: "European Commission: EU financial support to Ukraine"
+    url: "https://commission.europa.eu/topics/eu-solidarity-ukraine/eu-assistance-ukraine/eu-financial-support-ukraine_en"
+versions:
+  - version: 1
+    text: The European Council agrees to provide a loan to Ukraine of EUR 90 billion for the years 2026-2027 based on EU borrowing on the capital markets backed by the EU budget headroom.
+    recorded_on: "2026-10-20"
+    source_url: "https://data.consilium.europa.eu/doc/document/ST-24-2025-INIT/en/pdf"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: "Ukraine: its budget and its defence industry"
+      cost:
+        range: [81.0, 90, 90]
+        quality: sourced
+        by:
+          kind: official
+          name: European Union
+        note:
+          en: €90bn as worded. The Regulation that put the loan into law sets €90bn as its maximum (Article 4(1)). The high end is that ceiling; the low end is an editorial −10%.
+        sources:
+          - title: European Council conclusions, 18 December 2025
+            url: "https://data.consilium.europa.eu/doc/document/ST-24-2025-INIT/en/pdf"
+          - title: Regulation (EU) 2026/467
+            url: "https://eur-lex.europa.eu/eli/reg/2026/467/oj"
+      when:
+        en: For the years 2026-2027
+      deadline: "2027-12-31"
+      funded_by:
+        en: EU borrowing on the capital markets, backed by the EU budget headroom
+events:
+  - date: "2025-12-18"
+    type: promised
+    text:
+      en: The European Council agrees to the loan
+  - date: "2026-02-24"
+    type: legislated
+    text:
+      en: Regulation (EU) 2026/467 establishes the Ukraine Support Loan, up to €90bn
+    evidence_url: "https://eur-lex.europa.eu/eli/reg/2026/467/oj"
+  - date: "2026-06-25"
+    type: delivering
+    text:
+      en: The Commission pays the first €3.2bn of the loan
+    evidence_url: "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1452"
+replies: []
+corrections: []
+reviews: []
