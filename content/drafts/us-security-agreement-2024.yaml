@@ -1,0 +1,36 @@
+format: openpromises/1
+id: us-security-agreement-2024
+headline:
+  en: Ask Congress for funds for Ukraine’s defence
+actor_id: us-biden-administration
+made_on: "2024-06-13"
+venue: agreement
+venue_label:
+  en: Bilateral Security Agreement between the United States and Ukraine, Article II
+area: security_guarantees
+status: promised
+status_note:
+  en: Whether the administration asked Congress for new funds for Ukraine after 13 June 2024 is not yet checked. The agreement runs for ten years from its signature.
+responsible:
+  actor_id: us-biden-administration
+origin: manual
+versions:
+  - version: 1
+    text: To this end, the United States intends to seek from the United States Congress appropriation of funds to help sustain a Ukrainian credible defense and deterrent capability, in war and peace.
+    recorded_on: "2026-10-20"
+    source_url: "https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2024/06/13/bilateral-security-agreement-between-the-united-states-of-america-and-ukraine/"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: Ukraine’s defence and deterrence
+      when:
+        en: During the agreement’s ten years
+      deadline: null
+events:
+  - date: "2024-06-13"
+    type: promised
+    text:
+      en: The United States and Ukraine sign the agreement at the G7 summit in Apulia
+replies: []
+corrections: []
+reviews: []

@@ -1,0 +1,15 @@
+format: openpromises/1
+id: joe-biden
+kind: person
+name:
+  en: Joe Biden
+short_name:
+  en: Biden
+party_id: democratic-party
+roles:
+  - title:
+      en: President
+    from: "2021-01-20"
+    to: "2025-01-20"
+same_as:
+  - "https://bidenwhitehouse.archives.gov/administration/president-biden/"
