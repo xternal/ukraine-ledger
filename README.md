@@ -31,7 +31,7 @@ pnpm preview         # the same with drafts, in public-preview/, never deployed
 
 ## Where things stand (20 October 2026)
 
-- 10 draft commitments by the Trump administration (President Trump, Vice President Vance, Secretary Rubio), each quote machine-checked against its source: 11 exact, 1 close (an editor confirms it by eye). `content/quotes.json` holds the checks.
+- 10 draft commitments by the Trump administration (President Trump, Vice President Vance, Secretary Rubio), each quote machine-checked against its source: all 12 exact. `content/quotes.json` holds the checks.
 - Actors: the US officials with their roles from official pages, and the two US administrations as separate governments of one donor.
 - Next: the EU, European countries and other donors, starting with signed documents (the bilateral security agreements of 2024, the EU's Ukraine Facility, the G7's ERA loans), then the charts in the design brief.
 

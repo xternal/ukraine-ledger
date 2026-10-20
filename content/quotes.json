@@ -41,17 +41,17 @@
     "checked_on": "2026-10-20",
     "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
   },
+  "9115b8f7a90f9f0655c0819df107be570c9567bf7f3c74702a69ecd22bdd8ca7|https://www.presidency.ucsb.edu/node/378339": {
+    "match": "exact",
+    "url": "https://www.presidency.ucsb.edu/node/378339",
+    "checked_on": "2026-10-20",
+    "sha256": "3a3cbcee06ecd665bbc2e9f65a60ea29b2e09df56f49c84eae06b5bbad2dac98"
+  },
   "a3e6c814b555c60892bcfab82c7dd69f9e78d526e6f1b7d90c65ab65ef2c4a8f|https://www.govinfo.gov/content/pkg/DCPD-202500304/html/DCPD-202500304.htm": {
     "match": "exact",
     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500304/html/DCPD-202500304.htm",
     "checked_on": "2026-10-20",
     "sha256": "5e46acc70b89b58fcb423408c18aa7d1c14b9992149752b64b0ea9d160e6f65d"
-  },
-  "b0a22d157e6c43c8605ad8fb025d47ea3e3d6786183a20ce9f5a01023dcf2ed4|https://www.presidency.ucsb.edu/node/378339": {
-    "match": "close",
-    "url": "https://www.presidency.ucsb.edu/node/378339",
-    "checked_on": "2026-10-20",
-    "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
   },
   "bc7d90c1d5f19942bb788079ca5c1fa3de8cfa5b7e285e0c815ec391d32cf6af|https://www.presidency.ucsb.edu/node/378339": {
     "match": "exact",
