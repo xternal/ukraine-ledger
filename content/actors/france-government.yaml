@@ -1,0 +1,14 @@
+format: openpromises/1
+id: france-government
+kind: government
+name:
+  en: Government of France
+short_name:
+  en: France
+standing: in_power
+same_as:
+  - "https://www.elysee.fr/en/"
+x:
+  donor: france
+  donor_name: France
+  group: europe

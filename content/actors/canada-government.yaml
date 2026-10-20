@@ -1,0 +1,14 @@
+format: openpromises/1
+id: canada-government
+kind: government
+name:
+  en: Government of Canada
+short_name:
+  en: Canada
+standing: in_power
+same_as:
+  - "https://www.pm.gc.ca/en"
+x:
+  donor: canada
+  donor_name: Canada
+  group: other
