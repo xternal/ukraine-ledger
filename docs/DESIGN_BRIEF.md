@@ -39,3 +39,17 @@ From the centre out:
 ## 4. What the data needs
 
 Every government or union actor carries `x: { donor, donor_name, group }` (checked by the schema in `openpromises.config.ts`). A card's `responsible` names the government that must deliver it: for the US, `us-biden-administration` or `us-trump-administration`. That is all the charts read; nothing is entered twice.
+
+## 5. As built (20 October 2026), and where it departs from the brief
+
+Built in `scripts/charts.ts` (static SVG and HTML at build time) and `scripts/charts.js` (zoom, hover and tooltips only). On 20 October 2026 Pavel kept every point marked **choice** below, and asked for two more: a wider page on a desktop, and a switch between euros and dollars.
+
+- **A list beside the rings**, as DaisyDisk lists a folder: the segment pointed at or zoomed into, with how many commitments, the amounts stated, the statuses in the engine's words, and its contents (each commitment linked to its card). Every list is in the HTML, so with no script the centre's list shows.
+- **One ring, not two, when a group has one donor** (the EU, the United States): its name is drawn once. **Choice.**
+- **Within a donor or government, commitments go delivered first, then under way, promised, not met** (the legend's order), then by date, so each donor's slice reads as one block and the band under its name matches it. Groups and donors are never ordered by status. **Choice.**
+- **Names run along the curve**, or along the radius when a slice is narrow, or are left to the list and tooltip when neither fits.
+- **Four figures above the charts**: commitments, donors, the amounts stated (central figures added up, for the cards that have one) and how many are delivered. Instruments that feed each other (the €90bn loan pays partly through the Ukraine Facility) can count twice in that sum. **Choice.**
+- **The timeline runs past today to the latest deadline**, with a line at today, so future deadlines have room. **Choice** (the brief says "to today").
+- **The US lane is shaded from 20 January 2025** rather than cut by a line, with each administration named above it.
+- **Wide on a desktop.** Text keeps a reading measure (46rem); the home page's charts use up to 72rem, with larger rings beside their list and a timeline drawn wide so its lettering stays the same size.
+- **Euros or dollars**, switched above the four figures, for the figures, the rings sized by amount, the list, the tooltips and the table. Dollars use the ECB's euro reference rate on the day each commitment was made (`data/fx/usd-per-eur.json`, filled by `pnpm fx`), so a pledge made in dollars shows its own figure. The build refuses a published card with an amount and no rate.

@@ -1,6 +1,10 @@
 /* The site's own layout around the engine's components; colours come from the engine's tokens (styles.css). */
 body { margin: 0; background: var(--op-bg); color: var(--op-ink); font-family: system-ui, sans-serif; line-height: 1.5; }
-.site-header, main, .site-footer { max-width: 46rem; margin: 0 auto; padding: 0 16px; }
+.site-header, main, .site-footer { max-width: 72rem; margin: 0 auto; padding: 0 16px; }
+/* Text keeps a reading measure; the home page's charts use the full width. */
+main { max-width: 46rem; }
+main.main--wide { max-width: 72rem; }
+.main--wide > :not(.home-charts) { max-width: 46rem; }
 .site-header { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: baseline; padding-top: 1rem; padding-bottom: 1rem; }
 .site-name { font-weight: 700; text-decoration: none; color: inherit; }
 .site-header nav a { margin-right: 1rem; }
@@ -16,4 +20,161 @@ body { margin: 0; background: var(--op-bg); color: var(--op-ink); font-family: s
 .platform__promise blockquote { margin: 0 0 0.75rem; font-size: 1.15rem; font-weight: 600; }
 .platform__promise blockquote p { margin: 0; }
 .platform__promise figcaption { font-size: 0.95rem; }
-.preview-banner { max-width: 46rem; margin: 0 auto 1rem; padding: 0.5rem 16px; background: color-mix(in srgb, var(--op-accent) 12%, transparent); font-weight: 600; }
+.preview-banner { max-width: 72rem; margin: 0 auto 1rem; padding: 0.5rem 16px; background: color-mix(in srgb, var(--op-accent) 12%, transparent); font-weight: 600; }
+
+/* The charts on the home page (scripts/charts.ts). Every colour is an engine token, so dark mode follows the engine.
+   Status buckets take the status tokens; rings and lanes are ink mixed into the background, a step per ring. */
+[data-bucket="delivered"] { --b: var(--op-good); }
+[data-bucket="progress"] { --b: var(--op-warn); }
+[data-bucket="open"] { --b: color-mix(in srgb, var(--op-muted) 70%, var(--op-bg)); }
+[data-bucket="not_met"] { --b: var(--op-bad); }
+[data-bucket="off_ladder"] { --b: color-mix(in srgb, var(--op-faint) 40%, var(--op-bg)); }
+.swatch { display: inline-block; flex: none; width: 10px; height: 10px; border-radius: 3px; background: var(--b); }
+
+.figure-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 1.5rem 0 0.5rem; }
+.figure-tile { padding: 12px 14px; border: 1px solid var(--op-line); border-radius: var(--op-radius); background: var(--op-surface); }
+.figure-tile dt { color: var(--op-muted); font-size: 0.8125rem; }
+.figure-tile dd { display: grid; margin: 2px 0 0; }
+.figure-tile__value { font-size: 1.6rem; font-weight: 650; line-height: 1.2; }
+.figure-tile__sub { color: var(--op-muted); font-size: 0.75rem; }
+@media (max-width: 40rem) { .figure-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.chart-section { margin: 2.25rem 0; }
+.chart-section h2 { margin-bottom: 0.75rem; }
+.chart-section figure { margin: 0; }
+.chart-section figcaption, .chart-note { color: var(--op-muted); font-size: 0.875rem; }
+.chart-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; margin-bottom: 0.75rem; }
+.chart-modes { display: inline-flex; align-items: center; gap: 2px; margin: 0; padding: 2px; border: 1px solid var(--op-line-strong); border-radius: 999px; }
+.chart-modes legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.chart-modes input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.chart-modes label { padding: 0.15rem 0.8rem; border-radius: 999px; color: var(--op-muted); font-size: 0.875rem; cursor: pointer; }
+.chart-modes input:checked + label { background: var(--op-ink); color: var(--op-bg); }
+.chart-modes input:focus-visible + label { outline: 2px solid var(--op-accent); outline-offset: 2px; }
+.chart-modes input:disabled + label { opacity: 0.5; cursor: default; }
+.sb-crumbs[hidden] { display: none; }
+.sb-crumbs { display: flex; flex-wrap: wrap; gap: 0.3rem; font-size: 0.875rem; }
+.sb-crumbs > * + *::before { content: "›"; margin-right: 0.3rem; color: var(--op-muted); }
+.sb-crumbs button { padding: 0; border: 0; background: none; color: var(--op-accent); font: inherit; cursor: pointer; }
+.sb-crumbs button:hover { text-decoration: underline; }
+.sb-crumbs [aria-current] { font-weight: 600; }
+
+/* The rings and their list, side by side when there is room. */
+.sb-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+@media (min-width: 44rem) {
+  .sb-body { grid-template-columns: minmax(0, 23rem) minmax(0, 1fr); align-items: start; }
+  .sb-panel { max-height: 25rem; overflow-y: auto; }
+}
+/* Without :has() only the count view shows, in euros, and the switches do nothing. */
+.sb-view--amount { display: none; }
+.sb:has(#sb-mode-amount:checked) .sb-view--amount { display: block; }
+.sb:has(#sb-mode-amount:checked) .sb-view--count { display: none; }
+.sb-view--amount-usd { display: none; }
+.home-charts:has(#sb-mode-amount:checked):has(#cur-usd:checked) .sb-view--amount { display: none; }
+.home-charts:has(#sb-mode-amount:checked):has(#cur-usd:checked) .sb-view--amount-usd { display: block; }
+.cur-usd { display: none; }
+.home-charts:has(#cur-usd:checked) .cur-usd { display: inline; }
+.home-charts:has(#cur-usd:checked) .cur-eur { display: none; }
+.chart-currency { margin: 1.25rem 0 0; }
+.chart-currency legend { position: static; width: auto; height: auto; overflow: visible; clip: auto; margin-right: 0.5rem; padding: 0 0 0 0.5rem; color: var(--op-muted); font-size: 0.875rem; float: left; }
+.sb-svg { display: block; width: 100%; max-width: 23rem; height: auto; margin: 0 auto; }
+@media (min-width: 60rem) {
+  .sb-body { grid-template-columns: minmax(0, 31rem) minmax(0, 1fr); gap: 2rem; }
+  .sb-svg { max-width: 31rem; }
+  .sb-panel { max-height: 31rem; }
+}
+.sb-seg { fill: var(--b); stroke: var(--op-bg); stroke-width: 2; fill-rule: evenodd; transition: opacity 0.15s; }
+.sb-seg--inner { cursor: zoom-in; }
+.sb-seg--r1 { fill: color-mix(in srgb, var(--op-ink) 11%, var(--op-bg)); }
+.sb-seg--r2 { fill: color-mix(in srgb, var(--op-ink) 7%, var(--op-bg)); }
+.sb-seg--r3 { fill: color-mix(in srgb, var(--op-ink) 4%, var(--op-bg)); }
+.sb-seg:focus { outline: none; }
+.sb-seg:focus-visible, .sb-link:focus-visible .sb-seg { stroke: var(--op-accent); stroke-width: 3; }
+.sb-svg.is-hovering .sb-seg:not(.is-lit), .sb-svg.is-hovering .sb-band { opacity: 0.35; }
+.sb-band { fill: var(--b); pointer-events: none; transition: opacity 0.15s; }
+.sb-label { fill: var(--op-ink); font-size: 12px; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+.sb-label--group { font-weight: 650; letter-spacing: 0.01em; }
+.sb-centre circle { fill: var(--op-bg); stroke: var(--op-line-strong); }
+.sb-centre text { fill: var(--op-ink); text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+.sb-centre__label { fill: var(--op-muted) !important; font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.sb-centre__value { font-size: 28px; font-weight: 700; }
+.sb-centre__unit { fill: var(--op-muted) !important; font-size: 11px; }
+.sb-centre--zoomed { cursor: zoom-out; }
+.sb-centre--zoomed circle:hover { fill: var(--op-surface); }
+
+/* The list beside the rings: one section per segment; the script shows the one pointed at. */
+.sb-panel { padding: 14px 16px; border: 1px solid var(--op-line); border-radius: var(--op-radius); background: var(--op-surface); }
+.sb-panel__kind { margin: 0; color: var(--op-muted); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.sb-panel h3 { margin: 0.1rem 0 0.25rem; font-size: 1.15rem; line-height: 1.3; }
+.sb-panel__sum { margin: 0 0 0.6rem; color: var(--op-muted); font-size: 0.875rem; }
+.sb-panel__sum strong { color: var(--op-ink); }
+.sb-panel__tally { display: flex; flex-wrap: wrap; gap: 0.2rem 0.9rem; margin: 0.5rem 0 0.75rem; padding: 0; list-style: none; color: var(--op-muted); font-size: 0.8125rem; }
+.sb-panel__tally li { display: inline-flex; align-items: center; gap: 0.35rem; }
+.sb-panel__tally strong { color: var(--op-ink); font-variant-numeric: tabular-nums; }
+.sb-panel__rows { display: grid; gap: 2px; margin: 0; padding: 0; border-top: 1px solid var(--op-line); list-style: none; }
+.sb-panel__rows li { display: grid; gap: 4px; padding: 7px 8px; border-radius: var(--op-radius-small); }
+.sb-panel__rows li.is-current { background: var(--op-sunk); }
+.sb-panel__zoom { display: flex; justify-content: space-between; gap: 1rem; width: 100%; padding: 0; border: 0; background: none; color: var(--op-ink); font: inherit; font-size: 0.9375rem; text-align: left; cursor: pointer; }
+.sb-panel__zoom:hover .sb-panel__name { text-decoration: underline; }
+.sb-panel__count { color: var(--op-muted); font-variant-numeric: tabular-nums; }
+.sb-panel__card { display: flex; align-items: baseline; gap: 0.5rem; color: var(--op-ink); font-size: 0.9375rem; text-decoration: none; }
+.sb-panel__card .swatch { transform: translateY(1px); }
+.sb-panel__card:hover .sb-panel__name { text-decoration: underline; }
+.sb-panel__meta { padding-left: calc(10px + 0.5rem); color: var(--op-muted); font-size: 0.8125rem; }
+/* With no script there is nothing to zoom into, so the rows are plain text. */
+.sb:not(.sb--live) .sb-panel__zoom { cursor: default; }
+.sb:not(.sb--live) .sb-panel__zoom:hover .sb-panel__name { text-decoration: none; }
+.mixbar { display: flex; gap: 2px; height: 6px; overflow: hidden; border-radius: 3px; }
+.mixbar--big { height: 10px; border-radius: 4px; }
+.mixbar__part { min-width: 3px; background: var(--b); }
+
+/* On a phone, when a ring segment would be under 6px wide, a bar per group instead (design brief §3). */
+.sb-bars { display: none; gap: 0.75rem; margin: 0; padding: 0; list-style: none; }
+.sb-bars li { display: grid; gap: 0.3rem; font-size: 0.9375rem; }
+@media (max-width: 30rem) {
+  .sb-view--thin .sb-svg { display: none; }
+  .sb-view--thin .sb-bars { display: grid; }
+}
+.chart-legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1.1rem; margin: 1rem 0 0.5rem; padding: 0; list-style: none; font-size: 0.8125rem; }
+.chart-legend li { display: inline-flex; align-items: center; gap: 0.4rem; }
+.chart-legend svg { width: 30px; height: 10px; }
+
+/* The timeline: across on a wide screen, down on a phone. */
+.tl-svg { display: block; width: 100%; height: auto; }
+.tl-svg--down, .tl-svg--wide { display: none; }
+.tl-svg--down { max-width: 22rem; margin: 0 auto; }
+@media (min-width: 64rem) {
+  .tl-svg--wide { display: block; }
+  .tl-svg--across { display: none; }
+}
+@media (max-width: 40rem) {
+  .tl-svg--across { display: none; }
+  .tl-svg--down { display: block; }
+}
+.tl-grid { stroke: var(--op-line); stroke-width: 1; }
+.tl-year { fill: var(--op-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.tl-lane__name { fill: var(--op-ink); font-size: 12px; font-weight: 600; }
+.tl-lane__count { fill: var(--op-muted); font-weight: 400; }
+.tl-lane__rule { stroke: var(--op-line-strong); stroke-width: 1; }
+.tl-admin { fill: color-mix(in srgb, var(--op-ink) 5%, var(--op-bg)); }
+.tl-split text, .tl-today text { fill: var(--op-muted); font-size: 11px; }
+.tl-today line { stroke: var(--op-ink); stroke-width: 1; opacity: 0.55; }
+.tl-mark { color: var(--b); }
+.tl-mark:focus { outline: none; }
+.tl-hit { fill: transparent; }
+.tl-dot { fill: currentColor; stroke: var(--op-bg); stroke-width: 2; }
+.tl-mark:hover .tl-dot, .tl-mark:focus-visible .tl-dot { stroke: var(--op-ink); }
+.tl-due, .tl-key { stroke: currentColor; stroke-width: 2; stroke-linecap: round; opacity: 0.6; }
+.tl-key { color: var(--op-ink); }
+.tl-due--open { stroke-dasharray: 4 4; }
+.tl-due--moved { opacity: 0.25; }
+.tl-missed { fill: none; stroke: var(--op-bad); stroke-width: 2; stroke-linecap: round; opacity: 1; }
+
+.chart-details { margin: 1.5rem 0; }
+.chart-details summary { cursor: pointer; font-weight: 600; }
+.chart-table { overflow-x: auto; }
+.chart-table table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.chart-table caption { padding: 0.5rem 0; text-align: left; font-weight: 600; }
+.chart-table th, .chart-table td { padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--op-line); text-align: left; vertical-align: top; }
+.chart-table th[scope="row"] { font-weight: 400; }
+.chart-table .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.chart-tip { position: absolute; z-index: 10; max-width: 18rem; padding: 0.45rem 0.65rem; border-radius: var(--op-radius-small); background: var(--op-ink); color: var(--op-bg); font-size: 0.8125rem; line-height: 1.4; pointer-events: none; box-shadow: 0 4px 16px rgb(0 0 0 / 0.18); }
