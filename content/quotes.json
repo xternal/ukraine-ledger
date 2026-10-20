@@ -77,6 +77,12 @@
     "checked_on": "2026-10-20",
     "sha256": "bee22848693d07ac736a030ded9d97fe52d3f55fa105ffeddf5c3ed1badc0dd4"
   },
+  "6868bf18f8510057bc2d8f0bb1ebcaea34bf48ea9a7425a858f283bfc99369f7|https://www.g7italy.it/wp-content/uploads/Apulia-G7-Leaders-Communique.pdf": {
+    "match": "exact",
+    "url": "https://www.g7italy.it/wp-content/uploads/Apulia-G7-Leaders-Communique.pdf",
+    "checked_on": "2026-10-21",
+    "sha256": "7ef7ad6ed2b0f21b902e72ac2445309c4488be54d60b148134f67b9fa449f272"
+  },
   "722c55ce8b11953da220e9c9af116c3708a576ac871bbe3b40fcbfe691054129|https://www.elysee.fr/emmanuel-macron/2024/02/16/accord-de-cooperation-en-matiere-de-securite-entre-la-france-et-lukraine": {
     "match": "exact",
     "url": "https://www.elysee.fr/emmanuel-macron/2024/02/16/accord-de-cooperation-en-matiere-de-securite-entre-la-france-et-lukraine",
