@@ -59,6 +59,12 @@
     "checked_on": "2026-10-20",
     "sha256": "037a9aba3830a8fcd724f2fad1927c4a0ab68d8a75b5b59d24a7f549de2297f9"
   },
+  "3316fd395417ab880149e0dcf91c09fea8e19de540d6759ef05703e9a0697586|https://www.governo.it/sites/governo.it/files/Accordo_Italia-Ucraina_20240224_1.pdf": {
+    "match": "exact",
+    "url": "https://www.governo.it/sites/governo.it/files/Accordo_Italia-Ucraina_20240224_1.pdf",
+    "checked_on": "2026-10-21",
+    "sha256": "5602a5a7d9fb0c7f2fc8c5a8ee375a0074651a009bb507b6898cce8f823c6e89"
+  },
   "383b6614e611b84ff1207e9f000ef103d5ae88a08d5b0804c5763399e6f6c03f|https://eur-lex.europa.eu/eli/reg/2024/2773/oj": {
     "match": "exact",
     "url": "https://eur-lex.europa.eu/eli/reg/2024/2773/oj",
@@ -166,6 +172,12 @@
     "url": "https://www.gov.uk/government/news/uk-strengthens-national-security-and-bolsters-ukraines-war-chest-with-226-billion-military-loan",
     "checked_on": "2026-10-20",
     "sha256": "a5d2678945c9a24b0ef5e35f22c2eab2374de6776436f2650aa1b2537085c333"
+  },
+  "e24db98757eb6ec74d54f4a44d0ad7965cdb3075e913f5c42283f9397bbc6065|https://www.gov.pl/attachment/75d2e925-db41-4810-89fd-d6302ec53908": {
+    "match": "exact",
+    "url": "https://www.gov.pl/attachment/75d2e925-db41-4810-89fd-d6302ec53908",
+    "checked_on": "2026-10-21",
+    "sha256": "d6824d67a635bf444841478bf5229baa997b66814752755a78aef31f51f48ea6"
   },
   "eb039114f99bdecad42d7db7a38e4269ab3e4a1694f3b3008e419286322d6dda|https://assets.publishing.service.gov.uk/media/65a14a6ae96df50014f845d2/UK-Ukraine_Agreement_on_Security_Co-operation.pdf": {
     "match": "exact",
