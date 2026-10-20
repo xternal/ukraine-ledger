@@ -10,10 +10,13 @@ venue_label:
 area: weapons
 status: in_plan
 status_note:
-  en: "Italy keeps the lists of its packages confidential, so whether 2024 matched the level of 2022 and 2023 (eight packages) cannot be checked from public sources. The cabinet approved the tenth package on 16 December 2024. The agreement is published as a scan: its words were read by machine (OCR) and checked against the page images."
+  en: "Two packages were published in 2024, the ninth (Official Gazette, 10 July) and the tenth (23 December), against eight in 2022 and 2023. Italy keeps the lists of its packages confidential, so whether 2024 matched the level of 2022 and 2023 cannot be checked from public sources. The agreement is published as a scan: its words were read by machine (OCR) and checked against the page images."
 responsible:
   actor_id: italy-government
 origin: manual
+sources:
+  - title: "Chamber of Deputies research service: transfers of military equipment to Ukraine"
+    url: "https://temi.camera.it/leg19/temi/19_cessioni-di-materiali-d-armamento-alle-autorit-governative-dell-ucraina"
 versions:
   - version: 1
     text: Italy provided Ukraine with 8 packages of military aid in 2022 and 2023 and will intend to maintain the same level of additional military support in 2024, which shall be determined in detail through consultations between the participants and taking into account Ukraine’s contingent needs.

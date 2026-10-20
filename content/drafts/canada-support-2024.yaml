@@ -10,7 +10,7 @@ venue_label:
 area: money_and_deals
 status: delivering
 status_note:
-  en: "Ukraine received C$2.4bn of loans from Canada in 2024: C$2bn in March and C$400m in October. The agreement does not split the C$3.02bn, so whether the rest arrived as military aid is unconfirmed."
+  en: "Ukraine received C$2.4bn of loans from Canada in 2024: C$2bn in March and C$400m in October. National Defence puts Canada’s military assistance to Ukraine at C$1.184bn in its 2024–25 financial year, April 2024 to March 2025. Together that is more than the C$3.02bn, but the military figure is not split by calendar year, so how much of it arrived in 2024 is unconfirmed."
 responsible:
   actor_id: canada-government
 origin: manual
@@ -52,6 +52,11 @@ events:
     text:
       en: Ukraine’s Ministry of Finance says the state budget has received a C$2bn loan from Canada
     evidence_url: "https://www.kmu.gov.ua/en/news/minfin-ukraina-otrymala-vid-kanady-2-mlrd-kanadskykh-dolariv"
+  - date: "2025-11-07"
+    type: delivering
+    text:
+      en: National Defence’s results report puts Canada’s military assistance to Ukraine in 2024–25, the year to 31 March 2025, at C$1.184bn
+    evidence_url: "https://www.canada.ca/en/department-national-defence/corporate/reports-publications/departmental-results-report/2024-25-index.html"
 replies: []
 corrections: []
 reviews: []

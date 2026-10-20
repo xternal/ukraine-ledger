@@ -10,10 +10,13 @@ venue_label:
 area: weapons
 status: funded
 status_note:
-  en: "“billon” is as written in the agreement. In April 2024 Parliament added DKK 4.4bn (about €590m) to military support for 2024. No figure for what was spent in 2024 was found by 20 October 2026."
+  en: "“billon” is as written in the agreement. In April 2024 Parliament added DKK 4.4bn (about €590m), raising the 2024 frame for military support from DKK 13.9bn to DKK 18.3bn in 2024 prices (about €1.86bn to €2.45bn). A frame is a budget, and money left unspent is written off; no figure for what was spent in 2024 was found by 20 October 2026."
 responsible:
   actor_id: denmark-government
 origin: manual
+sources:
+  - title: "Agreement on increasing military support under the Ukraine Fund in 2024 (April 2024), Table 1"
+    url: "https://www.fmn.dk/globalassets/fmn/dokumenter/nyheder/2024/-aftale-om-foroegelse-af-den-militaere-stoette-under-ukrainefonden-i-2024-.pdf"
 versions:
   - version: 1
     text: In 2024, the military support will amount to at least EUR 1.8 billon.

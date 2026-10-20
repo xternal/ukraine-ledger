@@ -10,11 +10,13 @@ venue_label:
 area: weapons
 status: delivering
 status_note:
-  en: On 15 October 2024 the Armed Forces Minister told the Senate that French aid in 2024 would be between €2bn and €3bn, closer to €3bn. No final figure for 2024 was found by 20 October 2026; the ministry counts €5.9bn of direct military support from 24 February 2022 to 31 December 2024.
+  en: "On 15 October 2024 the Armed Forces Minister told the Senate that French aid in 2024 would be between €2bn and €3bn, closer to €3bn. In an answer to the National Assembly published on 24 October 2024, he said more than €2bn had actually been used by early October. No final figure for 2024 was found by 20 October 2026; the ministry counts €5.9bn of direct military support from 24 February 2022 to 31 December 2024."
 responsible:
   actor_id: france-government
 origin: manual
 sources:
+  - title: "Question to the Government no. 88, National Assembly (Journal officiel, 24 October 2024)"
+    url: "https://questions.assemblee-nationale.fr/dyn/17/questions/QANR5L17QG88.pdf"
   - title: Agreement on security cooperation between France and Ukraine (Élysée English version)
     url: "https://www.elysee.fr/en/emmanuel-macron/2024/02/16/agreement-on-security-cooperation-between-france-and-ukraine"
   - title: Assemblée nationale, amendement II-DN92 (PLF 2026), citing the ministry’s figures to 31 December 2024

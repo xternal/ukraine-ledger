@@ -8,9 +8,9 @@ venue: agreement
 venue_label:
   en: Agreement on security cooperation and long-term support between Germany and Ukraine, Part II, paragraph 5
 area: weapons
-status: funded
+status: delivering
 status_note:
-  en: The government counts about €7.1bn of funds for 2024, including its payments into the European Peace Facility. No figure for what was spent in 2024 was found by 20 October 2026.
+  en: "The government counts about €7.1bn of funds for Ukraine in 2024, including its payments into the European Peace Facility. The federal budget for 2026 shows €7.97bn actually spent in 2024 on the budget line that paid for military aid to Ukraine and to other partner countries; the share for Ukraine alone in 2024 was not published by 20 October 2026."
 responsible:
   actor_id: germany-government
 origin: manual
@@ -47,6 +47,11 @@ events:
     text:
       en: The government’s page on support for Ukraine puts the funds for 2024 at about €7.1bn
     evidence_url: "https://www.bundesregierung.de/breg-de/service/archiv-bundesregierung/waffenlieferungen-ukraine-2054514"
+  - date: "2025-12-08"
+    type: delivering
+    text:
+      en: The federal budget for 2026 shows €7.97bn actually spent in 2024 on the line for military aid to partner countries, Ukraine among them
+    evidence_url: "https://www.bundeshaushalt.de/static/daten/2026/soll/epl60.pdf"
 replies: []
 corrections: []
 reviews: []

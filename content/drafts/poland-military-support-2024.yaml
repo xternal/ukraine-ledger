@@ -10,10 +10,15 @@ venue_label:
 area: weapons
 status: delivering
 status_note:
-  en: "Poland does not publish what its packages contain. Its 45th package was being delivered in July 2024, and a 46th was announced in February 2025. The agreement is published as a scan: its words were read by machine (OCR) and checked against the page images."
+  en: "The agreement counts 44 packages by July 2024. Ukraine’s ambassador said the 45th was still being delivered in December 2024, and the Defence Minister said in February 2025 that a 46th, worth over €200m, was being prepared. Poland does not publish what its packages contain. The agreement is published as a scan: its words were read by machine (OCR) and checked against the page images."
 responsible:
   actor_id: poland-government
 origin: manual
+sources:
+  - title: "Radio Svoboda: the ambassador on Poland’s 45th package (23 December 2024)"
+    url: "https://www.radiosvoboda.org/a/33250439.html"
+  - title: "Bankier.pl (PAP): the Defence Ministry prepares the 46th donation (25 February 2025)"
+    url: "https://www.bankier.pl/wiadomosc/MON-przygotowuje-46-donacja-dla-Ukrainy-Pomoc-bedzie-swiadczona-nadal-8897859.html"
 versions:
   - version: 1
     text: Bearing above in mind, in 2024 Poland will provide several substantial military assistance packages and will continue with a robust support within the next decade.

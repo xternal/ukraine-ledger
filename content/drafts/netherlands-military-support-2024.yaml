@@ -8,9 +8,9 @@ venue: agreement
 venue_label:
   en: Agreement on Security Cooperation between the Netherlands and Ukraine, paragraph 2
 area: weapons
-status: delivering
+status: delivered
 status_note:
-  en: The Defence Minister’s letter of October 2024 counts about €3.76bn of Dutch military support delivered since 2022, with no figure for 2024 alone. No figure for what was spent in 2024 was found by 20 October 2026.
+  en: "In an answer to Parliament adopted on 1 July 2025, the Defence Ministry put Dutch support for Ukraine in 2024 at €2.5bn spent, measured in cash, against €2.1bn budgeted. The Netherlands’ financial year is the calendar year."
 responsible:
   actor_id: netherlands-government
 origin: manual
@@ -47,6 +47,11 @@ events:
     text:
       en: The Defence Minister reports about €3.76bn of Dutch military support delivered since 2022, as of 29 September 2024
     evidence_url: "https://zoek.officielebekendmakingen.nl/kst-22054-432.html"
+  - date: "2025-07-01"
+    type: delivered
+    text:
+      en: The Defence Ministry tells Parliament that €2.5bn of support for Ukraine was spent in 2024, more than the agreement’s €2bn
+    evidence_url: "https://zoek.officielebekendmakingen.nl/kst-36725-X-6.html"
 replies: []
 corrections: []
 reviews: []
