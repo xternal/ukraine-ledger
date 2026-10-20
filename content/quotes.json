@@ -53,6 +53,12 @@
     "checked_on": "2026-10-20",
     "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
   },
+  "b9f0d3baf9911240ad02a5e2e0f6dcc5d810895d9eaa323fec47d69efd85feda|https://data.consilium.europa.eu/doc/document/ST-24-2025-INIT/en/pdf": {
+    "match": "exact",
+    "url": "https://data.consilium.europa.eu/doc/document/ST-24-2025-INIT/en/pdf",
+    "checked_on": "2026-10-20",
+    "sha256": "6a61e99c9ea9c60d13f77352ed1eefe4c673fb81ecfc426855ca5bbc04c16dc1"
+  },
   "bc7d90c1d5f19942bb788079ca5c1fa3de8cfa5b7e285e0c815ec391d32cf6af|https://www.presidency.ucsb.edu/node/378339": {
     "match": "exact",
     "url": "https://www.presidency.ucsb.edu/node/378339",
@@ -70,5 +76,11 @@
     "url": "https://abcnews.go.com/Politics/harris-trump-presidential-debate-transcript/story?id=113560542",
     "checked_on": "2026-10-20",
     "sha256": "1ca5ae5d327b0b56b9d042413b5977e76d8d6418784c386f158f46925ccce63e"
+  },
+  "f159eec5f890c6bc605b3dbfd9fad281c94495ac240471f0743744e910abb8df|https://eur-lex.europa.eu/eli/reg/2024/792/oj": {
+    "match": "exact",
+    "url": "https://eur-lex.europa.eu/eli/reg/2024/792/oj",
+    "checked_on": "2026-10-20",
+    "sha256": "2edc54a6d80f0d521ccde3b23fb1379f21aef88367c0c11669afab18d96a1efe"
   }
 }
