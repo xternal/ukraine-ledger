@@ -35,6 +35,18 @@
     "checked_on": "2026-10-20",
     "sha256": "b6f06cc52c042a78281a30e132fcb1ec7e2c4885722677f99e7d9e0e62594a5d"
   },
+  "2df1d929d3f392a166980813e9f3964a66289cdb5bd40a547b4322e8eb8b4c64|https://eur-lex.europa.eu/eli/reg/2025/2600/oj": {
+    "match": "exact",
+    "url": "https://eur-lex.europa.eu/eli/reg/2025/2600/oj",
+    "checked_on": "2026-10-20",
+    "sha256": "037a9aba3830a8fcd724f2fad1927c4a0ab68d8a75b5b59d24a7f549de2297f9"
+  },
+  "53920e86b027407a116cb550b2e8c94106baad0f74026289b38871c0e1d55703|https://eur-lex.europa.eu/eli/dec/2024/1470/oj": {
+    "match": "exact",
+    "url": "https://eur-lex.europa.eu/eli/dec/2024/1470/oj",
+    "checked_on": "2026-10-20",
+    "sha256": "bee22848693d07ac736a030ded9d97fe52d3f55fa105ffeddf5c3ed1badc0dd4"
+  },
   "722c55ce8b11953da220e9c9af116c3708a576ac871bbe3b40fcbfe691054129|https://www.elysee.fr/emmanuel-macron/2024/02/16/accord-de-cooperation-en-matiere-de-securite-entre-la-france-et-lukraine": {
     "match": "exact",
     "url": "https://www.elysee.fr/emmanuel-macron/2024/02/16/accord-de-cooperation-en-matiere-de-securite-entre-la-france-et-lukraine",
@@ -58,6 +70,12 @@
     "url": "https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/agreement-ukraine-accord.aspx?lang=eng",
     "checked_on": "2026-10-20",
     "sha256": "6810380b84c646274defccf2dcd170e99f91917e0e0952118e937a332ed159b2"
+  },
+  "a34bb60e1160a81cfac10f4170f1ac66b9555d42190fe76846282d8a3013bb8d|https://eur-lex.europa.eu/eli/dec_impl/2024/2760/oj": {
+    "match": "exact",
+    "url": "https://eur-lex.europa.eu/eli/dec_impl/2024/2760/oj",
+    "checked_on": "2026-10-20",
+    "sha256": "259737a908a778104d1885390c300e19be61f76c85c2a29b1e30499927986c3f"
   },
   "a3e6c814b555c60892bcfab82c7dd69f9e78d526e6f1b7d90c65ab65ef2c4a8f|https://www.govinfo.gov/content/pkg/DCPD-202500304/html/DCPD-202500304.htm": {
     "match": "exact",
