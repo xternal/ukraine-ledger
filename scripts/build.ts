@@ -14,6 +14,7 @@ import { areaLabel, cardJsonLd, cardViews, paths, publishFiles, relatedCards, wo
 import { Breadcrumbs, JsonLd, PromiseCard, PromiseList, PromiseSpotlight, PromiseStory, StatusPill } from "@openpromises/react";
 import { createElement as h, Fragment, type ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { charts } from "./charts.ts";
 
 const ROOT = join(import.meta.dirname, "..");
 /** `--preview` builds drafts too, into public-preview/, so the editor sees a page before approving it; never deployed. */
@@ -127,6 +128,9 @@ async function main() {
       null,
       h("h1", null, "What is promised to Ukraine"),
       h("p", { className: "lede" }, "What every government and the EU has committed to since 24 February 2022, in their exact words, with the deadline they gave and what has happened since. A status moves only when a document shows it moved."),
+      // The whole picture, as rings and a timeline (docs/DESIGN_BRIEF.md); charts.js adds zoom and tooltips only.
+      charts({ config, w, L, today, href: (id) => p.card(id, L) }, views, (status) => h(StatusPill, { status, config })),
+      h("script", { src: "/charts.js", defer: true }),
       platform.length
         ? h(
             "section",
@@ -243,6 +247,7 @@ async function main() {
   const require = createRequire(import.meta.url);
   copyFileSync(require.resolve("@openpromises/react/styles.css"), join(OUT, "styles.css"));
   copyFileSync(join(ROOT, "scripts", "site.css"), join(OUT, "site.css"));
+  copyFileSync(join(ROOT, "scripts", "charts.js"), join(OUT, "charts.js"));
   console.log(`Built ${views.length} ${PREVIEW ? "cards, drafts included" : "published cards"}, ${result.actors.size} actors, ${coverage(config, views).length} areas into ${PREVIEW ? "public-preview" : "public"}/ (${today}).`);
 }
 

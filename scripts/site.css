@@ -17,3 +17,84 @@ body { margin: 0; background: var(--op-bg); color: var(--op-ink); font-family: s
 .platform__promise blockquote p { margin: 0; }
 .platform__promise figcaption { font-size: 0.95rem; }
 .preview-banner { max-width: 46rem; margin: 0 auto 1rem; padding: 0.5rem 16px; background: color-mix(in srgb, var(--op-accent) 12%, transparent); font-weight: 600; }
+
+/* The charts on the home page (scripts/charts.ts). Each status bucket takes the engine's token, so dark mode follows. */
+[data-bucket="delivered"] { --b: var(--op-good); }
+[data-bucket="progress"] { --b: var(--op-warn); }
+[data-bucket="open"] { --b: color-mix(in srgb, var(--op-muted) 70%, var(--op-bg)); }
+[data-bucket="not_met"] { --b: var(--op-bad); }
+[data-bucket="off_ladder"] { --b: color-mix(in srgb, var(--op-faint) 40%, var(--op-bg)); }
+.chart-section { margin: 2rem 0; }
+.chart-section figure { margin: 0; }
+.chart-section figcaption, .chart-note { color: var(--op-muted); font-size: 0.9rem; }
+.chart-modes { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 0 0 0.75rem; padding: 0; border: 0; }
+.chart-modes legend { float: left; margin-right: 0.25rem; padding: 0; font-weight: 600; }
+.chart-modes input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.chart-modes label { padding: 0.15rem 0.75rem; border: 1px solid var(--op-line-strong); border-radius: 999px; cursor: pointer; }
+.chart-modes input:checked + label { background: var(--op-ink); border-color: var(--op-ink); color: var(--op-bg); }
+.chart-modes input:focus-visible + label { outline: 2px solid var(--op-accent); outline-offset: 2px; }
+.chart-modes input:disabled + label { opacity: 0.5; cursor: default; }
+/* Without :has() only the count view shows, and the switch does nothing. */
+.sb-view--amount { display: none; }
+.sb:has(#sb-mode-amount:checked) .sb-view--amount { display: block; }
+.sb:has(#sb-mode-amount:checked) .sb-view--count { display: none; }
+.sb-svg { display: block; width: 100%; max-width: 30rem; height: auto; margin: 0 auto; }
+.sb-seg { fill: var(--b); stroke: var(--op-bg); stroke-width: 1.5; fill-rule: evenodd; }
+.sb-seg--inner { fill: var(--op-sunk); cursor: zoom-in; }
+.sb-seg--inner:hover { fill: var(--op-line); }
+.sb-seg:focus { outline: none; }
+.sb-seg:focus-visible, .sb-link:focus-visible .sb-seg { stroke: var(--op-accent); stroke-width: 3; }
+.sb-link:hover .sb-seg { stroke: var(--op-ink); }
+.sb-band { fill: var(--b); pointer-events: none; }
+.sb-label { fill: var(--op-ink); font-size: 13px; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+.sb-centre circle { fill: var(--op-surface); stroke: var(--op-line-strong); }
+.sb-centre text { fill: var(--op-ink); text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+.sb-centre__label, .sb-centre__unit { font-size: 11px; fill: var(--op-muted) !important; }
+.sb-centre__value { font-size: 20px; font-weight: 700; }
+.sb-centre--zoomed { cursor: zoom-out; }
+.sb-crumbs { display: flex; flex-wrap: wrap; gap: 0.25rem; margin: 0 0 0.5rem; font-size: 0.9rem; }
+.sb-crumbs > * + *::before { content: "›"; margin-right: 0.25rem; color: var(--op-muted); }
+.sb-crumbs button { padding: 0; border: 0; background: none; color: var(--op-accent); font: inherit; text-decoration: underline; cursor: pointer; }
+.sb-crumbs [aria-current] { font-weight: 600; }
+.sb-bars { display: none; gap: 0.75rem; margin: 0; padding: 0; list-style: none; }
+.sb-bars li { display: grid; gap: 0.25rem; }
+.sb-bars__bar { display: flex; gap: 2px; height: 16px; overflow: hidden; border-radius: 4px; background: var(--op-sunk); }
+.sb-bars__part { min-width: 4px; background: var(--b); }
+/* On a phone, when a ring segment would be under 6px wide, a bar per group instead (design brief §3). */
+@media (max-width: 30rem) {
+  .sb-view--thin .sb-svg { display: none; }
+  .sb-view--thin .sb-bars { display: grid; }
+}
+.chart-legend { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; margin: 0.75rem 0; padding: 0; list-style: none; font-size: 0.875rem; }
+.chart-legend__swatch { display: inline-block; width: 12px; height: 12px; margin-right: 0.4rem; border-radius: 3px; background: var(--b); vertical-align: -1px; }
+.chart-legend svg { width: 30px; height: 10px; margin-right: 0.4rem; }
+.tl-svg { display: block; width: 100%; height: auto; }
+.tl-svg--down { display: none; max-width: 22rem; margin: 0 auto; }
+@media (max-width: 40rem) {
+  .tl-svg--across { display: none; }
+  .tl-svg--down { display: block; }
+}
+.tl-tick { stroke: var(--op-line); }
+.tl-year, .tl-split text, .tl-today text { fill: var(--op-muted); font-size: 11px; }
+.tl-lane__bg { fill: var(--op-surface); }
+.tl-lane__name { fill: var(--op-ink); font-size: 12px; font-weight: 600; }
+.tl-split line { stroke: var(--op-ink); stroke-width: 1.5; }
+.tl-today line { stroke: var(--op-accent); stroke-dasharray: 2 3; }
+.tl-mark { color: var(--b); }
+.tl-dot { fill: currentColor; stroke: var(--op-bg); stroke-width: 1.5; }
+.tl-mark:hover .tl-dot, .tl-mark:focus-visible .tl-dot { stroke: var(--op-ink); stroke-width: 2; }
+.tl-mark:focus { outline: none; }
+.tl-due, .tl-key { stroke: currentColor; stroke-width: 2; }
+.tl-key { color: var(--op-ink); }
+.tl-due--open { stroke-dasharray: 4 3; }
+.tl-due--moved { opacity: 0.35; }
+.tl-missed { fill: none; stroke: var(--op-bad); stroke-width: 2; }
+.chart-details { margin: 1.5rem 0; }
+.chart-details summary { cursor: pointer; font-weight: 600; }
+.chart-table { overflow-x: auto; }
+.chart-table table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.chart-table caption { padding: 0.5rem 0; text-align: left; font-weight: 600; }
+.chart-table th, .chart-table td { padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--op-line); text-align: left; vertical-align: top; }
+.chart-table th[scope="row"] { font-weight: 400; }
+.chart-table .num { text-align: right; white-space: nowrap; }
+.chart-tip { position: absolute; z-index: 10; max-width: 18rem; padding: 0.4rem 0.6rem; border-radius: var(--op-radius-small); background: var(--op-ink); color: var(--op-bg); font-size: 0.8125rem; line-height: 1.35; pointer-events: none; }
