@@ -1,0 +1,52 @@
+format: openpromises/1
+id: germany-military-support-2024
+headline:
+  en: €7.1bn of German military aid in 2024
+actor_id: germany-government
+made_on: "2024-02-16"
+venue: agreement
+venue_label:
+  en: Agreement on security cooperation and long-term support between Germany and Ukraine, Part II, paragraph 5
+area: weapons
+status: funded
+status_note:
+  en: The government counts about €7.1bn of funds for 2024, including its payments into the European Peace Facility. No figure for what was spent in 2024 was found by 20 October 2026.
+responsible:
+  actor_id: germany-government
+origin: manual
+versions:
+  - version: 1
+    text: In 2024, Germany has decided to provide financial means for military assistance worth a total value of 7.1 billion euro.
+    recorded_on: "2026-10-20"
+    source_url: "https://www.bundesregierung.de/resource/blob/975228/2260158/d84fa168bdd3747913c4e8618bd196af/2024-02-16-ukraine-sicherheitsvereinbarung-eng-data.pdf?download=1"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: Ukraine’s armed forces
+      cost:
+        range: [6.39, 7.1, 7.81]
+        quality: sourced
+        by:
+          kind: official
+          name: Federal Government of Germany
+        note:
+          en: €7.1bn as worded. Low–high is an editorial ±10% because the agreement gives one figure.
+        sources:
+          - title: Agreement on security cooperation and long-term support
+            url: "https://www.bundesregierung.de/resource/blob/975228/2260158/d84fa168bdd3747913c4e8618bd196af/2024-02-16-ukraine-sicherheitsvereinbarung-eng-data.pdf?download=1"
+      when:
+        en: In 2024
+      deadline: "2024-12-31"
+events:
+  - date: "2024-02-16"
+    type: promised
+    text:
+      en: Germany and Ukraine sign the agreement in Berlin
+  - date: "2025-04-17"
+    type: funded
+    text:
+      en: The government’s page on support for Ukraine puts the funds for 2024 at about €7.1bn
+    evidence_url: "https://www.bundesregierung.de/breg-de/service/archiv-bundesregierung/waffenlieferungen-ukraine-2054514"
+replies: []
+corrections: []
+reviews: []

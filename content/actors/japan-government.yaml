@@ -1,0 +1,14 @@
+format: openpromises/1
+id: japan-government
+kind: government
+name:
+  en: Government of Japan
+short_name:
+  en: Japan
+standing: in_power
+same_as:
+  - "https://japan.kantei.go.jp/"
+x:
+  donor: japan
+  donor_name: Japan
+  group: other
