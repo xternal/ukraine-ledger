@@ -35,6 +35,12 @@
     "checked_on": "2026-10-20",
     "sha256": "f18c7c7b364692ea75f2b85ee4c1dbef69ff051998edb724a3429565cda7e5e9"
   },
+  "1f76847fc2427021a03c5537f968dc301995653566e704fd09e422d85562d836|https://www.govinfo.gov/content/pkg/PLAW-118publ50/uslm/PLAW-118publ50.xml": {
+    "match": "exact",
+    "url": "https://www.govinfo.gov/content/pkg/PLAW-118publ50/uslm/PLAW-118publ50.xml",
+    "checked_on": "2026-10-20",
+    "sha256": "9bbe459e967a14803435bd970e0e27fcb2767caf4b73a23e041b8459d506d28a"
+  },
   "2091d245e10d6d675859a6f26a3f88cf3587adfa4d4efef56176cb6fcb6d429c|https://www.presidency.ucsb.edu/node/378899": {
     "match": "exact",
     "url": "https://www.presidency.ucsb.edu/node/378899",
@@ -58,6 +64,12 @@
     "url": "https://eur-lex.europa.eu/eli/reg/2024/2773/oj",
     "checked_on": "2026-10-20",
     "sha256": "aebdda4ed0b24af4609e3974c0d98da29357671a8773db0a50ec6f2768ce4487"
+  },
+  "4a859f108a3e50bd5de1b21e4fb70be8403779678363a780d6f5957690f8d828|https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2024/06/13/bilateral-security-agreement-between-the-united-states-of-america-and-ukraine/": {
+    "match": "exact",
+    "url": "https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2024/06/13/bilateral-security-agreement-between-the-united-states-of-america-and-ukraine/",
+    "checked_on": "2026-10-20",
+    "sha256": "17f93d45e7b947c3c4b90d9d4a109191bae6d5bc652455225c1cf94c3dc372d3"
   },
   "53920e86b027407a116cb550b2e8c94106baad0f74026289b38871c0e1d55703|https://eur-lex.europa.eu/eli/dec/2024/1470/oj": {
     "match": "exact",
@@ -88,6 +100,12 @@
     "url": "https://www.presidency.ucsb.edu/node/378339",
     "checked_on": "2026-10-20",
     "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
+  },
+  "82a2e504b601e4d3e8d15eddefc390a80ea26c1c078c020ae2815cd388d3395d|https://bidenwhitehouse.archives.gov/briefing-room/speeches-remarks/2024/04/24/remarks-by-president-biden-on-the-passage-of-h-r-815-the-national-security-supplemental/": {
+    "match": "exact",
+    "url": "https://bidenwhitehouse.archives.gov/briefing-room/speeches-remarks/2024/04/24/remarks-by-president-biden-on-the-passage-of-h-r-815-the-national-security-supplemental/",
+    "checked_on": "2026-10-20",
+    "sha256": "e25cdcc3711d6efea0503a7d7d80b0f8cb6e68f39cf641958062bb0d469f27cd"
   },
   "8ea7dc5d368795dd783216852862ad5c7bfd90cc1bd56e229f6430a19e19b075|https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/agreement-ukraine-accord.aspx?lang=eng": {
     "match": "exact",
