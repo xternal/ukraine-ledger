@@ -1,0 +1,14 @@
+format: openpromises/1
+id: european-union
+kind: union
+name:
+  en: European Union
+short_name:
+  en: EU
+standing: in_power
+same_as:
+  - "https://european-union.europa.eu/index_en"
+x:
+  donor: european-union
+  donor_name: European Union
+  group: eu
