@@ -17,6 +17,12 @@
     "checked_on": "2026-10-20",
     "sha256": "d06b0ba90be4b1d06de151dca7e330d3bfda62e7d2f6399a2620a0550e51947b"
   },
+  "1443083783e06e4208dd3740d66b562f0b1f114969a0c5d5a2a48c9d959188ac|https://um.dk/media/utbgawq4/agreement-on-security-cooperation.pdf": {
+    "match": "exact",
+    "url": "https://um.dk/media/utbgawq4/agreement-on-security-cooperation.pdf",
+    "checked_on": "2026-10-20",
+    "sha256": "5bc158d2e8abe7f1c47cdce57d223d2a7037567551d47179eb5b9897d716f8e0"
+  },
   "1841f6eba84f42e45a15c6cc11204354654a7ca2eaff0efa6127691fff5c0781|https://ktvz.com/politics/cnn-us-politics/2025/04/25/fact-check-it-wasnt-in-jest-here-are-53-times-trump-said-hed-end-ukraine-war-within-24-hours-or-before-taking-office/": {
     "match": "exact",
     "url": "https://ktvz.com/politics/cnn-us-politics/2025/04/25/fact-check-it-wasnt-in-jest-here-are-53-times-trump-said-hed-end-ukraine-war-within-24-hours-or-before-taking-office/",
@@ -28,6 +34,12 @@
     "url": "https://www.presidency.ucsb.edu/node/378899",
     "checked_on": "2026-10-20",
     "sha256": "b6f06cc52c042a78281a30e132fcb1ec7e2c4885722677f99e7d9e0e62594a5d"
+  },
+  "722c55ce8b11953da220e9c9af116c3708a576ac871bbe3b40fcbfe691054129|https://www.elysee.fr/emmanuel-macron/2024/02/16/accord-de-cooperation-en-matiere-de-securite-entre-la-france-et-lukraine": {
+    "match": "exact",
+    "url": "https://www.elysee.fr/emmanuel-macron/2024/02/16/accord-de-cooperation-en-matiere-de-securite-entre-la-france-et-lukraine",
+    "checked_on": "2026-10-20",
+    "sha256": "7a31424067d2846834838bbddec8215bbc27e14f7d371b71e2c1646b88d01db4"
   },
   "7e34b95c81dbf5adbb4d671f88669aba92253e09b75d68f17b18b16eaa6efb37|https://www.aljazeera.com/news/2025/8/20/no-us-troops-in-ukraine-trump-says": {
     "match": "exact",
@@ -41,6 +53,12 @@
     "checked_on": "2026-10-20",
     "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
   },
+  "8ea7dc5d368795dd783216852862ad5c7bfd90cc1bd56e229f6430a19e19b075|https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/agreement-ukraine-accord.aspx?lang=eng": {
+    "match": "exact",
+    "url": "https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/agreement-ukraine-accord.aspx?lang=eng",
+    "checked_on": "2026-10-20",
+    "sha256": "6810380b84c646274defccf2dcd170e99f91917e0e0952118e937a332ed159b2"
+  },
   "a3e6c814b555c60892bcfab82c7dd69f9e78d526e6f1b7d90c65ab65ef2c4a8f|https://www.govinfo.gov/content/pkg/DCPD-202500304/html/DCPD-202500304.htm": {
     "match": "exact",
     "url": "https://www.govinfo.gov/content/pkg/DCPD-202500304/html/DCPD-202500304.htm",
@@ -52,6 +70,12 @@
     "url": "https://www.presidency.ucsb.edu/node/378339",
     "checked_on": "2026-10-20",
     "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
+  },
+  "bb59ece413d6cc7be9623e3eac2ebf1bdca82476abb88946f1fd5532a9e57457|https://www.bundesregierung.de/resource/blob/975228/2260158/d84fa168bdd3747913c4e8618bd196af/2024-02-16-ukraine-sicherheitsvereinbarung-eng-data.pdf?download=1": {
+    "match": "exact",
+    "url": "https://www.bundesregierung.de/resource/blob/975228/2260158/d84fa168bdd3747913c4e8618bd196af/2024-02-16-ukraine-sicherheitsvereinbarung-eng-data.pdf?download=1",
+    "checked_on": "2026-10-20",
+    "sha256": "0cc3152fcfe22f1b633567bfbdd1552c53d22fae9207283ac68e7068c9cee9b2"
   },
   "bc7d90c1d5f19942bb788079ca5c1fa3de8cfa5b7e285e0c815ec391d32cf6af|https://www.presidency.ucsb.edu/node/378339": {
     "match": "exact",
@@ -70,5 +94,23 @@
     "url": "https://abcnews.go.com/Politics/harris-trump-presidential-debate-transcript/story?id=113560542",
     "checked_on": "2026-10-20",
     "sha256": "1ca5ae5d327b0b56b9d042413b5977e76d8d6418784c386f158f46925ccce63e"
+  },
+  "eb039114f99bdecad42d7db7a38e4269ab3e4a1694f3b3008e419286322d6dda|https://assets.publishing.service.gov.uk/media/65a14a6ae96df50014f845d2/UK-Ukraine_Agreement_on_Security_Co-operation.pdf": {
+    "match": "exact",
+    "url": "https://assets.publishing.service.gov.uk/media/65a14a6ae96df50014f845d2/UK-Ukraine_Agreement_on_Security_Co-operation.pdf",
+    "checked_on": "2026-10-20",
+    "sha256": "d25bf367ece799ebe78d0999a7974ac2ab9d6eac986dddbc69ecd9bb2607d7da"
+  },
+  "ec33eb3ea932beddba02f7ea854ade085c1815b673630b9c5dbebbb66882b990|https://japan.kantei.go.jp/content/ukraine_en.pdf": {
+    "match": "exact",
+    "url": "https://japan.kantei.go.jp/content/ukraine_en.pdf",
+    "checked_on": "2026-10-20",
+    "sha256": "f930360de582cd9dc4977b2243613b99dd16f89ae491d28735a4b54951edb6ee"
+  },
+  "fa842289c871649c745091d000b8c0cb30bba9b3ab19c2964176f993435f2afe|https://www.government.nl/site/binaries/site-content/collections/documents/2024/03/01/security-cooperation-between-the-netherlands-and-ukraine/Agreement+on+Security+Cooperation+between+the+Netherlands+and+Ukraine.pdf": {
+    "match": "exact",
+    "url": "https://www.government.nl/site/binaries/site-content/collections/documents/2024/03/01/security-cooperation-between-the-netherlands-and-ukraine/Agreement+on+Security+Cooperation+between+the+Netherlands+and+Ukraine.pdf",
+    "checked_on": "2026-10-20",
+    "sha256": "8dab015d5274e2e6ed8cccc0fb6644586b0a2ee001bae0fb13c878ff0a7a02d6"
   }
 }

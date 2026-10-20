@@ -1,0 +1,14 @@
+format: openpromises/1
+id: uk-government
+kind: government
+name:
+  en: Government of the United Kingdom
+short_name:
+  en: UK
+standing: in_power
+same_as:
+  - "https://www.gov.uk/government/organisations/prime-ministers-office-10-downing-street"
+x:
+  donor: united-kingdom
+  donor_name: United Kingdom
+  group: europe
