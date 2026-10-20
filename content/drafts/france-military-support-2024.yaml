@@ -1,0 +1,60 @@
+format: openpromises/1
+id: france-military-support-2024
+headline:
+  en: Up to €3bn more French support in 2024
+actor_id: france-government
+made_on: "2024-02-16"
+venue: agreement
+venue_label:
+  en: Accord de coopération en matière de sécurité entre la France et l’Ukraine, military cooperation
+area: weapons
+status: delivering
+status_note:
+  en: On 15 October 2024 the Armed Forces Minister told the Senate that French aid in 2024 would be between €2bn and €3bn, closer to €3bn. No final figure for 2024 was found by 20 October 2026; the ministry counts €5.9bn of direct military support from 24 February 2022 to 31 December 2024.
+responsible:
+  actor_id: france-government
+origin: manual
+sources:
+  - title: Agreement on security cooperation between France and Ukraine (Élysée English version)
+    url: "https://www.elysee.fr/en/emmanuel-macron/2024/02/16/agreement-on-security-cooperation-between-france-and-ukraine"
+  - title: Assemblée nationale, amendement II-DN92 (PLF 2026), citing the ministry’s figures to 31 December 2024
+    url: "https://www.assemblee-nationale.fr/dyn/17/amendements/1906C/CION_DEF/DN92.pdf"
+versions:
+  - version: 1
+    text: "En 2024, la France fournira jusqu’à 3 milliards d'euros de soutien supplémentaire."
+    lang: fr
+    translations:
+      en: In 2024, France will provide up to 3 billion euros in additional support.
+    recorded_on: "2026-10-20"
+    source_url: "https://www.elysee.fr/emmanuel-macron/2024/02/16/accord-de-cooperation-en-matiere-de-securite-entre-la-france-et-lukraine"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: Ukraine, in the agreement’s section on military cooperation
+      cost:
+        range: [2.7, 3, 3]
+        quality: sourced
+        by:
+          kind: official
+          name: Government of France
+        note:
+          en: Up to €3bn as worded. The high end is that ceiling; the low end is an editorial −10%.
+        sources:
+          - title: Accord de coopération en matière de sécurité entre la France et l’Ukraine
+            url: "https://www.elysee.fr/emmanuel-macron/2024/02/16/accord-de-cooperation-en-matiere-de-securite-entre-la-france-et-lukraine"
+      when:
+        en: In 2024
+      deadline: "2024-12-31"
+events:
+  - date: "2024-02-16"
+    type: promised
+    text:
+      en: France and Ukraine sign the agreement in Paris
+  - date: "2024-10-15"
+    type: delivering
+    text:
+      en: The Armed Forces Minister tells the Senate that French aid in 2024 will be between €2bn and €3bn
+    evidence_url: "https://www.publicsenat.fr/actualites/international/ukraine-avec-le-degel-des-avoirs-russes-la-france-aura-accorde-pres-de-3-milliards-deuros-daides-en-2024-annonce-sebastien-lecornu"
+replies: []
+corrections: []
+reviews: []

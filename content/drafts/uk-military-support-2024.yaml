@@ -1,0 +1,59 @@
+format: openpromises/1
+id: uk-military-support-2024
+headline:
+  en: £2.5bn of UK support for Ukraine in 2024
+actor_id: uk-government
+made_on: "2024-01-12"
+venue: agreement
+venue_label:
+  en: UK–Ukraine Agreement on Security Co-operation, Part II, paragraph 6
+area: weapons
+status: in_plan
+status_note:
+  en: In July 2024 the new government raised UK military aid to £3bn a year. The agreement says “in 2024” and the same day’s press release says 2024/25; no figure for what the UK spent in calendar 2024 was found by 20 October 2026.
+responsible:
+  actor_id: uk-government
+origin: manual
+sources:
+  - title: "PM in Kyiv: UK support will not falter (12 January 2024)"
+    url: "https://www.gov.uk/government/news/pm-in-kyiv-uk-support-will-not-falter"
+  - title: "UK support to Ukraine: factsheet"
+    url: "https://www.gov.uk/government/publications/uk-support-to-ukraine-factsheet/uk-support-to-ukraine-factsheet"
+versions:
+  - version: 1
+    text: In 2024, the UK will provide a further £2.5bn of support.
+    recorded_on: "2026-10-20"
+    source_url: "https://assets.publishing.service.gov.uk/media/65a14a6ae96df50014f845d2/UK-Ukraine_Agreement_on_Security_Co-operation.pdf"
+    quote_checked_on: null
+    parameters:
+      who:
+        en: Ukraine, in the agreement’s part on defence and military cooperation
+      cost:
+        range: [2.62, 2.91, 3.2]
+        quality: sourced
+        by:
+          kind: official
+          name: Government of the United Kingdom
+        note:
+          en: "£2.5bn as worded, at the ECB rate of 0.8595 pounds to the euro on 12 January 2024: €2.91bn. Low–high is an editorial ±10% because the agreement gives one figure."
+        sources:
+          - title: UK–Ukraine Agreement on Security Co-operation
+            url: "https://assets.publishing.service.gov.uk/media/65a14a6ae96df50014f845d2/UK-Ukraine_Agreement_on_Security_Co-operation.pdf"
+          - title: ECB euro reference rate, GBP, 2024-01-12
+            url: "https://data-api.ecb.europa.eu/service/data/EXR/D.GBP.EUR.SP00.A?startPeriod=2024-01-12&endPeriod=2024-01-12&format=csvdata"
+      when:
+        en: In 2024
+      deadline: "2024-12-31"
+events:
+  - date: "2024-01-12"
+    type: promised
+    text:
+      en: The UK and Ukraine sign the agreement in Kyiv; the UK says it will provide £2.5bn of support in 2024
+  - date: "2024-12-29"
+    type: in_plan
+    text:
+      en: The government says UK military aid to Ukraine is £3bn a year, more than the agreement’s £2.5bn
+    evidence_url: "https://www.gov.uk/government/news/uk-continues-to-step-up-for-ukraine-as-new-funding-announced-to-bring-war-criminals-to-justice"
+replies: []
+corrections: []
+reviews: []
