@@ -8,9 +8,28 @@
 import { copyFileSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
-import { todayIn, validateContent, type Actor, type Config } from "@openpromises/core";
+import { partyOf, todayIn, validateContent, type Actor, type Config } from "@openpromises/core";
 import { findConfig, folderSource, loadConfig, readContent } from "@openpromises/files";
-import { areaLabel, cardJsonLd, cardViews, paths, publishFiles, relatedCards, words, type CardView } from "@openpromises/publish";
+import {
+  absolute,
+  actorJsonLd,
+  areaLabel,
+  cardDescription,
+  cardJsonLd,
+  cardTitle,
+  cardViews,
+  clip,
+  collectionJsonLd,
+  DESCRIPTION_MAX,
+  paths,
+  publishFiles,
+  relatedCards,
+  sitemapXml,
+  words,
+  type CardView,
+  type JsonLd as Ld,
+  type SitemapEntry,
+} from "@openpromises/publish";
 import { Breadcrumbs, JsonLd, PromiseCard, PromiseList, PromiseSpotlight, PromiseStory, StatusPill } from "@openpromises/react";
 import { createElement as h, Fragment, type ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -89,8 +108,37 @@ async function main() {
       menu.map((m) => h("a", { key: m.href, href: m.href, "aria-current": trim(path) === trim(m.href) ? "page" : m.owns(trim(path)) ? "true" : undefined }, m.label)),
     );
 
+  /**
+   * Every page's own description, canonical address and share card (Open Graph and Twitter). `title` is the page's
+   * name; `fullTitle` and `socialTitle` override what search results and share cards show (a card uses the engine's
+   * cardTitle). The share image waits for the site's mark, so cards are "summary" for now.
+   */
+  type PageOpts = { wide?: boolean; description?: string; fullTitle?: string; socialTitle?: string; type?: "website" | "article" };
+  const head = (path: string, title: string, opts: PageOpts) => {
+    const url = absolute(config, trim(path));
+    const description = clip(opts.description ?? config.site.description[L], DESCRIPTION_MAX);
+    const social = opts.socialTitle ?? title;
+    return [
+      h("title", { key: "t" }, opts.fullTitle ?? (title === name ? name : `${title} · ${name}`)),
+      h("meta", { key: "d", name: "description", content: description }),
+      h("link", { key: "c", rel: "canonical", href: url }),
+      // The preview is never deployed; if it ever is, search engines must not index unapproved drafts.
+      PREVIEW ? h("meta", { key: "r", name: "robots", content: "noindex" }) : null,
+      h("meta", { key: "tl", name: "theme-color", media: "(prefers-color-scheme: light)", content: "#ffffff" }),
+      h("meta", { key: "td", name: "theme-color", media: "(prefers-color-scheme: dark)", content: "#241f1a" }),
+      h("meta", { key: "ot", property: "og:type", content: opts.type ?? "website" }),
+      h("meta", { key: "os", property: "og:site_name", content: name }),
+      h("meta", { key: "oti", property: "og:title", content: social }),
+      h("meta", { key: "od", property: "og:description", content: description }),
+      h("meta", { key: "ou", property: "og:url", content: url }),
+      h("meta", { key: "tc", name: "twitter:card", content: "summary" }),
+      h("meta", { key: "tt", name: "twitter:title", content: social }),
+      h("meta", { key: "tdd", name: "twitter:description", content: description }),
+    ];
+  };
+
   /** `wide`: the home page, whose charts use the full width while its text keeps the reading measure. */
-  const page = (path: string, title: string, body: ReactNode, opts: { wide?: boolean } = {}) =>
+  const page = (path: string, title: string, body: ReactNode, opts: PageOpts = {}) =>
     write(
       path.endsWith("/") ? `${path}index.html` : `${path}/index.html`,
       "<!doctype html>\n" +
@@ -103,8 +151,7 @@ async function main() {
               null,
               h("meta", { charSet: "utf-8" }),
               h("meta", { name: "viewport", content: "width=device-width, initial-scale=1" }),
-              h("title", null, title === name ? name : `${title} · ${name}`),
-              h("meta", { name: "description", content: config.site.description[L] }),
+              ...head(path, title, opts),
               h("link", { rel: "stylesheet", href: "/styles.css" }),
               h("link", { rel: "stylesheet", href: "/site.css" }),
               h("link", { rel: "alternate", type: "application/atom+xml", title: `${name}: every change`, href: "/feeds/all.xml" }),
@@ -132,8 +179,9 @@ async function main() {
           ),
         ),
     );
+  const ld: { config: Config; w: typeof w; today: string } = { config, w, today };
 
-  const coverageTable = (cards: readonly CardView[], caption: string) =>
+  const coverageTable =(cards: readonly CardView[], caption: string) =>
     h(
       "table",
       { className: "coverage" },
@@ -150,6 +198,25 @@ async function main() {
 
   // Home: the platform's words first, by rule; then the promises on the first screen, chosen by rule (decision 30).
   const platform = platformPromises(views);
+  /** The site and its open data, for search engines and AI search: who makes it, and where the data is. */
+  const maker = { "@type": "Person", name: "Pavel Guzhikov", url: "https://guzh.uk" };
+  const siteLd: Ld[] = [
+    { "@context": "https://schema.org", "@type": "WebSite", name, url: absolute(config, "/"), description: config.site.description[L], inLanguage: L, creator: maker },
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      name: "Promises to Ukraine",
+      description: "Every published commitment to Ukraine on this site: the exact words, who made it and when, the deadline, the cost range with its sources, the status and the evidence for each step.",
+      url: absolute(config, "/"),
+      license: config.publish.licence!.url,
+      creator: maker,
+      isAccessibleForFree: true,
+      distribution: [
+        { "@type": "DataDownload", encodingFormat: "application/json", contentUrl: absolute(config, "/data/promises.json") },
+        { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: absolute(config, "/data/promises.csv") },
+      ],
+    },
+  ];
   page(
     "/",
     name,
@@ -179,11 +246,24 @@ async function main() {
       views.length
         ? h(PromiseSpotlight, { views, today, actors: result.actors, config })
         : h("p", null, "No promise is published yet. The first cards are being checked against their sources."),
+      h(JsonLd, { data: siteLd }),
     ),
     { wide: true },
   );
 
-  page(p.promises(L), "Promises", h(Fragment, null, h("h1", null, "Every promise"), h(PromiseList, { views, today, actors: result.actors, config, empty: "No promise is published yet." })));
+  const promisesDescription = "Every commitment to Ukraine on this site, by every government and the EU, with its exact words, its status and the evidence for it.";
+  page(
+    p.promises(L),
+    "Promises",
+    h(
+      Fragment,
+      null,
+      h("h1", null, "Every promise"),
+      h(PromiseList, { views, today, actors: result.actors, config, empty: "No promise is published yet." }),
+      h(JsonLd, { data: collectionJsonLd({ path: p.promises(L), name: "Every promise", description: promisesDescription, views }, ld) }),
+    ),
+    { description: promisesDescription },
+  );
 
   for (const v of views) {
     const crumbs = [{ name, href: "/" }, { name: "Promises", href: p.promises(L) }, { name: headline(v), href: p.card(v.id, L) }];
@@ -195,10 +275,16 @@ async function main() {
         null,
         h(Breadcrumbs, { config, items: crumbs }),
         h(PromiseCard, { view: v, config, today, related: relatedCards(v, views), actions: h("a", { href: `${p.card(v.id, L)}/story/` }, "The whole story in one line") }),
-        h(JsonLd, { data: cardJsonLd(v, { config, w, today }) }),
+        h(JsonLd, { data: cardJsonLd(v, ld) }),
       ),
+      { description: cardDescription(v, config, w), fullTitle: cardTitle(v, config, w).title, socialTitle: cardTitle(v, config, w).social, type: "article" },
     );
-    page(`${p.card(v.id, L)}/story`, `${headline(v)}: the story`, h(Fragment, null, h(Breadcrumbs, { config, items: [...crumbs, { name: "Story", href: `${p.card(v.id, L)}/story/` }] }), h(PromiseStory, { view: v, config, today, headingLevel: 2 })));
+    page(
+      `${p.card(v.id, L)}/story`,
+      `${headline(v)}: the story`,
+      h(Fragment, null, h(Breadcrumbs, { config, items: [...crumbs, { name: "Story", href: `${p.card(v.id, L)}/story/` }] }), h(PromiseStory, { view: v, config, today, headingLevel: 2 })),
+      { description: `The whole story of “${headline(v)}” in one dated line: every wording, every event and its evidence, and what is still to come.`, type: "article" },
+    );
   }
 
   page(
@@ -214,9 +300,12 @@ async function main() {
         people.map((a) => h("li", { key: a.id }, h("a", { href: p.actor(a.id, L) }, actorName(a)), a.roles?.at(-1) ? `, ${a.roles.at(-1)!.title[L]}` : "", ` (${views.filter((v) => v.actor.id === a.id).length})`)),
       ),
     ),
+    { description: "The officials whose commitments to Ukraine are recorded here, with their roles and how many commitments each has made." },
   );
   for (const a of result.actors.values()) {
     const own = views.filter((v) => v.actor.id === a.id || v.party?.id === a.id);
+    const partyId = partyOf(a.id, result.actors);
+    const party = partyId ? (result.actors.get(partyId) ?? null) : null;
     page(
       p.actor(a.id, L),
       actorName(a),
@@ -228,7 +317,13 @@ async function main() {
         a.roles?.length ? h("ul", null, a.roles.map((r, i) => h("li", { key: i }, r.title[L], r.from ? ` from ${r.from}` : "", r.to ? ` to ${r.to}` : ""))) : null,
         coverageTable(own, `${actorName(a)}: promises by area, every area listed`),
         h(PromiseList, { views: own, today, actors: result.actors, config, empty: "No promise is published yet." }),
+        h(JsonLd, { data: actorJsonLd(a, party, own, ld) }),
       ),
+      {
+        description: own.length
+          ? `${actorName(a)}: ${own.length} ${own.length === 1 ? "commitment to Ukraine, in its" : "commitments to Ukraine, each in its"} exact words, with its deadline, status and evidence.`
+          : `${actorName(a)}: commitments to Ukraine, in their exact words, with deadlines, statuses and evidence. None is published yet.`,
+      },
     );
   }
 
@@ -236,7 +331,9 @@ async function main() {
     "/promises/area/",
     "Areas",
     h(Fragment, null, h("h1", null, "Promises by area"), h("p", null, "The areas are what a government can do about a war. They were fixed before the first card, so the list is never fitted to the cards."), coverageTable(views, "Every area, empty ones included")),
+    { description: "Commitments to Ukraine by area, from weapons and money to sanctions, talks and membership. Every area is listed, empty ones included, so gaps show." },
   );
+  const areaDescription = (label: string) => `Commitments to Ukraine under “${label}”: each in its exact words, with its status and the evidence for it.`;
   for (const { area } of coverage(config, views)) {
     const label = areaLabel(config, area, L);
     page(
@@ -248,10 +345,19 @@ async function main() {
         h(Breadcrumbs, { config, items: [{ name, href: "/" }, { name: "Areas", href: "/promises/area/" }, { name: label, href: p.area(area, L) }] }),
         h("h1", null, label),
         h(PromiseList, { views: views.filter((v) => v.card.area === area), today, actors: result.actors, config, empty: "No promise is recorded in this area." }),
+        h(JsonLd, { data: collectionJsonLd({ path: p.area(area, L), name: label, description: areaDescription(label), views: views.filter((v) => v.card.area === area), breadcrumb: [{ name: "Areas", path: "/promises/area/" }] }, ld) }),
       ),
+      { description: areaDescription(label) },
     );
   }
 
+  /** Short answers for readers and for search: what the pages do not already say. */
+  const faq: [string, string][] = [
+    ["Where do the amounts come from?", "Each amount comes from the card's own sources: the agreement, budget or official statement that states it, with who made the figure. A cost is a low-to-high range, never a single figure. Dollars use the European Central Bank's rate on the day the commitment was made."],
+    ["What does “Not met” mean?", "The deadline has passed and a document shows the commitment was not kept as worded. A deadline that passes with no evidence either way is recorded as missed, not as “Not met”."],
+    ["Why is a commitment missing?", "A card is published only once its exact words are found at a saved source and an editor has approved it. Every area is listed on every page, empty ones included, so what is missing shows."],
+    ["Can I reuse the data?", "Yes. Every published card is open data, in JSON and CSV, under CC BY 4.0, with a feed of every change. Quotes keep their own terms, named beside each source."],
+  ];
   page(
     "/about/",
     "How it works",
@@ -271,8 +377,32 @@ async function main() {
         h("li", null, "Anyone a card is about may reply; the reply is published on the card."),
       ),
       h("p", null, "The money already given is counted by the ", h("a", { href: "https://www.kielinstitut.de/topics/war-against-ukraine/ukraine-support-tracker/" }, "Kiel Institute's Ukraine Support Tracker"), "; Donald Trump's 2024 campaign promises on every subject are rated by ", h("a", { href: "https://www.politifact.com/truth-o-meter/promises/maga-meter-tracking-donald-trumps-2024-promises/" }, "PolitiFact's MAGA-Meter"), ". This site keeps what each government said it would do, in its words, with the evidence since."),
+      h("section", { className: "faq", "aria-labelledby": "faq-h" }, h("h2", { id: "faq-h" }, "Questions"), faq.map(([q, a]) => h(Fragment, { key: q }, h("h3", null, q), h("p", null, a)))),
+      h(JsonLd, { data: { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) } }),
     ),
+    { description: "How UkraineLedger.com records commitments to Ukraine: exact words, evidence for every change of status, nothing rewritten, one set of rules for all." },
   );
+
+  // Search engines and AI crawlers are welcome: everything here is public and open data. The preview is never deployed.
+  const crawlers = ["GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended"];
+  write(
+    "/robots.txt",
+    PREVIEW
+      ? "User-agent: *\nDisallow: /\n"
+      : ["User-agent: *", "Allow: /", "", ...crawlers.flatMap((c) => [`User-agent: ${c}`, "Allow: /", ""]), `Sitemap: ${absolute(config, "/sitemap.xml")}`, ""].join("\n"),
+  );
+  // The engine's sitemap lists the promise pages (the list, each card, each actor and area with cards); this one adds
+  // the pages it does not model (home, the two indexes, about, each card's story), and sitemap.xml points to both.
+  if (!PREVIEW) {
+    const rest: SitemapEntry[] = ["/", "/actor/", "/promises/area/", "/about/", ...views.map((v) => `${p.card(v.id, L)}/story`)]
+      .map((x) => absolute(config, trim(x)))
+      .map((loc) => ({ loc, alternates: { [L]: loc } }));
+    write("/sitemap-pages.xml", sitemapXml(rest));
+    write(
+      "/sitemap.xml",
+      ['<?xml version="1.0" encoding="UTF-8"?>', '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', ...[p.sitemap(), "/sitemap-pages.xml"].map((x) => `  <sitemap><loc>${absolute(config, x)}</loc></sitemap>`), "</sitemapindex>", ""].join("\n"),
+    );
+  }
 
   if (!PREVIEW) for (const f of publishFiles({ config, views, today, actors: result.actors })) write(f.path, f.body);
   const require = createRequire(import.meta.url);
