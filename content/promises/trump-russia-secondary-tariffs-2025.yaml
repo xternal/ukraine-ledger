@@ -1,17 +1,17 @@
 format: openpromises/1
 id: trump-russia-secondary-tariffs-2025
 headline:
-  en: Secondary tariffs on Russia if no deal
+  en: Secondary tariffs on Russia's buyers if no deal
 actor_id: donald-trump
 made_on: "2025-07-14"
 venue: press_conference
 venue_label:
   en: Oval Office, with NATO Secretary General Mark Rutte
 area: sanctions
-status: legislated
+status: failed
 status_note:
   en: An executive order of 16 October 2026 waived the Act's tariffs before they took effect, and the 25% tariff on India was removed on 6 February 2026, so no tariff on buyers of Russian goods was in effect
-    on 20 October 2026. On deadline day, 8 August 2025, the President announced the Alaska meeting with President Putin instead.
+    on 20 October 2026. On deadline day, 8 August 2025, the President announced a meeting with President Putin in Alaska.
 responsible:
   actor_id: us-trump-administration
 origin: manual
@@ -24,10 +24,10 @@ sources:
   url: https://home.treasury.gov/news/press-releases/sb0290
 versions:
 - version: 1
-  text: And we're going to be doing very severe tariffs if we don't have a deal in 50 days—tariffs at about 100 percent. You'd call them secondary tariffs.
+  text: we're going to be doing very severe tariffs if we don't have a deal in 50 days—tariffs at about 100 percent. You'd call them secondary tariffs.
   recorded_on: "2026-10-20"
   source_url: https://www.presidency.ucsb.edu/node/378339
-  quote_checked_on: "2026-10-20"
+  quote_checked_on: "2026-10-21"
   parameters:
     who:
       en: Countries that buy Russian goods
@@ -38,12 +38,12 @@ versions:
   text: I'm going to make a new deadline of about 10 or 12 days from today. There's no reason in waiting.
   recorded_on: "2026-10-20"
   source_url: https://www.govinfo.gov/content/pkg/DCPD-202500802/html/DCPD-202500802.htm
-  quote_checked_on: null
+  quote_checked_on: "2026-10-21"
   parameters:
     who:
       en: Countries that buy Russian goods
     when:
-      en: About 10 or 12 days from 28 July 2025; on 29 July, ten days
+      en: About 10 or 12 days from 28 July 2025
     deadline: "2025-08-08"
 events:
 - date: "2025-07-14"
@@ -66,6 +66,22 @@ events:
   text:
     en: The President signs the Sanctioning Russia and Iran Act, allowing tariffs of up to 100% on the largest buyers of Russian oil and gas
   evidence_url: https://www.cbsnews.com/news/trump-signs-russia-sanctions-bill-lindsey-graham/
+- date: "2026-10-16"
+  type: failed
+  text:
+    en: An executive order waives the Act's tariffs on the largest buyers of Russian oil before they take effect
+  evidence_url: https://www.cbsnews.com/news/trump-waives-sanctions-tariffs-russian-oil-lindsey-graham/
 replies: []
 corrections: []
-reviews: []
+reviews:
+- by: AI Journalist
+  kind: automated
+  "on": "2026-10-21"
+  note:
+    en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+- by: Pavel Guzhikov
+  kind: editor
+  "on": "2026-10-21"
+  approves: true
+  note:
+    en: Approved for the first publication on the AI Journalist's check.

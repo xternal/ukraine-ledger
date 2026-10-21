@@ -10,16 +10,19 @@ venue_label:
 area: security_guarantees
 status: promised
 status_note:
-  en: Whether the administration asked Congress for new funds for Ukraine after 13 June 2024 is not yet checked. The agreement runs for ten years from its signature.
+  en: The agreement runs for ten years from its signature, so the Trump administration now answers for it. In November 2024 the Biden administration asked Congress for about $24bn more for Ukraine in a stopgap funding bill, according to Politico; no official record of the request was found by 21 October 2026.
 responsible:
-  actor_id: us-biden-administration
+  actor_id: us-trump-administration
 origin: manual
+sources:
+  - title: "European Pravda (citing Politico): Biden asks Congress for an additional $24bn for Ukraine (27 November 2024)"
+    url: "https://www.eurointegration.com.ua/eng/news/2024/11/27/7199298/"
 versions:
   - version: 1
     text: To this end, the United States intends to seek from the United States Congress appropriation of funds to help sustain a Ukrainian credible defense and deterrent capability, in war and peace.
     recorded_on: "2026-10-20"
     source_url: "https://bidenwhitehouse.archives.gov/briefing-room/statements-releases/2024/06/13/bilateral-security-agreement-between-the-united-states-of-america-and-ukraine/"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine’s defence and deterrence
@@ -33,4 +36,15 @@ events:
       en: The United States and Ukraine sign the agreement at the G7 summit in Apulia
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.
