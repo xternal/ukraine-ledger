@@ -2,7 +2,7 @@
 
 Every Sunday at 20:00 UK time the weekly ledger desk, a scheduled task on Pavel's Mac, works through each of his ledgers in turn, one at a time. For UkraineLedger.com it reads this file on `main` and follows it. Pavel decided it on 20 October 2026 (one weekly desk for every ledger). To change what it does here, change this file by pull request.
 
-It does three things: new promises to Ukraine (only while the editor's queue has room), evidence on published cards, and a check that the repository's checks and pull requests are healthy. The site is still being built, so the desk adds new files and never edits the drafts already there.
+It does three things: new promises to Ukraine (only while the editor's queue has room), evidence on published cards, and a check that the repository's checks and pull requests are healthy. The site is live at ukraineledger.com, with 32 published cards since 21 October 2026. Pavel wants many cards on it (21 October 2026), so the desk drafts up to 10 a week. It adds new drafts as new files and never edits the drafts already there.
 
 ## Rules that never bend
 
@@ -43,13 +43,13 @@ A sentence becomes a draft only if:
 - it is new: no card or draft of the same actor has the same target (search `content/`);
 - its quote is `exact` in the saved source (rule 3).
 
-Draft at most **5** per run, the largest amounts first; list the rest under "Next week" in the pull request. Model each on a draft of the same actor and venue: `origin: llm_intake`, `status: promised`, one `promised` event on `made_on`, costs by the money rules in `openpromises.config.ts`, and `pnpm fx` after adding a card with an amount. A promise by someone with no actor file goes under "Needs an actor"; create no actor.
+Draft at most **10** per run, the largest amounts first; list the rest under "Next week" in the pull request. Model each on a draft of the same actor and venue: `origin: llm_intake`, `status: promised`, one `promised` event on `made_on`, costs by the money rules in `openpromises.config.ts`, and `pnpm fx` after adding a card with an amount. A promise by someone with no actor file goes under "Needs an actor"; create no actor.
 
 Work on a new branch `desk/<today>-drafts` from `origin/main`. `pnpm check` must pass. Push, and open a pull request titled "New drafts: N promises to Ukraine (<from> to <to>)", listing each draft (actor, headline, quote, source, why it passed), "Next week", "Needs an actor", and the sentences that came close, one line each. It ends with "🤖 Generated with [Claude Code](https://claude.com/claude-code)", and commit messages with "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>". Wait for the checks (`gh pr checks <n> --watch`) and fix a red one.
 
 ## 2. Evidence on published cards
 
-Only cards in `content/promises/` (none are published yet; until then this step does nothing). Pick at most 5 whose status is not final: first those whose deadline fell in the past 7 days or falls in the next 30, then those whose last event is oldest. Search the actor's official sites for a document dated after the card's last event that shows a higher step: an official plan, a law or decision, money allocated, deliveries started. The sentence that shows it must be in the saved document word for word (`grep -F`). Append one event at the end of `events`: `date` the document's date, `type` the step, `text.en` one neutral line naming the document, `evidence_url` the document. Move `status` up to that step, never above `delivering`; a document showing delivery or failure goes in the pull request body for the editor, with no event. Branch `desk/<today>-evidence`, `pnpm check`, pull request "Evidence on N cards (<today>)", checks as in step 1.
+Only cards in `content/promises/`. Pick at most 5 whose status is not final: first those whose deadline fell in the past 7 days or falls in the next 30, then those whose last event is oldest. Search the actor's official sites for a document dated after the card's last event that shows a higher step: an official plan, a law or decision, money allocated, deliveries started. For money promised for a year, look for what was spent: the government's annual report or budget outturn, or its answer to a parliamentary question, as the 2024 bilateral cards cite. The sentence that shows it must be in the saved document word for word (`grep -F`). Append one event at the end of `events`: `date` the document's date, `type` the step, `text.en` one neutral line naming the document, `evidence_url` the document. Move `status` up to that step, never above `delivering`; a document showing delivery or failure goes in the pull request body for the editor, with no event. Branch `desk/<today>-evidence`, `pnpm check`, pull request "Evidence on N cards (<today>)", checks as in step 1.
 
 ## 3. The repository's health
 
