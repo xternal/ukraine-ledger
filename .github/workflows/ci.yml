@@ -24,7 +24,10 @@ jobs:
       - run: pnpm install --frozen-lockfile
       # OpenPromises packages skip pnpm's one-day wait (OpenPromises decision 32), so check where they came from:
       # registry signatures and attestations, then that each was built by the engine's Release workflow from its own tag.
-      - run: npm audit signatures
+      # npm 10's own copy of Sigstore's trusted root is out of date, so on a fresh runner several checks download the new
+      # one at once and one can read it half-written ("invalid attestation"). The second run finds it cached, so it cannot
+      # race: a package that was really tampered with fails both times.
+      - run: npm audit signatures || npm audit signatures
       - run: pnpm openpromises:provenance
       # Every card, draft, actor and the editors list against format v1; published cards against the base branch.
       - run: pnpm validate
