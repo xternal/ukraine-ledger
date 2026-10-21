@@ -89,6 +89,12 @@
     "checked_on": "2026-10-20",
     "sha256": "bee22848693d07ac736a030ded9d97fe52d3f55fa105ffeddf5c3ed1badc0dd4"
   },
+  "5d9dbca2783dfae13d1233e01e57593df55c0f80d2a8c13ce741a9a8e1d7612d|https://www.presidency.ucsb.edu/node/378339": {
+    "match": "exact",
+    "url": "https://www.presidency.ucsb.edu/node/378339",
+    "checked_on": "2026-10-21",
+    "sha256": "39f4d94b72f602b8e5a7e1ee73c0e904b7c217e444ee5a041d9d8da156abd5a7"
+  },
   "6868bf18f8510057bc2d8f0bb1ebcaea34bf48ea9a7425a858f283bfc99369f7|https://www.g7italy.it/wp-content/uploads/Apulia-G7-Leaders-Communique.pdf": {
     "match": "exact",
     "url": "https://www.g7italy.it/wp-content/uploads/Apulia-G7-Leaders-Communique.pdf",
@@ -100,6 +106,12 @@
     "url": "https://www.elysee.fr/emmanuel-macron/2024/02/16/accord-de-cooperation-en-matiere-de-securite-entre-la-france-et-lukraine",
     "checked_on": "2026-10-20",
     "sha256": "7a31424067d2846834838bbddec8215bbc27e14f7d371b71e2c1646b88d01db4"
+  },
+  "7283eb92249eb819adb403877858a5482b5104c4d68ecaa3a2d163daea3d7c0e|https://www.govinfo.gov/content/pkg/DCPD-202501223/html/DCPD-202501223.htm": {
+    "match": "exact",
+    "url": "https://www.govinfo.gov/content/pkg/DCPD-202501223/html/DCPD-202501223.htm",
+    "checked_on": "2026-10-21",
+    "sha256": "fd6d56355eb976439d92e4cac492512ba8e1271a8542feea86cac1d8f87403b0"
   },
   "7e34b95c81dbf5adbb4d671f88669aba92253e09b75d68f17b18b16eaa6efb37|https://www.aljazeera.com/news/2025/8/20/no-us-troops-in-ukraine-trump-says": {
     "match": "exact",

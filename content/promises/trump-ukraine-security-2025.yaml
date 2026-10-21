@@ -22,10 +22,21 @@ versions:
   text: But we will give them very good protection, very good security.
   recorded_on: "2026-10-20"
   source_url: https://www.govinfo.gov/content/pkg/DCPD-202500856/html/DCPD-202500856.htm
-  quote_checked_on: null
+  quote_checked_on: "2026-10-21"
   parameters:
     who:
       en: Ukraine
+    when:
+      en: As part of a peace settlement
+    deadline: null
+- version: 2
+  text: We want to work with Europe, and Europe is going to take over a big part of it, as you can imagine. You know, they're right there. But we're going to help Europe 100 percent, like they'd help us.
+  recorded_on: "2026-10-21"
+  source_url: https://www.govinfo.gov/content/pkg/DCPD-202501223/html/DCPD-202501223.htm
+  quote_checked_on: "2026-10-21"
+  parameters:
+    who:
+      en: Ukraine, with Europe taking over a big part and the US helping Europe
     when:
       en: As part of a peace settlement
     deadline: null
@@ -33,12 +44,23 @@ events:
 - date: "2025-08-18"
   type: promised
   text:
-    en: The President says the US will help give Ukraine protection and security
+    en: The President says the US will give Ukraine very good protection and security
 - date: "2025-12-28"
-  type: restated
+  type: reworded
   text:
-    en: The President says Europe will take a large part and the US will help Europe fully
+    en: The President says Europe will take over a big part of it and the US will help Europe 100 percent
   evidence_url: https://www.govinfo.gov/content/pkg/DCPD-202501223/html/DCPD-202501223.htm
 replies: []
 corrections: []
-reviews: []
+reviews:
+- by: AI Journalist
+  kind: automated
+  "on": "2026-10-21"
+  note:
+    en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+- by: Pavel Guzhikov
+  kind: editor
+  "on": "2026-10-21"
+  approves: true
+  note:
+    en: Approved for the first publication on the AI Journalist's check.

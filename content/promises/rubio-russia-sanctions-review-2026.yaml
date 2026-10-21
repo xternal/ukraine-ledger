@@ -6,7 +6,7 @@ actor_id: marco-rubio
 made_on: "2026-10-17"
 venue: statement
 venue_label:
-  en: Remarks to reporters
+  en: Remarks on 17 October 2026, reported by Reuters and RTÉ
 area: sanctions
 status: promised
 status_note:
@@ -17,6 +17,8 @@ origin: manual
 sources:
 - title: 'CBS News: Trump waives sanctions and tariffs on Russian oil'
   url: https://www.cbsnews.com/news/trump-waives-sanctions-tariffs-russian-oil-lindsey-graham/
+- title: 'Reuters (via The Star): Rubio says Trump to take up to 60 days to weigh Russia sanctions'
+  url: https://www.thestar.com.my/news/world/2026/10/18/rubio-says-trump-to-take-up-to-60-days-to-weigh-russia-sanctions
 - title: 'RTÉ: Rubio on the Russia sanctions waiver'
   url: https://www.rte.ie/news/world/2026/1018/1595809-russia-sanctions-rubio/
 versions:
@@ -24,7 +26,7 @@ versions:
   text: The president wants to take the 60-day period of time to sort of analyze what imposing both sanctions and tariffs will mean to the global economy and even to the US economy,
   recorded_on: "2026-10-20"
   source_url: https://www.kurdistan24.net/en/story/946791/rubio-says-russia-sanctions-waiver-is-60-day-pause-to-analyze-global-economy
-  quote_checked_on: null
+  quote_checked_on: "2026-10-21"
   parameters:
     when:
       en: A 60-day period after the waiver of 16 October 2026
@@ -33,7 +35,18 @@ events:
 - date: "2026-10-17"
   type: promised
   text:
-    en: The Secretary of State says the waiver of the Act's sanctions and tariffs is a 60-day period of analysis
+    en: The Secretary of State says the waiver of the Sanctioning Russia and Iran Act's sanctions and tariffs is a 60-day period of analysis
 replies: []
 corrections: []
-reviews: []
+reviews:
+- by: AI Journalist
+  kind: automated
+  "on": "2026-10-21"
+  note:
+    en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+- by: Pavel Guzhikov
+  kind: editor
+  "on": "2026-10-21"
+  approves: true
+  note:
+    en: Approved for the first publication on the AI Journalist's check.
