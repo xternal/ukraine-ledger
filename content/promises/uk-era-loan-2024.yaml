@@ -1,16 +1,16 @@
 format: openpromises/1
 id: uk-era-loan-2024
 headline:
-  en: £2.26bn UK loan repaid from Russian assets
+  en: £2.26bn UK loan repaid from Russian asset profits
 actor_id: uk-government
 made_on: "2024-10-22"
 venue: statement
 venue_label:
   en: Government announcement, 22 October 2024
 area: weapons
-status: delivering
+status: delivered
 status_note:
-  en: "Paid in three tranches of £752m: the first on 6 March 2025 and the second on 14 April 2025. The third was due in 2026 and is not yet confirmed."
+  en: "Paid in three tranches of £752m: on 6 March 2025, on 14 April 2025 and, as Ukraine’s Ministry of Finance announced on 15 April 2026, the third and last in April 2026."
 responsible:
   actor_id: uk-government
 origin: manual
@@ -24,7 +24,7 @@ versions:
     text: The new £2.26 billion is the UK’s contribution to the G7 Extraordinary Revenue Acceleration (ERA) Loans to Ukraine scheme, in which $50 billion from G7 countries will be delivered to Ukraine for its military, budget and reconstruction needs.
     recorded_on: "2026-10-20"
     source_url: "https://www.gov.uk/government/news/uk-strengthens-national-security-and-bolsters-ukraines-war-chest-with-226-billion-military-loan"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine, as a loan for military equipment
@@ -52,6 +52,27 @@ events:
     text:
       en: The first £752m is paid
     evidence_url: "https://www.gov.uk/government/news/uk-sends-multi-million-pound-military-equipment-loan-to-ukraine"
+  - date: "2025-04-14"
+    type: delivering
+    text:
+      en: The second £752m is paid
+    evidence_url: "https://www.gov.uk/government/news/uk-sends-multi-million-pound-military-equipment-loan-to-ukraine"
+  - date: "2026-04-15"
+    type: delivered
+    text:
+      en: Ukraine’s Ministry of Finance says the final £752m has been received, completing the loan
+    evidence_url: "https://www.eurointegration.com.ua/eng/news/2026/04/16/7235609/"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

@@ -8,9 +8,9 @@ venue: statement
 venue_label:
   en: Statement to the IMF and World Bank Development Committee, 24 April 2025
 area: money_and_deals
-status: funded
+status: delivering
 status_note:
-  en: JICA signed the loan agreement with Ukraine on 5 June 2025, for up to ¥471.9bn over 30 years. Payments were not yet checked by 20 October 2026.
+  en: JICA signed the loan agreement with the Government of Ukraine on 5 June 2025, for up to ¥471.9bn over 30 years. Ukraine’s Ministry of Finance reported nearly $1.3bn received on 1 April 2026, the second tranche from Japan, paid through the World Bank.
 responsible:
   actor_id: japan-government
 origin: manual
@@ -24,7 +24,7 @@ versions:
     text: Japan contributes to supporting Ukraine through providing Ukraine with a yen loan of 471.9 billion yen through a World Bank Financial Intermediary Fund, under the Extraordinary Revenue Acceleration (ERA) Loan initiative for Ukraine, which was agreed by the G7 Leaders last year and is to be repaid by future flows of extraordinary revenues stemming from immobilized Russian sovereign assets.
     recorded_on: "2026-10-20"
     source_url: "https://www.mof.go.jp/english/policy/international_policy/imf/dc/20241023190212.html"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine, as a loan through a World Bank fund
@@ -52,8 +52,24 @@ events:
   - date: "2025-06-05"
     type: funded
     text:
-      en: JICA signs the loan agreement with Ukraine’s Ministry of Finance, up to ¥471.9bn
+      en: JICA signs the loan agreement with the Government of Ukraine, up to ¥471.9bn
     evidence_url: "https://www.jica.go.jp/english/information/press/2025/20250605_11.html"
+  - date: "2026-04-01"
+    type: delivering
+    text:
+      en: Ukraine’s Ministry of Finance reports nearly $1.3bn received, the second tranche from Japan, through the World Bank
+    evidence_url: "https://www.kmu.gov.ua/en/news/ukraina-zaluchyla-hrant-obsiahom-maizhe-13-mlrd-druhyi-transh-vid-iaponii-v-mezhakh-mekhanizmu-era-krain-g7"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

@@ -1,7 +1,7 @@
 format: openpromises/1
 id: us-supplemental-budget-support-2024
 headline:
-  en: $7.85bn in US aid, including budget support
+  en: $7.85bn in US economic aid for Ukraine
 actor_id: us-congress
 made_on: "2024-04-24"
 venue: parliament
@@ -14,12 +14,15 @@ status_note:
 responsible:
   actor_id: us-biden-administration
 origin: manual
+sources:
+  - title: "GAO-25-107057: all US direct budget support disbursed by December 2024 (24 September 2025)"
+    url: "https://www.gao.gov/products/GAO-25-107057"
 versions:
   - version: 1
     text: "For an additional amount for “Economic Support Fund”, $7,899,000,000, to remain available until September 30, 2025: Provided, That of the total amount provided under this heading in this division, $7,849,000,000 shall be for assistance for Ukraine, which may include budget support"
     recorded_on: "2026-10-20"
     source_url: "https://www.govinfo.gov/content/pkg/PLAW-118publ50/uslm/PLAW-118publ50.xml"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine, including its state budget
@@ -43,7 +46,7 @@ events:
   - date: "2024-04-24"
     type: promised
     text:
-      en: Congress passes the Act and the President signs it
+      en: The President signs the Act, which Congress passed on 23 April
   - date: "2024-04-24"
     type: legislated
     text:
@@ -56,4 +59,15 @@ events:
     evidence_url: "https://home.treasury.gov/news/press-releases/jy2764"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

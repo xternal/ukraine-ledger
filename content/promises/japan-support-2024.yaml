@@ -10,7 +10,7 @@ venue_label:
 area: money_and_deals
 status: delivering
 status_note:
-  en: Ukraine’s Ministry of Finance counts $4.3bn of budget financing from Japan in 2024. Japanese humanitarian aid is not in that figure, so whether the full $4.5bn arrived in 2024 is unconfirmed.
+  en: Ukraine’s Ministry of Finance counts $4.3bn of budget support from Japan in 2024 (concessional financing, grants and a guarantee). The accord’s $4.5bn also covers humanitarian and other aid, which that count does not list, so whether the full $4.5bn arrived in 2024 is unconfirmed.
 responsible:
   actor_id: japan-government
 origin: manual
@@ -19,7 +19,7 @@ versions:
     text: Japan has committed and provided to Ukraine the financial, humanitarian and other assistance worth a total value of over 12 billion US dollars since March 2022, including 4.5 billion US dollars support for 2024.
     recorded_on: "2026-10-20"
     source_url: "https://japan.kantei.go.jp/content/ukraine_en.pdf"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: "Ukraine: financial, humanitarian and other assistance"
@@ -51,4 +51,15 @@ events:
     evidence_url: "https://www.kmu.gov.ua/en/news/minfin-partnery-z-rozvytku-iaki-nadaly-biudzhetnu-pidtrymku-ukraini-u-2024-rotsi-zahalnym-obsiahom-ponad-41-mlrd-ta-napriam-spriamuvannia-koshtiv"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

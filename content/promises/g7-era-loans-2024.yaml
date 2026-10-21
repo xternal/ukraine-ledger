@@ -10,11 +10,15 @@ venue_label:
 area: money_and_deals
 status: delivering
 status_note:
-  en: Only the United States moved its share in 2024, on 10 December, into a World Bank fund; the EU paid its first €3bn on 10 January 2025, and the UK and Canada theirs in March 2025. By 13 November 2025 the Commission counted €30.9bn of the loans paid out. Each lender’s share has its own card, and only those cards count in the totals and the charts.
+  en: Only the United States moved its share in 2024, on 10 December, into a World Bank fund; the EU paid its first €3bn on 10 January 2025, and the UK and Canada their first instalments in March 2025. By 13 November 2025 the Commission counted €30.9bn of the loans paid out. Each lender’s share has its own card, and only those cards count in the totals and the charts.
 responsible:
   actor_id: g7
 origin: manual
 sources:
+  - title: "European Commission, 10 January 2025: the EU's first €3bn of its G7 loan"
+    url: "https://enlargement.ec.europa.eu/news/commission-disburses-first-eu3-billion-ukraine-its-part-g7-loan-be-repaid-proceeds-immobilised-2025-01-10_en"
+  - title: "GOV.UK, 14 April 2025: the UK's second £752m, after the first on 6 March"
+    url: "https://www.gov.uk/government/news/uk-sends-multi-million-pound-military-equipment-loan-to-ukraine"
   - title: "European Commission, 13 November 2025: €30.9bn of ERA loans paid out"
     url: "https://enlargement.ec.europa.eu/news/eu-steps-support-ukraine-almost-eu6-billion-cover-its-financial-needs-2025-11-13_en"
   - title: G7 ERA loans term sheet, 25 October 2024 (Japan Ministry of Finance copy)
@@ -24,7 +28,7 @@ versions:
     text: With a view to supporting Ukraine’s current and future needs in the face of a prolonged defense against Russia, the G7 will launch Extraordinary Revenue Acceleration (ERA) Loans for Ukraine, in order to make available approximately USD 50 billion in additional funding to Ukraine by the end of the year.
     recorded_on: "2026-10-20"
     source_url: "https://www.g7italy.it/wp-content/uploads/Apulia-G7-Leaders-Communique.pdf"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine, as loans repaid from the profits on immobilised Russian assets
@@ -53,4 +57,15 @@ events:
     evidence_url: "https://home.treasury.gov/news/press-releases/jy2744"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

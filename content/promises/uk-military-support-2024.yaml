@@ -8,9 +8,9 @@ venue: agreement
 venue_label:
   en: UK–Ukraine Agreement on Security Co-operation, Part II, paragraph 6
 area: weapons
-status: in_plan
+status: delivered
 status_note:
-  en: In July 2024 the new government raised UK military aid to £3bn a year. The agreement says “in 2024” and the same day’s press release says 2024/25; no figure for what the UK spent in calendar 2024 was found by 20 October 2026.
+  en: "The Ministry of Defence’s annual report puts its overall spend on support to Ukraine at £3.02bn in 2024–25, the year to 31 March 2025. The agreement says “in 2024” and the same day’s press release says 2024/25; no figure for calendar 2024 was found by 20 October 2026."
 responsible:
   actor_id: uk-government
 origin: manual
@@ -24,7 +24,7 @@ versions:
     text: In 2024, the UK will provide a further £2.5bn of support.
     recorded_on: "2026-10-20"
     source_url: "https://assets.publishing.service.gov.uk/media/65a14a6ae96df50014f845d2/UK-Ukraine_Agreement_on_Security_Co-operation.pdf"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine, in the agreement’s part on defence and military cooperation
@@ -54,6 +54,22 @@ events:
     text:
       en: The government says UK military aid to Ukraine is £3bn a year, more than the agreement’s £2.5bn
     evidence_url: "https://www.gov.uk/government/news/uk-continues-to-step-up-for-ukraine-as-new-funding-announced-to-bring-war-criminals-to-justice"
+  - date: "2025-11-04"
+    type: delivered
+    text:
+      en: The Ministry of Defence’s annual report puts its spend on support to Ukraine in 2024–25 at £3.02bn, more than the agreement’s £2.5bn
+    evidence_url: "https://assets.publishing.service.gov.uk/media/6909c86b14b040dfe829220f/Ministry_of_Defence_annual_report_and_accounts_2024_to_2025.pdf"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

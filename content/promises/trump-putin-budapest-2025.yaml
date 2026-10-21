@@ -1,7 +1,7 @@
 format: openpromises/1
 id: trump-putin-budapest-2025
 headline:
-  en: Meet Putin in Budapest to end the war
+  en: Meet Putin in Budapest about ending the war
 actor_id: donald-trump
 made_on: "2025-10-16"
 venue: social
@@ -10,16 +10,19 @@ venue_label:
 area: negotiations
 status: failed
 status_note:
-  en: The two Presidents had not met in person since Alaska, 15 August 2025, by 20 October 2026.
+  en: No in-person meeting of the two Presidents since Alaska, 15 August 2025, was found in public sources by 20 October 2026.
 responsible:
   actor_id: us-trump-administration
 origin: manual
+sources:
+- title: 'CNBC: Trump says he would meet with Putin and Xi (19 October 2026)'
+  url: https://www.cnbc.com/2026/10/19/trump-putin-xi-zelenskyy.html
 versions:
 - version: 1
   text: President Putin and I will then meet in an agreed upon location, Budapest, Hungary, to see if we can bring this "inglorious" War, between Russia and Ukraine, to an end.
   recorded_on: "2026-10-20"
   source_url: https://www.presidency.ucsb.edu/node/378899
-  quote_checked_on: null
+  quote_checked_on: "2026-10-21"
   parameters:
     when:
       en: After a meeting of senior advisers the following week
@@ -36,4 +39,15 @@ events:
   evidence_url: https://www.foxbusiness.com/politics/trump-administration-hits-russias-top-oil-firms-sanctions-stunt-war-funding-urges-ceasefire
 replies: []
 corrections: []
-reviews: []
+reviews:
+- by: AI Journalist
+  kind: automated
+  "on": "2026-10-21"
+  note:
+    en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+- by: Pavel Guzhikov
+  kind: editor
+  "on": "2026-10-21"
+  approves: true
+  note:
+    en: Approved for the first publication on the AI Journalist's check.

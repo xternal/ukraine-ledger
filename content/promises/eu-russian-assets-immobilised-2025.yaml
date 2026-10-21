@@ -9,7 +9,7 @@ venue_label:
 area: sanctions
 status: legislated
 status_note:
-  en: "In force since 14 December 2025. The Regulation calls the measures temporary: they end only when Russia ends its war, pays reparations and no longer poses a serious risk to the EU economy (Article 6). The Council reviews them by 31 December 2026 and every 12 months after."
+  en: "In force since 14 December 2025. The Regulation calls the measures temporary: they end only when Russia ends its war, pays reparations and no longer poses a serious risk to the EU economy (Article 6). The Commission reviews the Regulation by 31 December 2026 and every 12 months after, and reports to the Council (Article 5)."
 responsible:
   actor_id: european-union
 origin: manual
@@ -18,7 +18,7 @@ versions:
     text: Any direct or indirect transfer of assets or reserves of the Central Bank of Russia, or of any legal person, entity or body acting on behalf of, or at the direction of, the Central Bank of Russia, such as the Russian National Wealth Fund, shall be prohibited.
     recorded_on: "2026-10-20"
     source_url: "https://eur-lex.europa.eu/eli/reg/2025/2600/oj"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: The assets and reserves of the Central Bank of Russia held in the EU
@@ -37,4 +37,15 @@ events:
     evidence_url: "https://eur-lex.europa.eu/eli/reg/2025/2600/oj"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.
