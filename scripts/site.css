@@ -185,3 +185,9 @@ main.main--wide { max-width: 72rem; }
 .chart-table th[scope="row"] { font-weight: 400; }
 .chart-table .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .chart-tip { position: absolute; z-index: 10; max-width: 18rem; padding: 0.45rem 0.65rem; border-radius: var(--op-radius-small); background: var(--op-ink); color: var(--op-bg); font-size: 0.8125rem; line-height: 1.4; pointer-events: none; box-shadow: 0 4px 16px rgb(0 0 0 / 0.18); }
+/* The mark beside the site's name (scripts/mark.ts): ink lines, and the dot in amber, as in the favicon. */
+:root { --mark-dot: #9c6626; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --mark-dot: #e2b26f; } }
+:root[data-theme="dark"] { --mark-dot: #e2b26f; }
+.site-name { display: inline-flex; align-items: center; gap: 0.45rem; }
+.site-name__mark { flex: none; }

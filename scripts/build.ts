@@ -8,7 +8,7 @@
 import { copyFileSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
-import { partyOf, todayIn, validateContent, type Actor, type Config } from "@openpromises/core";
+import { categoryOf, climb, partyOf, statusLabel, todayIn, validateContent, type Actor, type Config } from "@openpromises/core";
 import { findConfig, folderSource, loadConfig, readContent } from "@openpromises/files";
 import {
   absolute,
@@ -21,10 +21,13 @@ import {
   clip,
   collectionJsonLd,
   DESCRIPTION_MAX,
+  lastUpdated,
+  longDate,
   paths,
   publishFiles,
   relatedCards,
   sitemapXml,
+  statusCounts,
   words,
   type CardView,
   type JsonLd as Ld,
@@ -33,8 +36,11 @@ import {
 import { Breadcrumbs, JsonLd, PromiseCard, PromiseList, PromiseSpotlight, PromiseStory, StatusPill } from "@openpromises/react";
 import { createElement as h, Fragment, type ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { Resvg } from "@resvg/resvg-js";
 import { charts } from "./charts.ts";
 import { readFx } from "./fx.ts";
+import { faviconSvg, MARK_DOT, MARK_PATH, tileSvg } from "./mark.ts";
+import { HEIGHT, shareImage, WIDTH, type Climb, type Share } from "./share-image.ts";
 
 const ROOT = join(import.meta.dirname, "..");
 /** `--preview` builds drafts too, into public-preview/, so the editor sees a page before approving it; never deployed. */
@@ -52,6 +58,15 @@ export function coverage(config: Config, views: readonly CardView[]): { area: st
  * oldest first. A platform is the commitment a party asks voters to hold it to, so it comes before what was said
  * since. The same rule applies to every party.
  */
+/** Where a promise stands on the ladder, for the share images' climb chart and meters: the same rule for every card. */
+export function climbOf(config: Config, v: CardView, n: number): Climb {
+  const ladder = climb(config);
+  const step = ladder.indexOf(v.card.status);
+  const category = categoryOf(config, v.card.status);
+  const kind = category === "off_ladder" ? "off" : step < 0 ? "ended" : step === ladder.length - 1 ? "top" : category === "open" ? "open" : "progress";
+  return { n, step, kind };
+}
+
 export function platformPromises(views: readonly CardView[]): CardView[] {
   return views.filter((v) => v.card.venue === "platform").sort((a, b) => a.card.made_on.localeCompare(b.card.made_on) || a.id.localeCompare(b.id));
 }
@@ -83,9 +98,15 @@ async function main() {
   const people = [...result.actors.values()].filter((a) => a.kind === "person").sort((a, b) => a.id.localeCompare(b.id));
   const actorName = (a: Actor) => a.name[L] ?? a.id;
   const headline = (v: CardView) => v.card.headline?.[L] ?? v.id;
+  const ladder = climb(config);
+  const statusName = (status: string) => statusLabel(config, status, L);
+  const ladderLabels = ladder.map(statusName);
+  const updated = (vs: readonly CardView[]) => vs.map((v) => lastUpdated(v.card, today)).filter((d): d is string => !!d).sort().at(-1) ?? today;
+  const latest = (v: CardView) => [...v.card.events].filter((e) => e.date <= today).sort((a, b) => a.date.localeCompare(b.date)).at(-1);
+  const tally = (vs: readonly CardView[]) => statusCounts(vs, config).map(({ status, count }) => `${count} ${statusName(status).toLowerCase()}`).join(" · ");
 
   rmSync(OUT, { recursive: true, force: true });
-  const write = (path: string, body: string) => {
+  const write = (path: string, body: string | Buffer) => {
     const file = join(OUT, path.replace(/^\//, ""));
     mkdirSync(dirname(file), { recursive: true });
     writeFileSync(file, body);
@@ -111,11 +132,14 @@ async function main() {
   /**
    * Every page's own description, canonical address and share card (Open Graph and Twitter). `title` is the page's
    * name; `fullTitle` and `socialTitle` override what search results and share cards show (a card uses the engine's
-   * cardTitle). The share image waits for the site's mark, so cards are "summary" for now.
+   * cardTitle). Every page has its own share image (scripts/share-image.ts), drawn from what the page is about.
    */
-  type PageOpts = { wide?: boolean; description?: string; fullTitle?: string; socialTitle?: string; type?: "website" | "article" };
+  type PageOpts = { wide?: boolean; description?: string; fullTitle?: string; socialTitle?: string; type?: "website" | "article"; share: Share; alt: string };
+  const images: { path: string; share: Share }[] = [];
+  const imageOf = (path: string) => `/og${trim(path) === "/" ? "/home" : trim(path)}.png`;
   const head = (path: string, title: string, opts: PageOpts) => {
     const url = absolute(config, trim(path));
+    const image = absolute(config, imageOf(path));
     const description = clip(opts.description ?? config.site.description[L], DESCRIPTION_MAX);
     const social = opts.socialTitle ?? title;
     return [
@@ -131,14 +155,25 @@ async function main() {
       h("meta", { key: "oti", property: "og:title", content: social }),
       h("meta", { key: "od", property: "og:description", content: description }),
       h("meta", { key: "ou", property: "og:url", content: url }),
-      h("meta", { key: "tc", name: "twitter:card", content: "summary" }),
+      h("meta", { key: "oi", property: "og:image", content: image }),
+      h("meta", { key: "oit", property: "og:image:type", content: "image/png" }),
+      h("meta", { key: "oiw", property: "og:image:width", content: String(WIDTH) }),
+      h("meta", { key: "oih", property: "og:image:height", content: String(HEIGHT) }),
+      h("meta", { key: "oia", property: "og:image:alt", content: opts.alt }),
+      h("meta", { key: "tc", name: "twitter:card", content: "summary_large_image" }),
       h("meta", { key: "tt", name: "twitter:title", content: social }),
       h("meta", { key: "tdd", name: "twitter:description", content: description }),
+      h("meta", { key: "ti", name: "twitter:image", content: image }),
+      h("meta", { key: "tia", name: "twitter:image:alt", content: opts.alt }),
+      h("link", { key: "fi", rel: "icon", href: "/favicon.svg", type: "image/svg+xml" }),
+      h("link", { key: "fp", rel: "icon", href: "/favicon-32.png", sizes: "32x32", type: "image/png" }),
+      h("link", { key: "fa", rel: "apple-touch-icon", href: "/apple-touch-icon.png" }),
     ];
   };
 
   /** `wide`: the home page, whose charts use the full width while its text keeps the reading measure. */
-  const page = (path: string, title: string, body: ReactNode, opts: PageOpts = {}) =>
+  const page = (path: string, title: string, body: ReactNode, opts: PageOpts) => (
+    images.push({ path: imageOf(path), share: opts.share }),
     write(
       path.endsWith("/") ? `${path}index.html` : `${path}/index.html`,
       "<!doctype html>\n" +
@@ -162,7 +197,17 @@ async function main() {
               h(
                 "header",
                 { className: "site-header" },
-                h("a", { href: "/", className: "site-name" }, name),
+                h(
+                  "a",
+                  { href: "/", className: "site-name" },
+                  h(
+                    "svg",
+                    { className: "site-name__mark", viewBox: "0 0 32 32", width: 26, height: 26, "aria-hidden": "true", focusable: "false" },
+                    h("path", { d: MARK_PATH, fill: "none", stroke: "currentColor", strokeWidth: 2.6, strokeLinecap: "round", strokeLinejoin: "round" }),
+                    h("circle", { ...MARK_DOT, r: 2.6, style: { fill: "var(--mark-dot)" } }),
+                  ),
+                  name,
+                ),
                 nav(path),
               ),
               PREVIEW ? h("p", { className: "preview-banner", role: "note" }, "Preview: drafts included. Nothing on this page is published or approved.") : null,
@@ -178,8 +223,33 @@ async function main() {
             ),
           ),
         ),
-    );
+    )
+  );
   const ld: { config: Config; w: typeof w; today: string } = { config, w, today };
+
+  // Share images: a commitment shows its words and where it stands; a list shows every commitment as a bar.
+  const footer = (vs: readonly CardView[]) => `Updated ${longDate(w, updated(vs))} · ukraineledger.com`;
+  const promiseShare = (v: CardView, kicker?: string): Share => {
+    const c = climbOf(config, v, 0);
+    const e = latest(v);
+    return {
+      kind: "promise",
+      kicker: kicker ?? `${actorName(v.actor)} · ${longDate(w, v.card.made_on).replace(/ /g, "\u00a0")}`,
+      headline: headline(v),
+      words: v.current.text,
+      steps: ladderLabels,
+      step: c.kind === "off" || c.kind === "ended" ? -1 : c.step,
+      status: statusName(v.card.status),
+      latest: e?.text?.[L] && c.kind !== "off" ? `${longDate(w, e.date)}: ${e.text[L]}` : undefined,
+      footer: footer([v]),
+    };
+  };
+  const promiseAlt = (v: CardView) => `${headline(v)}: “${clip(v.current.text, 200)}” Status: ${statusName(v.card.status)}.`;
+  /** Bars from the furthest step down, endings last, so the chart reads as one shape; the same order for every page. */
+  const climbs = (vs: readonly CardView[]) => vs.map((v) => climbOf(config, v, 0)).sort((a, b) => (a.kind === "ended" ? -1 : a.step) - (b.kind === "ended" ? -1 : b.step)).reverse();
+  const chartShare = (kicker: string, title: string, vs: readonly CardView[]): Share => ({ kind: "chart", kicker, title, climb: climbs(vs), steps: ladderLabels, tally: tally(vs), footer: footer(vs) });
+  const chartAlt = (vs: readonly CardView[]) => `A bar for each of the ${vs.length} commitments, as tall as the step it has reached: ${tally(vs)}.`;
+  const pageShare = (kicker: string, title: string, sub: string, vs: readonly CardView[] = views): Share => ({ kind: "page", kicker, title, sub, footer: footer(vs) });
 
   const coverageTable =(cards: readonly CardView[], caption: string) =>
     h(
@@ -248,7 +318,11 @@ async function main() {
         : h("p", null, "No promise is published yet. The first cards are being checked against their sources."),
       h(JsonLd, { data: siteLd }),
     ),
-    { wide: true },
+    {
+      wide: true,
+      share: chartShare("Every government and the EU · since 24 February 2022", "What is promised to Ukraine, and where each commitment stands", views),
+      alt: chartAlt(views),
+    },
   );
 
   const promisesDescription = "Every commitment to Ukraine on this site, by every government and the EU, with its exact words, its status and the evidence for it.";
@@ -262,7 +336,7 @@ async function main() {
       h(PromiseList, { views, today, actors: result.actors, config, empty: "No promise is published yet." }),
       h(JsonLd, { data: collectionJsonLd({ path: p.promises(L), name: "Every promise", description: promisesDescription, views }, ld) }),
     ),
-    { description: promisesDescription },
+    { description: promisesDescription, share: chartShare("Every promise", `Every commitment on ${name}, and where each one stands`, views), alt: chartAlt(views) },
   );
 
   for (const v of views) {
@@ -277,13 +351,13 @@ async function main() {
         h(PromiseCard, { view: v, config, today, related: relatedCards(v, views), actions: h("a", { href: `${p.card(v.id, L)}/story/` }, "The whole story in one line") }),
         h(JsonLd, { data: cardJsonLd(v, ld) }),
       ),
-      { description: cardDescription(v, config, w), fullTitle: cardTitle(v, config, w).title, socialTitle: cardTitle(v, config, w).social, type: "article" },
+      { description: cardDescription(v, config, w), fullTitle: cardTitle(v, config, w).title, socialTitle: cardTitle(v, config, w).social, type: "article", share: promiseShare(v), alt: promiseAlt(v) },
     );
     page(
       `${p.card(v.id, L)}/story`,
       `${headline(v)}: the story`,
       h(Fragment, null, h(Breadcrumbs, { config, items: [...crumbs, { name: "Story", href: `${p.card(v.id, L)}/story/` }] }), h(PromiseStory, { view: v, config, today, headingLevel: 2 })),
-      { description: `The whole story of “${headline(v)}” in one dated line: every wording, every event and its evidence, and what is still to come.`, type: "article" },
+      { description: `The whole story of “${headline(v)}” in one dated line: every wording, every event and its evidence, and what is still to come.`, type: "article", share: promiseShare(v, "The whole story, step by step"), alt: promiseAlt(v) },
     );
   }
 
@@ -300,7 +374,11 @@ async function main() {
         people.map((a) => h("li", { key: a.id }, h("a", { href: p.actor(a.id, L) }, actorName(a)), a.roles?.at(-1) ? `, ${a.roles.at(-1)!.title[L]}` : "", ` (${views.filter((v) => v.actor.id === a.id).length})`)),
       ),
     ),
-    { description: "The officials whose commitments to Ukraine are recorded here, with their roles and how many commitments each has made." },
+    {
+      description: "The officials whose commitments to Ukraine are recorded here, with their roles and how many commitments each has made.",
+      share: pageShare("People", "Who promised what", "The officials whose commitments to Ukraine are recorded here, with their roles and how many commitments each has made."),
+      alt: "Who promised what: the officials whose commitments to Ukraine are recorded on UkraineLedger.com.",
+    },
   );
   for (const a of result.actors.values()) {
     const own = views.filter((v) => v.actor.id === a.id || v.party?.id === a.id);
@@ -323,6 +401,11 @@ async function main() {
         description: own.length
           ? `${actorName(a)}: ${own.length} ${own.length === 1 ? "commitment to Ukraine, in its" : "commitments to Ukraine, each in its"} exact words, with its deadline, status and evidence.`
           : `${actorName(a)}: commitments to Ukraine, in their exact words, with deadlines, statuses and evidence. None is published yet.`,
+        share:
+          own.length === 1
+            ? promiseShare(own[0], actorName(a))
+            : pageShare(a.roles?.at(-1)?.title[L] ?? "Commitments to Ukraine", actorName(a), own.length ? `${own.length} commitments to Ukraine: ${tally(own)}` : "No commitment to Ukraine is published yet.", own.length ? own : views),
+        alt: own.length === 1 ? promiseAlt(own[0]) : `${actorName(a)} on UkraineLedger.com: ${own.length ? `${own.length} commitments to Ukraine, ${tally(own)}` : "no commitment published yet"}.`,
       },
     );
   }
@@ -331,11 +414,16 @@ async function main() {
     "/promises/area/",
     "Areas",
     h(Fragment, null, h("h1", null, "Promises by area"), h("p", null, "The areas are what a government can do about a war. They were fixed before the first card, so the list is never fitted to the cards."), coverageTable(views, "Every area, empty ones included")),
-    { description: "Commitments to Ukraine by area, from weapons and money to sanctions, talks and membership. Every area is listed, empty ones included, so gaps show." },
+    {
+      description: "Commitments to Ukraine by area, from weapons and money to sanctions, talks and membership. Every area is listed, empty ones included, so gaps show.",
+      share: pageShare("Areas", "Promises by area", "Eight areas, fixed before the first card: talks, sanctions, weapons, money, security guarantees, intelligence, civilians and membership."),
+      alt: "Promises by area on UkraineLedger.com: eight areas, fixed before the first card.",
+    },
   );
   const areaDescription = (label: string) => `Commitments to Ukraine under “${label}”: each in its exact words, with its status and the evidence for it.`;
   for (const { area } of coverage(config, views)) {
     const label = areaLabel(config, area, L);
+    const inArea = views.filter((v) => v.card.area === area);
     page(
       p.area(area, L),
       label,
@@ -347,7 +435,11 @@ async function main() {
         h(PromiseList, { views: views.filter((v) => v.card.area === area), today, actors: result.actors, config, empty: "No promise is recorded in this area." }),
         h(JsonLd, { data: collectionJsonLd({ path: p.area(area, L), name: label, description: areaDescription(label), views: views.filter((v) => v.card.area === area), breadcrumb: [{ name: "Areas", path: "/promises/area/" }] }, ld) }),
       ),
-      { description: areaDescription(label) },
+      {
+        description: areaDescription(label),
+        share: inArea.length === 1 ? promiseShare(inArea[0], `Area · ${label}`) : pageShare("Area", label, inArea.length ? `${inArea.length} commitments: ${tally(inArea)}` : "No commitment is recorded in this area yet.", inArea.length ? inArea : views),
+        alt: inArea.length === 1 ? promiseAlt(inArea[0]) : `${label} on UkraineLedger.com: ${inArea.length ? `${inArea.length} commitments, ${tally(inArea)}` : "no commitment recorded yet"}.`,
+      },
     );
   }
 
@@ -380,7 +472,11 @@ async function main() {
       h("section", { className: "faq", "aria-labelledby": "faq-h" }, h("h2", { id: "faq-h" }, "Questions"), faq.map(([q, a]) => h(Fragment, { key: q }, h("h3", null, q), h("p", null, a)))),
       h(JsonLd, { data: { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) } }),
     ),
-    { description: "How UkraineLedger.com records commitments to Ukraine: exact words, evidence for every change of status, nothing rewritten, one set of rules for all." },
+    {
+      description: "How UkraineLedger.com records commitments to Ukraine: exact words, evidence for every change of status, nothing rewritten, one set of rules for all.",
+      share: pageShare("How it works", "Exact words. A status that moves only on evidence.", "Nothing rewritten; costs with who made them; the same rules and words for every government."),
+      alt: "How UkraineLedger.com works: exact words, and a status that moves only on evidence.",
+    },
   );
 
   // Search engines and AI crawlers are welcome: everything here is public and open data. The preview is never deployed.
@@ -409,6 +505,12 @@ async function main() {
   copyFileSync(require.resolve("@openpromises/react/styles.css"), join(OUT, "styles.css"));
   copyFileSync(join(ROOT, "scripts", "site.css"), join(OUT, "site.css"));
   copyFileSync(join(ROOT, "scripts", "charts.js"), join(OUT, "charts.js"));
+  // Share images, a few at a time; then the mark (scripts/mark.ts) as an SVG favicon that follows the reader's light
+  // or dark setting, a PNG for browsers that want one, and the home-screen icon.
+  for (let i = 0; i < images.length; i += 8) await Promise.all(images.slice(i, i + 8).map(async ({ path, share }) => write(path, await shareImage(share))));
+  write("/favicon.svg", faviconSvg());
+  write("/favicon-32.png", new Resvg(tileSvg(32, true)).render().asPng());
+  write("/apple-touch-icon.png", new Resvg(tileSvg(180, false)).render().asPng());
   console.log(`Built ${views.length} ${PREVIEW ? "cards, drafts included" : "published cards"}, ${result.actors.size} actors, ${coverage(config, views).length} areas into ${PREVIEW ? "public-preview" : "public"}/ (${today}).`);
 }
 
