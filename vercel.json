@@ -3,5 +3,12 @@
   "framework": null,
   "installCommand": "npm install -g corepack@0.34.5 && corepack enable pnpm && pnpm install --frozen-lockfile",
   "buildCommand": "pnpm build",
-  "outputDirectory": "public"
+  "outputDirectory": "public",
+  "proxy": {
+    "entrypoint": "edge/count.ts",
+    "matcher": [
+      "/((?!og/|data/|feeds/)[^.]*)",
+      "/views.json"
+    ]
+  }
 }

@@ -25,15 +25,17 @@ Node 22.18 or later and pnpm 12.
 pnpm install
 pnpm validate        # every card, draft, actor and the editors list against format v1
 pnpm lint:words      # judgement words in our own text
+pnpm test            # what the page counter counts (edge/)
 pnpm build           # the static site in public/, published cards only
 pnpm preview         # the same with drafts, in public-preview/, never deployed
 ```
 
-## Where things stand (20 October 2026)
+## Where things stand (21 October 2026)
 
-- 10 draft commitments by the Trump administration (President Trump, Vice President Vance, Secretary Rubio), each quote machine-checked against its source: 11 exact, 1 close (an editor confirms it by eye). `content/quotes.json` holds the checks.
-- Actors: the US officials with their roles from official pages, and the two US administrations as separate governments of one donor.
-- Next: the EU, European countries and other donors, starting with signed documents (the bilateral security agreements of 2024, the EU's Ukraine Facility, the G7's ERA loans), then the charts in the design brief.
+- Live at [ukraineledger.com](https://ukraineledger.com), deployed by Vercel from `main`.
+- 32 published commitments: the EU, ten governments and the two US administrations. They include the 2024 bilateral security agreements, the EU's Ukraine Facility and €90bn loan, the G7's ERA loans and the Trump administration's statements. Each quote is machine-checked against its source (`content/quotes.json`). Each card carries an automated check and Pavel Guzhikov's approval.
+- The home page shows the rings, the timeline and a table of every commitment (`docs/DESIGN_BRIEF.md`). Every page has its own share image (`scripts/share-image.ts`) and the mark (`scripts/mark.ts`).
+- Page views are counted on the host (`edge/count.ts`, Routing Middleware): one number per page per UTC day in Upstash Redis, nothing about readers, with crawlers and previews skipped. The totals for the last 30 days are public at `/views.json`, in the same format as the sister sites', and Pavel's visits report (the `site-visits` repository) reads them. Without the store connected, nothing is counted and `/views.json` lists no days.
 
 ## Open decisions
 
