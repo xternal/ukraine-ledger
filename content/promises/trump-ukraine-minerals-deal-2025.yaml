@@ -10,22 +10,21 @@ venue_label:
 area: money_and_deals
 status: delivered
 status_note:
-  en: Signed on 30 April 2025, not on Friday 28 February, when the Oval Office meeting ended without a signing. The fund said on 18 December 2025 that it was fully operational; no investment by it was found
-    in public sources by 20 October 2026.
+  en: Signed on 30 April 2025, not on Friday 28 February. The DFC said on 18 December 2025 that the fund was fully operational, and the fund approved its first investment, in Sine Engineering, on 25 March 2026.
 responsible:
   actor_id: us-trump-administration
 origin: manual
 sources:
 - title: 'DFC: US-Ukraine Reconstruction Investment Fund fully operational'
   url: https://dfc.gov/media/press-releases/dfc-announces-us-ukraine-reconstruction-investment-fund-fully-operational-and
-- title: White House statement of 28 February 2025
-  url: https://www.govinfo.gov/content/pkg/DCPD-202500312/html/DCPD-202500312.htm
+- title: 'DFC: the fund announces its first investment (25 March 2026)'
+  url: https://www.dfc.gov/media/press-releases/urif-announces-first-investment-strengthening-ukraines-security-and-unlocking
 versions:
 - version: 1
   text: President Zelenskyy is going to be coming on Friday. That's now confirmed. And we're going to be signing an agreement, which will be a very big agreement.
   recorded_on: "2026-10-20"
   source_url: https://www.govinfo.gov/content/pkg/DCPD-202500304/html/DCPD-202500304.htm
-  quote_checked_on: null
+  quote_checked_on: "2026-10-21"
   parameters:
     when:
       en: Friday 28 February 2025
@@ -42,4 +41,15 @@ events:
   evidence_url: https://home.treasury.gov/news/press-releases/sb0126
 replies: []
 corrections: []
-reviews: []
+reviews:
+- by: AI Journalist
+  kind: automated
+  "on": "2026-10-21"
+  note:
+    en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+- by: Pavel Guzhikov
+  kind: editor
+  "on": "2026-10-21"
+  approves: true
+  note:
+    en: Approved for the first publication on the AI Journalist's check.

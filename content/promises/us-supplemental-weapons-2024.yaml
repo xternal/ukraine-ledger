@@ -22,7 +22,7 @@ versions:
     text: And now Americans are going to send Ukraine the supplies they need to keep them in the fight.
     recorded_on: "2026-10-20"
     source_url: "https://bidenwhitehouse.archives.gov/briefing-room/speeches-remarks/2024/04/24/remarks-by-president-biden-on-the-passage-of-h-r-815-the-national-security-supplemental/"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine’s armed forces
@@ -45,4 +45,15 @@ events:
     evidence_url: "https://www.govinfo.gov/content/pkg/DCPD-202401109/html/DCPD-202401109.htm"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

@@ -15,6 +15,8 @@ responsible:
   actor_id: us-trump-administration
 origin: manual
 sources:
+- title: 'Ukraine Ministry of Defence: how the PURL initiative works (15 October 2025)'
+  url: https://mod.gov.ua/en/news/how-nato-european-partners-and-the-united-states-are-strengthening-ukraine-through-the-purl-initiative
 - title: 'Kyiv Independent: Trump signs defense bill with $400 million a year for Ukraine'
   url: https://kyivindependent.com/trump-signs-defense-spending-bill-into-law-providing-400-million-annually-in-military-assistance-to-ukraine-through-2027/
 versions:
@@ -22,7 +24,7 @@ versions:
   text: We're done with the funding of the Ukraine war business. We want to bring about a peaceful settlement to this thing,
   recorded_on: "2026-10-20"
   source_url: https://www.tribuneindia.com/news/world/ahead-of-alaska-summit-jd-vance-says-us-is-done-with-funding-ukraine-war-business/amp
-  quote_checked_on: null
+  quote_checked_on: "2026-10-21"
   parameters:
     when:
       en: Not stated
@@ -39,4 +41,15 @@ events:
   evidence_url: https://www.kyivpost.com/amp/post/73966
 replies: []
 corrections: []
-reviews: []
+reviews:
+- by: AI Journalist
+  kind: automated
+  "on": "2026-10-21"
+  note:
+    en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+- by: Pavel Guzhikov
+  kind: editor
+  "on": "2026-10-21"
+  approves: true
+  note:
+    en: Approved for the first publication on the AI Journalist's check.

@@ -9,11 +9,13 @@ venue_label:
 area: money_and_deals
 status: delivering
 status_note:
-  en: Transfers so far include €1.5bn (July 2024), €2.1bn requested in April 2025, €1.4bn (31 March 2026) and €1.4bn (3 August 2026). Since the second payment of 2025 the budget share goes to the mechanism that repays the G7 loans. How much of the earlier budget share reached the Ukraine Facility is not yet checked.
+  en: "Five transfers so far, €8bn in all: €1.5bn (July 2024), €2.1bn (April 2025), €1.6bn (8 August 2025), €1.4bn (31 March 2026) and €1.4bn (3 August 2026). Since the second payment of 2025 the budget share goes to the mechanism that repays the G7 loans. How much of the earlier budget share reached the Ukraine Facility is not yet checked."
 responsible:
   actor_id: european-union
 origin: manual
 sources:
+  - title: "European Commission Daily News: third transfer of €1.6bn (11 August 2025)"
+    url: "https://ec.europa.eu/commission/presscorner/detail/en/mex_25_1953"
   - title: Council Regulation (EU) 2024/1469, Annex XLI (the budget share to the Ukraine Facility)
     url: "https://eur-lex.europa.eu/eli/reg/2024/1469/oj"
   - title: "Commission Representation in Luxembourg: €1.4bn received (1 April 2026)"
@@ -25,7 +27,7 @@ versions:
     text: "The amounts of the financial contribution paid to the Union shall be used to support Ukraine, through the European Peace Facility established by Council Decision (CFSP) 2021/509 (*) and through Union programmes which are financed from the Union budget, according to the following key: (a) European Peace Facility: 90 %; (b) Union programmes financed from the Union budget: 10 %."
     recorded_on: "2026-10-20"
     source_url: "https://eur-lex.europa.eu/eli/dec/2024/1470/oj"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine, through the European Peace Facility (90%) and EU budget programmes (10%)
@@ -36,7 +38,7 @@ versions:
     text: "(a) European Peace Facility: 5 %; (b) Union programmes financed from the Union budget: 95 %."
     recorded_on: "2026-10-20"
     source_url: "https://eur-lex.europa.eu/eli/dec_impl/2024/2760/oj"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine, through the European Peace Facility (5%) and EU budget programmes (95%)
@@ -65,4 +67,15 @@ events:
     evidence_url: "https://eur-lex.europa.eu/eli/dec_impl/2024/2760/oj"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

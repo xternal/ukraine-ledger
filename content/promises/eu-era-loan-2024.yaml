@@ -22,7 +22,7 @@ versions:
     text: The MFA Loan shall be for a maximum amount of EUR 35 billion.
     recorded_on: "2026-10-20"
     source_url: "https://eur-lex.europa.eu/eli/reg/2024/2773/oj"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: Ukraine, as a loan repaid from the profits on immobilised Russian assets
@@ -64,4 +64,15 @@ events:
     evidence_url: "https://enlargement.ec.europa.eu/news/eu-steps-support-ukraine-almost-eu6-billion-cover-its-financial-needs-2025-11-13_en"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

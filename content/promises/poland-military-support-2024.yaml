@@ -1,0 +1,57 @@
+format: openpromises/1
+id: poland-military-support-2024
+headline:
+  en: Several substantial Polish military aid packages in 2024
+actor_id: poland-government
+made_on: "2024-07-08"
+venue: agreement
+venue_label:
+  en: Agreement on Security Co-operation between Poland and Ukraine, Part III, paragraph 7
+area: weapons
+status: delivering
+status_note:
+  en: "The agreement counts 44 packages by July 2024. Ukraine’s ambassador said the 45th was still being delivered in December 2024, and the Defence Minister said in February 2025 that a 46th, worth over €200m, was being prepared. Poland does not publish what its packages contain. The agreement is published as a scan: its words were read by machine (OCR) and checked against the page images."
+responsible:
+  actor_id: poland-government
+origin: manual
+sources:
+  - title: "Radio Svoboda: the ambassador on Poland’s 45th package (23 December 2024)"
+    url: "https://www.radiosvoboda.org/a/33250439.html"
+  - title: "Bankier.pl (PAP): the Defence Ministry prepares the 46th donation (25 February 2025)"
+    url: "https://www.bankier.pl/wiadomosc/MON-przygotowuje-46-donacja-dla-Ukrainy-Pomoc-bedzie-swiadczona-nadal-8897859.html"
+versions:
+  - version: 1
+    text: Bearing above in mind, in 2024 Poland will provide several substantial military assistance packages and will continue with a robust support within the next decade.
+    recorded_on: "2026-10-20"
+    source_url: "https://www.gov.pl/attachment/75d2e925-db41-4810-89fd-d6302ec53908"
+    quote_checked_on: "2026-10-21"
+    parameters:
+      who:
+        en: Ukraine’s armed forces
+      when:
+        en: In 2024
+      deadline: "2024-12-31"
+events:
+  - date: "2024-07-08"
+    type: promised
+    text:
+      en: Poland and Ukraine sign the agreement in Warsaw
+  - date: "2024-07-25"
+    type: delivering
+    text:
+      en: Ukraine’s ambassador to Poland says the 45th package, including a significant amount of ammunition, is being delivered
+    evidence_url: "https://www.ukrinform.net/rubric-defense/3888753-poland-sending-45th-package-of-defense-aid-to-ukraine-ambassador-zvarych.html"
+replies: []
+corrections: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.

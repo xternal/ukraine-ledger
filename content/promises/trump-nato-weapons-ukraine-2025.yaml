@@ -22,7 +22,7 @@ versions:
   text: So, in a nutshell, we're going to make top-of-the-line weapons, and they'll be sent to NATO.
   recorded_on: "2026-10-20"
   source_url: https://www.presidency.ucsb.edu/node/378339
-  quote_checked_on: null
+  quote_checked_on: "2026-10-21"
   parameters:
     who:
       en: Ukraine, with NATO allies paying
@@ -35,10 +35,26 @@ events:
   text:
     en: The President says US-made weapons will be sent to NATO for Ukraine
 - date: "2025-08-04"
-  type: delivering
+  type: funded
   text:
     en: The Netherlands funds the first package of US weapons for Ukraine through NATO's PURL scheme
   evidence_url: https://defence-industry.eu/netherlands-becomes-first-nato-member-to-support-ukraine-through-new-u-s-initiative/
+- date: "2026-03-26"
+  type: delivering
+  text:
+    en: NATO's Secretary General says weapons from the United States paid for by allies under PURL continue to flow to Ukraine
+  evidence_url: https://www.eurointegration.com.ua/eng/news/2026/03/26/7234100/
 replies: []
 corrections: []
-reviews: []
+reviews:
+- by: AI Journalist
+  kind: automated
+  "on": "2026-10-21"
+  note:
+    en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+- by: Pavel Guzhikov
+  kind: editor
+  "on": "2026-10-21"
+  approves: true
+  note:
+    en: Approved for the first publication on the AI Journalist's check.

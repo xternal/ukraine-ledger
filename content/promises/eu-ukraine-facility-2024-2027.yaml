@@ -10,7 +10,7 @@ venue_label:
 area: money_and_deals
 status: delivering
 status_note:
-  en: The Commission had paid €29.5bn under Pillar I (pre-financing, bridge financing and seven regular payments) before an eighth payment of €2.9bn on 2 October 2026. Of the €50bn, up to €33bn is loans and up to €17bn non-repayable support, much of which pays for guarantees and interest subsidies rather than grants.
+  en: The Commission had paid €29.5bn under Pillar I (pre-financing, bridge financing and seven regular payments) before an eighth payment of €2.9bn on 2 October 2026, which included €800m from the Ukraine Support Loan. Of the €50bn, up to €33bn is loans and up to €17bn non-repayable support, much of which pays for guarantees and interest subsidies rather than grants.
 responsible:
   actor_id: european-union
 origin: manual
@@ -22,7 +22,7 @@ versions:
     text: The sum of the resources made available pursuant to paragraphs 1 and 2 shall not exceed EUR 50 000 000 000 for the period 2024 to 2027.
     recorded_on: "2026-10-20"
     source_url: "https://eur-lex.europa.eu/eli/reg/2024/792/oj"
-    quote_checked_on: null
+    quote_checked_on: "2026-10-21"
     parameters:
       who:
         en: "Ukraine: its state budget, reforms and investment"
@@ -52,11 +52,27 @@ events:
     text:
       en: The Regulation is published in the Official Journal
     evidence_url: "https://eur-lex.europa.eu/eli/reg/2024/792/oj"
+  - date: "2024-03-20"
+    type: delivering
+    text:
+      en: The Commission pays the first €4.5bn, as bridge financing
+    evidence_url: "https://enlargement.ec.europa.eu/news/commission-disburses-first-eu45-billion-bridge-financing-ukraine-under-ukraine-facility-2024-03-20_en"
   - date: "2026-10-02"
     type: delivering
     text:
-      en: The Commission pays €2.9bn, the eighth regular payment under the Ukraine Plan
+      en: The Commission pays €2.9bn, the eighth disbursement under the Facility, including €800m from the Ukraine Support Loan
     evidence_url: "https://enlargement.ec.europa.eu/news/commission-disburses-eur29-billion-under-ukraine-facility-support-financial-stability-and-reforms-2026-10-02_en"
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: AI Journalist
+    kind: automated
+    "on": "2026-10-21"
+    note:
+      en: "Quote checked word for word at its source; dates, events, evidence links, figures and wording checked against the cited sources, with fixes made before publication."
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-10-21"
+    approves: true
+    note:
+      en: Approved for the first publication on the AI Journalist's check.
