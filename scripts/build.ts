@@ -40,7 +40,7 @@ import { Resvg } from "@resvg/resvg-js";
 import { charts, keyFigures } from "./charts.ts";
 import { FAMILY, MAKER, THIS_SITE } from "./family.ts";
 import { logbook, watchTiles, type LogEntry, type WatchPick } from "./home.ts";
-import { NOT_FOUND_DESCRIPTION, NOT_FOUND_FILE, NOT_FOUND_TITLE, notFoundBody } from "./notfound.ts";
+import { NOT_FOUND_FILE, notFoundBody, notFoundDescription, notFoundTitle } from "./notfound.ts";
 import { readFx } from "./fx.ts";
 import { faviconSvg, MARK_DOT, MARK_PATH, tileSvg } from "./mark.ts";
 import { HEIGHT, shareImage, WIDTH, type Climb, type Share } from "./share-image.ts";
@@ -651,9 +651,9 @@ async function main() {
   );
 
   // Any address with no page: the host serves 404.html with status 404 (scripts/notfound.ts). Not in the sitemap.
-  page("/404", NOT_FOUND_TITLE, notFoundBody({ home: "/", main: { href: p.promises(L), label: "Promises" } }), {
+  page("/404", notFoundTitle(), notFoundBody({ home: "/", main: { href: p.promises(L), label: "Promises" } }), {
     file: NOT_FOUND_FILE,
-    description: NOT_FOUND_DESCRIPTION,
+    description: notFoundDescription(),
     alt: `${name}: what is promised to Ukraine, and where each commitment stands.`,
   });
 

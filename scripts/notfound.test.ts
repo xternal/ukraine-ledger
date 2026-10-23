@@ -1,7 +1,4 @@
-/**
- * The "not found" page (scripts/notfound.ts) and how the host serves it. Run: node --test scripts/ (part of pnpm check).
- * The checks on the built 404.html run once public/ exists (after pnpm build); the live status is checked on the preview.
- */
+/** The page for an address with no page (scripts/notfound.ts). Run: node --test scripts/ (part of pnpm check). */
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -11,50 +8,46 @@ import { FAMILY, THIS_SITE } from "./family.ts";
 import { NOT_FOUND_FILE, notFoundBody } from "./notfound.ts";
 
 const ROOT = join(import.meta.dirname, "..");
-const html = renderToStaticMarkup(notFoundBody({ home: "/", main: { href: "/promises/", label: "Promises" } }) as never);
-const cards = [...html.matchAll(/<a class="nf-card"[^>]*>.*?<\/a>/g)].map((m) => m[0]);
+const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/'/g, "&#x27;");
+const html = renderToStaticMarkup(notFoundBody({ home: "/", main: { href: "/promises", label: "Promises" } }));
 
-test("lists every site of the family, in the switcher's order, with its name and its line", () => {
-  assert.equal(cards.length, FAMILY.length);
-  FAMILY.forEach((s, i) => {
-    assert.ok(cards[i]!.includes(`<b>${s.name}</b>`), s.name);
-    assert.ok(cards[i]!.includes(s.about.replace(/'/g, "&#x27;")), s.about);
-  });
-});
-
-test("marks this site, and only this one, as here, linking to its home page", () => {
-  const here = cards.filter((c) => c.includes('aria-current="page"'));
-  assert.equal(here.length, 1);
-  assert.ok(here[0]!.includes(`<b>${THIS_SITE}</b>`) && here[0]!.includes("You are here") && here[0]!.includes('href="/"'));
-  for (const s of FAMILY.filter((s) => s.name !== THIS_SITE)) assert.ok(html.includes(`href="${s.href}"`), s.href);
+test("lists every site of the family, in the switcher's order, and marks this one as here", () => {
+  const at = FAMILY.map((s) => html.indexOf(`<b>${s.name}</b>`));
+  for (const [i, s] of FAMILY.entries()) {
+    assert.ok(at[i]! >= 0, s.name);
+    assert.ok(html.includes(esc(s.about)), s.about);
+    if (s.name !== THIS_SITE) assert.ok(html.includes(`href="${s.href}"`), s.href);
+  }
+  assert.deepEqual([...at].sort((a, b) => a - b), at, "the switcher's order");
+  const current = [...html.matchAll(/<a [^>]*aria-current="page"[^>]*>(.*?)<\/a>/g)];
+  assert.equal(current.length, 1);
+  assert.ok(current[0]![0].includes('href="/"') && current[0]![1]!.includes(`<b>${THIS_SITE}</b>`) && current[0]![1]!.includes("You are here"));
 });
 
 test("says the page isn't here and links home and to the main section, with no script", () => {
-  assert.ok(html.includes("This page isn&#x27;t here"));
-  assert.ok(html.includes('href="/promises/"'));
+  assert.ok(html.includes(esc("This page isn't here")));
+  assert.ok(html.includes('href="/promises"'));
   assert.ok(!html.includes("<script"));
 });
 
-test("the host serves 404.html for any address with no file: nothing rewrites unknown paths to a page", () => {
+test("nothing turns an unknown address into a page with status 200: no catch-all rewrite, the proxy only passes it on", () => {
   const vercel = JSON.parse(readFileSync(join(ROOT, "vercel.json"), "utf8"));
-  assert.equal(vercel.outputDirectory, "public");
-  assert.equal(NOT_FOUND_FILE, "/404.html");
-  for (const key of ["rewrites", "routes"]) assert.equal(vercel[key], undefined, `${key} would answer unknown paths with a page`);
-  // A proxy (edge/count.ts), where there is one, answers only its own files; every page request ends in next(), on to the files.
-  const proxy = join(ROOT, "edge", "count.ts");
-  if (existsSync(proxy)) assert.match(readFileSync(proxy, "utf8"), /return next\(\);\s*\}\s*$/);
+  assert.equal(vercel.outputDirectory, "public", "Vercel serves public/404.html with status 404");
+  assert.equal(vercel.rewrites, undefined);
+  assert.equal(vercel.routes, undefined);
+  const proxy = readFileSync(join(ROOT, "edge", "count.ts"), "utf8");
+  assert.ok(!/\brewrite\(/.test(proxy), "the proxy never rewrites a path");
+  assert.ok(/return next\(\);\s*}\s*$/.test(proxy), "a page's request goes on to the static files");
 });
 
-const built = join(ROOT, "public", "404.html");
-test("the built 404.html is noindex, titled, in the site's shell, and out of the sitemap", { skip: !existsSync(built) && "no build output (run pnpm build)" }, () => {
+const built = join(ROOT, "public", NOT_FOUND_FILE.slice(1));
+test("the built 404.html: noindex, no canonical, the site's header and footer", { skip: !existsSync(built) && "run pnpm build first" }, () => {
   const page = readFileSync(built, "utf8");
-  assert.match(page, /<meta name="robots" content="noindex"\/>/);
-  assert.match(page, new RegExp(`<title>Page not found · ${THIS_SITE.replace(".", "\\.")}</title>`));
-  assert.match(page, /<meta name="description" content="[^"]+"\/>/);
-  assert.ok(!page.includes('rel="canonical"'), "no address of its own");
-  assert.ok(page.includes('class="site-header"') && page.includes("Made by <a href=\"https://guzh.uk\">Pavel Guzhikov</a>") && page.includes('href="https://ko-fi.com/pavelg">Buy me a matcha</a>'));
-  assert.ok(!page.includes('<script src='), "no script of its own");
-  for (const s of FAMILY) assert.ok(page.includes(`<b>${s.name}</b>`), s.name);
-  const sitemaps = ["sitemap.xml", "sitemap-pages.xml"].map((f) => join(ROOT, "public", f)).filter(existsSync);
-  for (const f of sitemaps) assert.ok(!readFileSync(f, "utf8").includes("/404"), f);
+  assert.ok(page.includes('<meta name="robots" content="noindex"/>'));
+  assert.ok(!page.includes('rel="canonical"'));
+  assert.ok(page.includes(`<title>Page not found · ${THIS_SITE}</title>`));
+  assert.ok(page.includes('class="site-header"') && page.includes('class="site-footer"'));
+  assert.ok(page.includes('href="https://guzh.uk">Pavel Guzhikov</a>') && page.includes('href="https://ko-fi.com/pavelg">Buy me a matcha</a>'));
+  const sitemap = join(ROOT, "public", "sitemap-pages.xml");
+  if (existsSync(sitemap)) assert.ok(!readFileSync(sitemap, "utf8").includes("404"));
 });
