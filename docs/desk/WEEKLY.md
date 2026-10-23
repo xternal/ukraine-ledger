@@ -20,7 +20,7 @@ It does three things: new promises to Ukraine (only while the editor's queue has
 The coordinator gives you the main checkout's path. Never work in it: it may hold someone's uncommitted work on another branch.
 
 ```bash
-export PATH="$HOME/.nvm/versions/node/v22.22.0/bin:$PATH"
+export PATH="$HOME/.nvm/versions/node/v22.23.4/bin:$PATH"
 git -C <main checkout> fetch origin --prune
 git -C <main checkout> worktree remove --force ../ukraine-ledger-desk-run   # only if a leftover one exists
 git -C <main checkout> worktree add --detach ../ukraine-ledger-desk-run origin/main
