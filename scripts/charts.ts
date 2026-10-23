@@ -715,20 +715,24 @@ export function chartTable(ctx: ChartContext, rows: readonly Row[], pill: (statu
   );
 }
 
-/** Four figures over both charts: how many commitments, from how many donors, how much is stated, how many delivered. */
-function figures(ctx: ChartContext, rows: readonly Row[]): ReactNode {
+/**
+ * The same four figures for the home page's first screen, outside the currency switch: euros as the cards state them,
+ * dollars beside them at the ECB rate on the day each commitment was made.
+ */
+export function keyFigures(ctx: ChartContext, views: readonly CardView[]): { label: string; value: string; sub: string }[] {
+  const { rows } = chartRows(views, ctx.config, ctx.usdPerEur);
   const costed = rows.filter((r) => r.amount);
   const delivered = rows.filter((r) => r.bucket === "delivered").length;
   const progress = rows.filter((r) => r.bucket === "progress").length;
-  const tile = (label: string, value: ReactNode, sub: string) => h("div", { key: label, className: "figure-tile" }, h("dt", null, label), h("dd", null, h("span", { className: "figure-tile__value" }, value), h("span", { className: "figure-tile__sub" }, sub)));
-  return h(
-    "dl",
-    { className: "figure-tiles" },
-    tile("Commitments", String(rows.length), "since 24 February 2022"),
-    tile("Donors", String(new Set(rows.map((r) => r.donor)).size), `in ${new Set(rows.map((r) => r.group)).size} groups`),
-    tile("Amounts stated", both(cash(ctx, sum(costed.map((r) => r.amount![1])), "eur"), cash(ctx, sum(rows.map((r) => r.usd?.[1] ?? 0)), "usd")), `central figures of ${costed.length}`),
-    tile("Delivered", String(delivered), `${progress} more under way`),
-  );
+  return [
+    // A joint commitment by an alliance is left out of the totals, since its members' own cards carry their shares.
+    rows.length === views.length
+      ? { label: "Commitments", value: String(rows.length), sub: "since 24 February 2022" }
+      : { label: "In the totals", value: String(rows.length), sub: `of ${views.length}; joint ones count by member` },
+    { label: "Donors", value: String(new Set(rows.map((r) => r.donor)).size), sub: `in ${new Set(rows.map((r) => r.group)).size} groups` },
+    { label: "Amounts stated", value: cash(ctx, sum(costed.map((r) => r.amount![1])), "eur"), sub: `${cash(ctx, sum(rows.map((r) => r.usd?.[1] ?? 0)), "usd")}; central figures of ${costed.length}` },
+    { label: "Delivered", value: String(delivered), sub: `${progress} more under way` },
+  ];
 }
 
 /**
@@ -761,7 +765,6 @@ export function charts(ctx: ChartContext, views: readonly CardView[], pill: (sta
       h("input", { type: "radio", name: "cur", id: "cur-usd", value: "usd" }),
       h("label", { htmlFor: "cur-usd" }, "$ Dollar"),
     ),
-    figures(ctx, rows),
     h("section", { className: "chart-section", "aria-labelledby": "sb-h" }, h("h2", { id: "sb-h" }, "Who has promised what"), sunburst(ctx, rows, pill)),
     h("section", { className: "chart-section", "aria-labelledby": "tl-h" }, h("h2", { id: "tl-h" }, "When, and by when"), timeline(ctx, rows)),
     h("details", { className: "chart-details" }, h("summary", null, `Both charts as a table (${count(rows.length, "commitment", "commitments")})`), chartTable(ctx, rows, pill)),
