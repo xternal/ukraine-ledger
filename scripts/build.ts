@@ -40,6 +40,7 @@ import { Resvg } from "@resvg/resvg-js";
 import { charts, keyFigures } from "./charts.ts";
 import { FAMILY, MAKER, THIS_SITE } from "./family.ts";
 import { logbook, watchTiles, type LogEntry, type WatchPick } from "./home.ts";
+import { NOT_FOUND_FILE, notFoundBody, notFoundDescription, notFoundTitle } from "./notfound.ts";
 import { readFx } from "./fx.ts";
 import { faviconSvg, MARK_DOT, MARK_PATH, tileSvg } from "./mark.ts";
 import { HEIGHT, shareImage, WIDTH, type Climb, type Share } from "./share-image.ts";
@@ -167,26 +168,32 @@ async function main() {
    * cardTitle). Every page has its own share image (scripts/share-image.ts), drawn from what the page is about.
    */
   type PageOpts = { wide?: boolean; description?: string; fullTitle?: string; socialTitle?: string; type?: "website" | "article"; share: Share; alt: string };
+  /**
+   * The "not found" page: written to its own file, never indexed, with no address of its own (no canonical or og:url),
+   * sharing the home page's image.
+   */
+  type MissingOpts = Omit<PageOpts, "share"> & { file: string };
   const images: { path: string; share: Share }[] = [];
   const imageOf = (path: string) => `/og${trim(path) === "/" ? "/home" : trim(path)}.png`;
-  const head = (path: string, title: string, opts: PageOpts) => {
+  const head = (path: string, title: string, opts: PageOpts | MissingOpts) => {
+    const missing = "file" in opts;
     const url = absolute(config, trim(path));
-    const image = absolute(config, imageOf(path));
+    const image = absolute(config, imageOf(missing ? "/" : path));
     const description = clip(opts.description ?? config.site.description[L], DESCRIPTION_MAX);
     const social = opts.socialTitle ?? title;
     return [
       h("title", { key: "t" }, opts.fullTitle ?? (title === name ? name : `${title} · ${name}`)),
       h("meta", { key: "d", name: "description", content: description }),
-      h("link", { key: "c", rel: "canonical", href: url }),
+      missing ? null : h("link", { key: "c", rel: "canonical", href: url }),
       // The preview is never deployed; if it ever is, search engines must not index unapproved drafts.
-      PREVIEW ? h("meta", { key: "r", name: "robots", content: "noindex" }) : null,
+      PREVIEW || missing ? h("meta", { key: "r", name: "robots", content: "noindex" }) : null,
       h("meta", { key: "tl", name: "theme-color", media: "(prefers-color-scheme: light)", content: "#ffffff" }),
       h("meta", { key: "td", name: "theme-color", media: "(prefers-color-scheme: dark)", content: "#241f1a" }),
       h("meta", { key: "ot", property: "og:type", content: opts.type ?? "website" }),
       h("meta", { key: "os", property: "og:site_name", content: name }),
       h("meta", { key: "oti", property: "og:title", content: social }),
       h("meta", { key: "od", property: "og:description", content: description }),
-      h("meta", { key: "ou", property: "og:url", content: url }),
+      missing ? null : h("meta", { key: "ou", property: "og:url", content: url }),
       h("meta", { key: "oi", property: "og:image", content: image }),
       h("meta", { key: "oit", property: "og:image:type", content: "image/png" }),
       h("meta", { key: "oiw", property: "og:image:width", content: String(WIDTH) }),
@@ -204,10 +211,10 @@ async function main() {
   };
 
   /** `wide`: the home page, whose charts use the full width while its text keeps the reading measure. */
-  const page = (path: string, title: string, body: ReactNode, opts: PageOpts) => (
-    images.push({ path: imageOf(path), share: opts.share }),
+  const page = (path: string, title: string, body: ReactNode, opts: PageOpts | MissingOpts) => (
+    "file" in opts ? null : images.push({ path: imageOf(path), share: opts.share }),
     write(
-      path.endsWith("/") ? `${path}index.html` : `${path}/index.html`,
+      "file" in opts ? opts.file : path.endsWith("/") ? `${path}index.html` : `${path}/index.html`,
       "<!doctype html>\n" +
         renderToStaticMarkup(
           h(
@@ -642,6 +649,13 @@ async function main() {
       alt: "How UkraineLedger.com works: exact words, and a status that moves only on evidence.",
     },
   );
+
+  // Any address with no page: the host serves 404.html with status 404 (scripts/notfound.ts). Not in the sitemap.
+  page("/404", notFoundTitle(), notFoundBody({ home: "/", main: { href: p.promises(L), label: "Promises" } }), {
+    file: NOT_FOUND_FILE,
+    description: notFoundDescription(),
+    alt: `${name}: what is promised to Ukraine, and where each commitment stands.`,
+  });
 
   // Search engines and AI crawlers are welcome: everything here is public and open data. The preview is never deployed.
   const crawlers = ["GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended"];
