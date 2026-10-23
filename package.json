@@ -15,7 +15,7 @@
     "build": "node scripts/build.ts",
     "fx": "node scripts/fx.ts",
     "openpromises:provenance": "node scripts/openpromises-provenance.ts",
-    "test": "node --test \"edge/*.test.ts\"",
+    "test": "node --test \"edge/*.test.ts\" \"scripts/*.test.ts\"",
     "check": "pnpm validate && pnpm lint:words && pnpm test && pnpm build",
     "preview": "node scripts/build.ts --preview"
   },

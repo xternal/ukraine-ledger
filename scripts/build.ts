@@ -37,7 +37,9 @@ import { Breadcrumbs, JsonLd, PromiseCard, PromiseList, PromiseSpotlight, Promis
 import { createElement as h, Fragment, type ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Resvg } from "@resvg/resvg-js";
-import { charts } from "./charts.ts";
+import { charts, keyFigures } from "./charts.ts";
+import { FAMILY, MAKER, THIS_SITE } from "./family.ts";
+import { logbook, watchTiles, type LogEntry, type WatchPick } from "./home.ts";
 import { readFx } from "./fx.ts";
 import { faviconSvg, MARK_DOT, MARK_PATH, tileSvg } from "./mark.ts";
 import { HEIGHT, shareImage, WIDTH, type Climb, type Share } from "./share-image.ts";
@@ -113,21 +115,51 @@ async function main() {
   };
   /**
    * The menu, with the section a page belongs to marked by aria-current: "page" on the section's own page, "true" on
-   * the pages under it (a card's page and story are under Promises; an area's page under Areas, not Promises).
+   * the pages under it (a card's page and story, the areas and each area's page are under Promises). Method last,
+   * the same word in the same place as on the other sites of the family (Pavel, 23 October 2026); areas left the menu
+   * for a row of links on Promises.
    */
   const trim = (x: string) => x.replace(/\/+$/, "") || "/";
   const menu = [
-    { href: p.promises(L), label: "Promises", owns: (x: string) => /^\/promises?(\/|$)/.test(x) && !x.startsWith("/promises/area") },
+    { href: p.promises(L), label: "Promises", owns: (x: string) => /^\/promises?(\/|$)/.test(x) },
     { href: "/actor/", label: "People", owns: (x: string) => x.startsWith("/actor") },
-    { href: "/promises/area/", label: "Areas", owns: (x: string) => x.startsWith("/promises/area") },
-    { href: "/about/", label: "How it works", owns: (x: string) => x.startsWith("/about") },
+    { href: "/about/", label: "Method", owns: (x: string) => x.startsWith("/about") },
   ];
   const nav = (path: string) =>
     h(
       "nav",
-      { "aria-label": "Site" },
-      menu.map((m) => h("a", { key: m.href, href: m.href, "aria-current": trim(path) === trim(m.href) ? "page" : m.owns(trim(path)) ? "true" : undefined }, m.label)),
+      { className: "site-nav", "aria-label": "Site" },
+      h("ul", null, menu.map((m) => h("li", { key: m.href }, h("a", { href: m.href, "aria-current": trim(path) === trim(m.href) ? "page" : m.owns(trim(path)) ? "true" : undefined }, m.label)))),
     );
+  /**
+   * The family of sites behind a small button beside the logo (Pavel, 23 October 2026): every ledger on the same
+   * open engine, and the maker's site. A <details> element, so it opens without JavaScript. Plain links: nothing counted.
+   */
+  const familySwitcher = h(
+    "details",
+    { className: "family" },
+    h(
+      "summary",
+      { "aria-label": "The other sites of the family" },
+      h("svg", { "aria-hidden": "true", viewBox: "0 0 14 14", width: 14, height: 14 }, h("path", { d: "M3 5l4 4 4-4", fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round", strokeLinejoin: "round" })),
+    ),
+    h(
+      "div",
+      { className: "family__panel" },
+      h("p", null, "Public money and promises, one ledger per country or place, on the same open engine."),
+      h(
+        "ul",
+        null,
+        FAMILY.map((s) => {
+          const here = s.name === THIS_SITE;
+          return h("li", { key: s.name }, h("a", { href: s.href, "aria-current": here ? "page" : undefined }, h("b", null, s.name, here ? h("span", { className: "family__here" }, "you are here") : null), h("span", null, s.about)));
+        }),
+      ),
+      h("a", { className: "family__maker", href: MAKER.href }, `Made by ${MAKER.name} · ${MAKER.short}`),
+    ),
+  );
+  /** Keeps the current item of the menu and of the area row in view on narrow screens, without moving the page. */
+  const NAV_SCRIPT = `(()=>{for(const c of document.querySelectorAll('.site-nav [aria-current],.area-filter [aria-current]')){const u=c.closest('ul');if(u.scrollWidth>u.clientWidth)u.scrollLeft=c.offsetLeft-(u.clientWidth-c.offsetWidth)/2}})();`;
 
   /**
    * Every page's own description, canonical address and share card (Open Graph and Twitter). `title` is the page's
@@ -198,15 +230,20 @@ async function main() {
                 "header",
                 { className: "site-header" },
                 h(
-                  "a",
-                  { href: "/", className: "site-name" },
+                  "div",
+                  { className: "brand-wrap" },
                   h(
-                    "svg",
-                    { className: "site-name__mark", viewBox: "0 0 32 32", width: 26, height: 26, "aria-hidden": "true", focusable: "false" },
-                    h("path", { d: MARK_PATH, fill: "none", stroke: "currentColor", strokeWidth: 2.6, strokeLinecap: "round", strokeLinejoin: "round" }),
-                    h("circle", { ...MARK_DOT, r: 2.6, style: { fill: "var(--mark-dot)" } }),
+                    "a",
+                    { href: "/", className: "site-name", "aria-current": trim(path) === "/" ? "page" : undefined },
+                    h(
+                      "svg",
+                      { className: "site-name__mark", viewBox: "0 0 32 32", width: 24, height: 24, "aria-hidden": "true", focusable: "false" },
+                      h("path", { d: MARK_PATH, fill: "none", stroke: "currentColor", strokeWidth: 2.6, strokeLinecap: "round", strokeLinejoin: "round" }),
+                      h("circle", { ...MARK_DOT, r: 2.6, style: { fill: "var(--mark-dot)" } }),
+                    ),
+                    name,
                   ),
-                  name,
+                  familySwitcher,
                 ),
                 nav(path),
               ),
@@ -220,6 +257,7 @@ async function main() {
                 h("p", null, "Built on ", h("a", { href: "https://github.com/xternal/openpromises" }, "OpenPromises"), ", like ", h("a", { href: "https://ledgergov.uk" }, "LedgerGov.UK"), " and ", h("a", { href: "https://russialedger.com" }, "RussiaLedger.com"), "."),
                 h("p", { className: "site-footer__maker" }, "Made by ", h("a", { href: "https://guzh.uk" }, "Pavel Guzhikov"), " · ", h("a", { href: "https://ko-fi.com/pavelg" }, "Buy me a matcha")),
               ),
+              h("script", { dangerouslySetInnerHTML: { __html: NAV_SCRIPT } }),
             ),
           ),
         ),
@@ -287,16 +325,118 @@ async function main() {
       ],
     },
   ];
+  /**
+   * The home page's first screen (Pavel, 23 October 2026, as on LedgerGov.UK and USLedger.org): a one-line headline,
+   * the four figures, then cards that each lead on: the promises at a glance, the areas, four promises to watch and the
+   * logbook. Every figure is from the published cards, and the tiles and the logbook are picked by fixed rules
+   * (scripts/home.ts).
+   */
+  const chartCtx = { config, w, L, today, usdPerEur, href: (id: string) => p.card(id, L) };
+  const firstScreen = () => {
+    const figures = keyFigures(chartCtx, views);
+    const counts = statusCounts(views, config);
+    const kindOf = (status: string) => climbOf(config, { card: { status } } as CardView, 0).kind;
+    const tiles = watchTiles(config, views, today);
+    const log = logbook({
+      config,
+      views,
+      today,
+      actorName: (id) => actorName(result.actors.get(id)!),
+      headline,
+      label: statusName,
+      cardPath: (id) => p.card(id, L),
+      actorPath: (id) => p.actor(id, L),
+      pairPath: () => p.promises(L),
+      promisesPath: p.promises(L),
+    });
+    const donors = figures.find((f) => f.label === "Donors")!.value;
+    const TILES = [
+      { key: "delivered", label: "Latest delivered", tone: "good", none: "No commitment has been delivered yet." },
+      { key: "notMet", label: "Latest not met", tone: "bad", none: "No commitment has failed yet." },
+      { key: "dueNext", label: "Due next", tone: "moved", none: "No open commitment has a date of its own ahead." },
+      { key: "forward", label: "Latest step forward", tone: "new", none: "No commitment has moved a step yet." },
+    ] as const;
+    const tile = (t: (typeof TILES)[number], pick: WatchPick | null) =>
+      pick
+        ? h(
+            "a",
+            { key: t.key, className: "fs-card fs-tile", href: p.card(pick.view.id, L) },
+            h("span", { className: `fs-tag t-${t.tone}` }, t.label),
+            h("span", { className: "fs-tile__q" }, headline(pick.view)),
+            h("span", { className: "fs-quiet" }, `${actorName(pick.view.actor)}, ${t.key === "dueNext" ? "due " : ""}${longDate(w, pick.date)}`),
+          )
+        : h("div", { key: t.key, className: "fs-card fs-tile fs-tile--none" }, h("span", { className: `fs-tag t-${t.tone}` }, t.label), h("span", { className: "fs-quiet" }, t.none));
+    const logRow = (l: LogEntry, i: number) =>
+      h(
+        "li",
+        { key: `${l.date}-${i}` },
+        h("time", { className: "fs-log__date", dateTime: l.date }, longDate(w, l.date)),
+        h("span", { className: `fs-tag t-${l.tone}` }, l.label),
+        h("a", { href: l.href }, h("span", { className: "visually-hidden" }, `${l.label}: `), l.text),
+      );
+    return h(
+      "div",
+      { className: "fs", id: "first-screen" },
+      h(
+        "div",
+        { className: "fs-title" },
+        h("h1", null, `What is promised to Ukraine: ${views.length} commitments from ${donors} donors`),
+        h("p", null, "Since 24 February 2022 · in each government's exact words, with the evidence since"),
+      ),
+      h(
+        "section",
+        { className: "fs-kpis", "aria-labelledby": "fs-kpis-h" },
+        h("h2", { id: "fs-kpis-h", className: "visually-hidden" }, "The commitments in four figures"),
+        h("ul", { className: "kpis" }, figures.map((k) => h("li", { key: k.label, className: "kpi" }, h("span", { className: "kpi__l" }, k.label), h("strong", { className: "kpi__v" }, k.value), h("span", { className: "kpi__s" }, k.sub)))),
+        h("p", { className: "fs-source" }, "From each card's own sources; dollars at the ECB rate on the day each commitment was made. ", h("a", { href: "#charts" }, "Who has promised what ", h("span", { "aria-hidden": "true" }, "→"))),
+      ),
+      h(
+        "div",
+        { className: "fs-row2" },
+        h(
+          "section",
+          { className: "fs-card", "aria-labelledby": "fs-promises-h" },
+          h("div", { className: "fs-head" }, h("h2", { id: "fs-promises-h" }, h("a", { href: p.promises(L) }, `${views.length} commitments on record`)), h("span", null, "where each one stands")),
+          h("div", { className: "fs-bar", "aria-hidden": "true" }, counts.map((c) => h("span", { key: c.status, "data-kind": kindOf(c.status), "data-status": c.status, style: { flexGrow: c.count } }))),
+          h(
+            "ul",
+            { className: "fs-counts", "aria-label": "Where they stand" },
+            counts.map((c) => h("li", { key: c.status }, h("i", { "aria-hidden": "true", "data-kind": kindOf(c.status), "data-status": c.status }), h("b", null, String(c.count)), ` ${statusName(c.status).toLowerCase()}`)),
+          ),
+          h("a", { className: "fs-more", href: p.promises(L) }, "Every commitment, by person, status or area ", h("span", { "aria-hidden": "true" }, "→")),
+        ),
+        h(
+          "section",
+          { className: "fs-card", "aria-labelledby": "fs-areas-h" },
+          h("div", { className: "fs-head" }, h("h2", { id: "fs-areas-h" }, h("a", { href: "/promises/area/" }, "By area")), h("span", null, "fixed before the first card, empty ones too")),
+          h(
+            "ul",
+            { className: "fs-areas" },
+            coverage(config, views).map((c) => h("li", { key: c.area, className: c.count ? undefined : "fs-areas__none" }, h("a", { href: p.area(c.area, L) }, areaLabel(config, c.area, L)), h("b", null, c.count ? String(c.count) : "None"))),
+          ),
+        ),
+      ),
+      views.length ? h("section", { className: "fs-tiles", "aria-label": "Promises to watch" }, TILES.map((t) => tile(t, tiles[t.key]))) : null,
+      h(
+        "section",
+        { className: "fs-card fs-log", "aria-labelledby": "fs-log-h" },
+        h("div", { className: "fs-head" }, h("h2", { id: "fs-log-h" }, "Logbook ", h("span", null, "added, moved, corrected or checked, newest first")), h("a", { href: "/feeds/all.xml" }, "Every change (Atom) ", h("span", { "aria-hidden": "true" }, "→"))),
+        h("ol", null, log.map(logRow)),
+      ),
+    );
+  };
+
   page(
     "/",
     name,
     h(
       Fragment,
       null,
-      h("h1", null, "What is promised to Ukraine"),
+      firstScreen(),
+      h("h2", { id: "charts", className: "home-h" }, "What is promised to Ukraine"),
       h("p", { className: "lede" }, "What every government and the EU has committed to since 24 February 2022, in their exact words, with the deadline they gave and what has happened since. A status moves only when a document shows it moved."),
       // The whole picture, as rings and a timeline (docs/DESIGN_BRIEF.md); charts.js adds zoom and tooltips only.
-      charts({ config, w, L, today, usdPerEur, href: (id) => p.card(id, L) }, views, (status) => h(StatusPill, { status, config })),
+      charts(chartCtx, views, (status) => h(StatusPill, { status, config })),
       h("script", { src: "/charts.js", defer: true }),
       platform.length
         ? h(
@@ -325,6 +465,25 @@ async function main() {
     },
   );
 
+  /**
+   * Areas, as a row of links on Promises and on each area's page, the one in view marked: Areas left the menu
+   * (Pavel, 23 October 2026). Only areas with a commitment are listed; the areas page lists them all, empty ones too.
+   */
+  const areaFilter = (current?: string) =>
+    h(
+      "nav",
+      { className: "area-filter", "aria-label": "Promises by area" },
+      h(
+        "ul",
+        null,
+        h("li", null, h("a", { href: p.promises(L), "aria-current": current ? undefined : "page" }, "All ", h("span", null, String(views.length)))),
+        coverage(config, views)
+          .filter((c) => c.count)
+          .map((c) => h("li", { key: c.area }, h("a", { href: p.area(c.area, L), "aria-current": current === c.area ? "page" : undefined }, areaLabel(config, c.area, L), " ", h("span", null, String(c.count))))),
+        h("li", null, h("a", { href: "/promises/area/", className: "area-filter__all" }, "Every area, empty ones too")),
+      ),
+    );
+
   const promisesDescription = "Every commitment to Ukraine on this site, by every government and the EU, with its exact words, its status and the evidence for it.";
   page(
     p.promises(L),
@@ -333,6 +492,7 @@ async function main() {
       Fragment,
       null,
       h("h1", null, "Every promise"),
+      areaFilter(),
       h(PromiseList, { views, today, actors: result.actors, config, empty: "No promise is published yet." }),
       h(JsonLd, { data: collectionJsonLd({ path: p.promises(L), name: "Every promise", description: promisesDescription, views }, ld) }),
     ),
@@ -413,7 +573,7 @@ async function main() {
   page(
     "/promises/area/",
     "Areas",
-    h(Fragment, null, h("h1", null, "Promises by area"), h("p", null, "The areas are what a government can do about a war. They were fixed before the first card, so the list is never fitted to the cards."), coverageTable(views, "Every area, empty ones included")),
+    h(Fragment, null, h(Breadcrumbs, { config, items: [{ name, href: "/" }, { name: "Promises", href: p.promises(L) }, { name: "Areas", href: "/promises/area/" }] }), h("h1", null, "Promises by area"), h("p", null, "The areas are what a government can do about a war. They were fixed before the first card, so the list is never fitted to the cards."), coverageTable(views, "Every area, empty ones included")),
     {
       description: "Commitments to Ukraine by area, from weapons and money to sanctions, talks and membership. Every area is listed, empty ones included, so gaps show.",
       share: pageShare("Areas", "Promises by area", "Eight areas, fixed before the first card: talks, sanctions, weapons, money, security guarantees, intelligence, civilians and membership."),
@@ -430,10 +590,11 @@ async function main() {
       h(
         Fragment,
         null,
-        h(Breadcrumbs, { config, items: [{ name, href: "/" }, { name: "Areas", href: "/promises/area/" }, { name: label, href: p.area(area, L) }] }),
+        h(Breadcrumbs, { config, items: [{ name, href: "/" }, { name: "Promises", href: p.promises(L) }, { name: "Areas", href: "/promises/area/" }, { name: label, href: p.area(area, L) }] }),
         h("h1", null, label),
+        areaFilter(area),
         h(PromiseList, { views: views.filter((v) => v.card.area === area), today, actors: result.actors, config, empty: "No promise is recorded in this area." }),
-        h(JsonLd, { data: collectionJsonLd({ path: p.area(area, L), name: label, description: areaDescription(label), views: views.filter((v) => v.card.area === area), breadcrumb: [{ name: "Areas", path: "/promises/area/" }] }, ld) }),
+        h(JsonLd, { data: collectionJsonLd({ path: p.area(area, L), name: label, description: areaDescription(label), views: views.filter((v) => v.card.area === area), breadcrumb: [{ name: "Promises", path: p.promises(L) }, { name: "Areas", path: "/promises/area/" }] }, ld) }),
       ),
       {
         description: areaDescription(label),
@@ -452,11 +613,12 @@ async function main() {
   ];
   page(
     "/about/",
-    "How it works",
+    "Method",
     h(
       Fragment,
       null,
-      h("h1", null, "How it works"),
+      h("h1", null, "Method"),
+      h("p", { className: "lede" }, "How a commitment gets here, and how it moves."),
       h(
         "ul",
         null,
@@ -475,7 +637,8 @@ async function main() {
     ),
     {
       description: "How UkraineLedger.com records commitments to Ukraine: exact words, evidence for every change of status, nothing rewritten, one set of rules for all.",
-      share: pageShare("How it works", "Exact words. A status that moves only on evidence.", "Nothing rewritten; costs with who made them; the same rules and words for every government."),
+      socialTitle: "Method: how UkraineLedger.com works",
+      share: pageShare("Method", "Exact words. A status that moves only on evidence.", "Nothing rewritten; costs with who made them; the same rules and words for every government."),
       alt: "How UkraineLedger.com works: exact words, and a status that moves only on evidence.",
     },
   );
@@ -501,7 +664,18 @@ async function main() {
     );
   }
 
-  if (!PREVIEW) for (const f of publishFiles({ config, views, today, actors: result.actors })) write(f.path, f.body);
+  // The engine's llms.txt knows the promises; the home page's first screen, the areas and Method are added.
+  if (!PREVIEW)
+    for (const f of publishFiles({ config, views, today, actors: result.actors }))
+      write(
+        f.path,
+        f.path === "/llms.txt"
+          ? String(f.body).replace(
+              /\n## Promise cards\n/,
+              `\n## The site\n\n- [Home](${absolute(config, "/")}): the first screen: four figures (commitments, donors, amounts stated, delivered), the commitments at a glance, the areas, four commitments to watch picked by fixed rules, and a logbook of what was added, moved, corrected or checked; then who has promised what, and when\n- [Promises by area](${absolute(config, "/promises/area/")}): eight areas, fixed before the first card, empty ones too\n- [Method](${absolute(config, "/about/")}): how a commitment is recorded and how its status moves\n\n## Promise cards\n`,
+            )
+          : f.body,
+      );
   const require = createRequire(import.meta.url);
   copyFileSync(require.resolve("@openpromises/react/styles.css"), join(OUT, "styles.css"));
   copyFileSync(join(ROOT, "scripts", "site.css"), join(OUT, "site.css"));
