@@ -101,6 +101,12 @@
     "checked_on": "2026-10-21",
     "sha256": "7ef7ad6ed2b0f21b902e72ac2445309c4488be54d60b148134f67b9fa449f272"
   },
+  "69d97cafde847b76e731e93606c5d3fe7a6fc425e2e8236f0c195ade84ca73fb|https://www.gov.uk/government/news/uk-boosts-support-to-ukraine-with-10-billion-package": {
+    "match": "exact",
+    "url": "https://www.gov.uk/government/news/uk-boosts-support-to-ukraine-with-10-billion-package",
+    "checked_on": "2026-11-01",
+    "sha256": "295e213d19a3c693edc05d6abd657a7d4a5fb8332201517c2bd4e3ed388affb4"
+  },
   "722c55ce8b11953da220e9c9af116c3708a576ac871bbe3b40fcbfe691054129|https://www.elysee.fr/emmanuel-macron/2024/02/16/accord-de-cooperation-en-matiere-de-securite-entre-la-france-et-lukraine": {
     "match": "exact",
     "url": "https://www.elysee.fr/emmanuel-macron/2024/02/16/accord-de-cooperation-en-matiere-de-securite-entre-la-france-et-lukraine",
@@ -112,6 +118,12 @@
     "url": "https://www.govinfo.gov/content/pkg/DCPD-202501223/html/DCPD-202501223.htm",
     "checked_on": "2026-10-21",
     "sha256": "fd6d56355eb976439d92e4cac492512ba8e1271a8542feea86cac1d8f87403b0"
+  },
+  "750c0062eae800713e33f60a8ba5ee02e5244b05817673003c37a2fd02d76bc9|https://www.gov.uk/government/news/uk-boosts-support-to-ukraine-with-10-billion-package": {
+    "match": "exact",
+    "url": "https://www.gov.uk/government/news/uk-boosts-support-to-ukraine-with-10-billion-package",
+    "checked_on": "2026-11-01",
+    "sha256": "295e213d19a3c693edc05d6abd657a7d4a5fb8332201517c2bd4e3ed388affb4"
   },
   "7e34b95c81dbf5adbb4d671f88669aba92253e09b75d68f17b18b16eaa6efb37|https://www.aljazeera.com/news/2025/8/20/no-us-troops-in-ukraine-trump-says": {
     "match": "exact",
