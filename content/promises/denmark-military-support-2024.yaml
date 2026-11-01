@@ -8,7 +8,7 @@ venue: agreement
 venue_label:
   en: Agreement on Security Cooperation and Long-term Support between Denmark and Ukraine, paragraph 11
 area: weapons
-status: funded
+status: delivering
 status_note:
   en: "“billon” is as written in the agreement. In April 2024 the three governing parties and six others in Parliament agreed to add DKK 4.4bn (about €590m), raising the 2024 frame for military support from DKK 13.9bn to DKK 18.3bn in 2024 prices (about €1.86bn to €2.45bn). A frame is a budget, and money left unspent is written off; no figure for what was spent in 2024 was found by 20 October 2026."
 responsible:
@@ -50,6 +50,11 @@ events:
     text:
       en: The three governing parties and six others in Parliament agree to add DKK 4.4bn (about €590m) to Denmark’s military support for Ukraine in 2024
     evidence_url: "https://um.dk/ukraine/en/news/denmark-increases-military-support-to-ukraine-by-4-4-billion-dkk-590-million-euro-in-2024/"
+  - date: "2025-11-03"
+    type: delivering
+    text:
+      en: "The Ministry of Defence’s fact sheet on the Danish model says Denmark made financial military donations through the Ukrainian state in 2024"
+    evidence_url: "https://www.fmn.dk/globalassets/fmn/dokumenter/2025/-faktaark_den-danske-model-.pdf"
 replies: []
 corrections: []
 reviews:
