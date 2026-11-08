@@ -1,0 +1,51 @@
+format: openpromises/1
+id: uk-economic-support-2026-2029
+headline:
+  en: £7bn of UK economic support over three years
+actor_id: uk-government
+made_on: "2026-10-28"
+venue: statement
+venue_label:
+  en: "HM Treasury news story “UK boosts support to Ukraine with £10 billion package”, Budget 2026"
+area: money_and_deals
+status: promised
+responsible:
+  actor_id: uk-government
+origin: llm_intake
+sources:
+  - title: "UK boosts support to Ukraine with £10 billion package (HM Treasury, 28 October 2026)"
+    url: "https://www.gov.uk/government/news/uk-boosts-support-to-ukraine-with-10-billion-package"
+  - title: "Further support for Ukraine (HM Treasury, 28 October 2026)"
+    url: "https://www.gov.uk/government/news/further-support-for-ukraine"
+versions:
+  - version: 1
+    text: The £10bn package includes £7 bn of economic support being made available over three years, including up to £5.5 billion of World Bank guarantees and a £500 million grant contribution to the World Bank International Development Association’s crisis facility, mobilising £1.5 billion of support for Ukraine.
+    recorded_on: "2026-11-01"
+    source_url: "https://www.gov.uk/government/news/uk-boosts-support-to-ukraine-with-10-billion-package"
+    parameters:
+      who:
+        en: Ukraine, through World Bank guarantees and a grant to the World Bank’s International Development Association crisis facility
+      cost:
+        range: [7.52, 8.35, 8.35]
+        quality: sourced
+        by:
+          kind: official
+          name: Government of the United Kingdom
+        note:
+          en: "£7bn as worded, at the ECB rate of 0.83785 pounds to the euro on 28 October 2026: €8.35bn. Most of it (up to £5.5bn) is guarantees, not grants, so the high end is that figure and the low end an editorial −10%."
+        sources:
+          - title: UK boosts support to Ukraine with £10 billion package
+            url: "https://www.gov.uk/government/news/uk-boosts-support-to-ukraine-with-10-billion-package"
+          - title: ECB euro reference rate, GBP, 2026-10-28
+            url: "https://data-api.ecb.europa.eu/service/data/EXR/D.GBP.EUR.SP00.A?startPeriod=2026-10-28&endPeriod=2026-10-28&format=csvdata"
+      when:
+        en: Over three years from October 2026
+      deadline: null
+events:
+  - date: "2026-10-28"
+    type: promised
+    text:
+      en: The Treasury announces a £10bn package for Ukraine in the Budget, including £7bn of economic support over three years
+replies: []
+corrections: []
+reviews: []
