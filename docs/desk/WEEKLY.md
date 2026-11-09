@@ -36,6 +36,8 @@ At the end, remove the worktree (`git worktree remove --force`).
 
 Otherwise, read what the site's actors (`content/actors/`) promised Ukraine in the past 7 days: aid with an amount, weapons with a date, sanctions, security guarantees, steps towards membership. Read their own official sites first (the hosts in `openpromises.config.ts` and those the cards already cite: whitehouse.gov, state.gov, defense.gov, treasury.gov, gov.uk, consilium.europa.eu, ec.europa.eu, elysee.fr, bundesregierung.de, um.dk, pm.gc.ca and the like). News sites are leads only.
 
+**Sites that build their pages in the browser.** Some of these sites send an empty shell to `curl` and fill it in with JavaScript, so a plain download reads nothing. On the run of 8 November 2026 these were pm.gc.ca, canada.ca, elysee.fr, government.nl, um.dk, gov.pl, governo.it and japan.kantei.go.jp. Read them with the built-in browser (the `mcp__Claude_Browser__*` tools): `navigate` to the site's news or press page, then `get_page_text`, and open each item from the past 7 days the same way. To check a quote, save the page as the browser shows it (`javascript_tool` with `document.documentElement.outerHTML`, written to `/tmp/<id>.html`) and run `check-quote` on that file as in rule 3; the card's `source_url` stays the page's own address. This is only for sites that answer but render in the browser. A site that refuses (403, a CAPTCHA, a block page) is reported under FAILED and never opened in the browser instead (rule 6). If you have no browser tools (a helper started by the coordinator may not), do the rest of the step, and list these sites under `BROWSER:` in the hand-back so the coordinator reads them in this same run, following this step.
+
 A sentence becomes a draft only if:
 
 - it commits to a future, checkable action, in the actor's own words (not a forecast, not a report of what was done);
@@ -74,6 +76,7 @@ PULL REQUESTS: one line each: link, what it holds, what Pavel checks, then `gh p
 FOR THE EDITOR: drafts to review and evidence a person must judge, one line each
 HEALTH: one line each, only what is new
 FAILED: what failed in this run and why, one line each
+BROWSER: sites in step 1 that render in the browser and were not read, one line each, for the coordinator to read
 ```
 
 Leave out any heading with nothing under it.
