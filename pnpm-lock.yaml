@@ -177,20 +177,20 @@ importers:
         specifier: 5.3.0
         version: 5.3.0
       '@openpromises/cli':
-        specifier: 0.16.0
-        version: 0.16.0
+        specifier: 0.16.1
+        version: 0.16.1
       '@openpromises/core':
-        specifier: 0.16.0
-        version: 0.16.0
+        specifier: 0.16.1
+        version: 0.16.1
       '@openpromises/files':
-        specifier: 0.16.0
-        version: 0.16.0
+        specifier: 0.16.1
+        version: 0.16.1
       '@openpromises/publish':
-        specifier: 0.16.0
-        version: 0.16.0
+        specifier: 0.16.1
+        version: 0.16.1
       '@openpromises/react':
-        specifier: 0.16.0
-        version: 0.16.0(react@19.3.0)
+        specifier: 0.16.1
+        version: 0.16.1(react@19.3.0)
       '@resvg/resvg-js':
         specifier: 2.6.2
         version: 2.6.2
@@ -215,29 +215,29 @@ packages:
   '@fontsource/source-serif-4@5.3.0':
     resolution: {integrity: sha512-yQz8xmIgMzks8zQbpuca3UYtjxK798XCyQAGdDXmzBgvV7sdoK6d0YvE9F9kiYxORCEMRBgGZDZsSYcXj5KvwA==}
 
-  '@openpromises/cli@0.16.0':
-    resolution: {integrity: sha512-m2VwLAmlL4pCCBt5MyYChmHbBdXgF5FgR+1z8WyKfV+aacWsgjfUIc79SVEqOX1mrbdJdd2zhKVcvowg3rEE5w==}
+  '@openpromises/cli@0.16.1':
+    resolution: {integrity: sha512-mLGo9iQMK1XQb8vySE7Ir/q57QqZupBPCfzrnerlIiuvXz+kV/gmLHYwUgJ9mTuBWQZ1WscC28o0bdkpmgftiw==}
     engines: {node: '>=22.18.0'}
     hasBin: true
 
-  '@openpromises/core@0.16.0':
-    resolution: {integrity: sha512-7PKkiup8R9w5xpuq/07po1eoLpAIUTmbM8nmXGqqNJ1z1hQo8YgNFauzXQpS2iwMk+wszHP8367BQBnWjUz8iQ==}
+  '@openpromises/core@0.16.1':
+    resolution: {integrity: sha512-GtU3cOv6wJQOMSKEN9cfZfra5aBvJG+CcCukmEEA+fFzndcJvwqRDkaZGUlN8UntXy0GEinttQqSbRtS/VxU/g==}
     engines: {node: '>=22.18.0'}
 
-  '@openpromises/files@0.16.0':
-    resolution: {integrity: sha512-62GWSsaJ3vucnLpc8bcV198wEA9cOGUgQwJ4CbljKhtGpo9qYpRHaS/QmplxTlt4YM74W2FNbKUy+4wE4OYR8Q==}
+  '@openpromises/files@0.16.1':
+    resolution: {integrity: sha512-w1KBdqgu7nliVMNv3qwpJyXJdAvzhltVOC3YypnANfl0fNtNVKIIGgN/Y7rr3lVnKgre1EtQE/iMgILHhYXsvQ==}
     engines: {node: '>=22.18.0'}
 
-  '@openpromises/publish@0.16.0':
-    resolution: {integrity: sha512-UHA3XEfEeSvUWvd0JIDuBOtESCpPtC5F0DhDs72i1OcPRNCcC7ZuelBFz/LtrZcPeEBlem84/1cLqr6kO2fxFg==}
+  '@openpromises/publish@0.16.1':
+    resolution: {integrity: sha512-jrbbDmXmoCPwRZSMC7VG7X6nNOg22maHpZGUOp6kWebN1rY0y/3LSPIm9y85Mgflr1ArjKZLV4TqppxawYA64A==}
     engines: {node: '>=22.18.0'}
 
-  '@openpromises/quotes@0.16.0':
-    resolution: {integrity: sha512-2lvOxxtmj6WKsp6qIoW0BAkYl/INTYWwQFPN5EEEF1eOXbb78o9kjCVxIKPzj601scDbz2Vlz355A8xUD4p65g==}
+  '@openpromises/quotes@0.16.1':
+    resolution: {integrity: sha512-nCnAP87WeCQOqcW0EvB1Zlapo3cKk01HDMKRYlaJdULX4utcLEKC0H+FaVhepljK2Kob9u3aee4dwrgU/84KDw==}
     engines: {node: '>=22.18.0'}
 
-  '@openpromises/react@0.16.0':
-    resolution: {integrity: sha512-CnUiwSeUe+t5jqORMQriwOuP4l/VSlRISzvOSC3y3Z0LdUV77i6ZqfBxHj9xffn6/buYTDOteu0bDG3OreEL/w==}
+  '@openpromises/react@0.16.1':
+    resolution: {integrity: sha512-aM2qwjoliw0yITLhnR+3ZxnVPPqQxOjtFAFVZ2l7ZYzL4zZjPCl3Xt2drOyKE6zmt5QqVZOzSm/0E3M1FVT/gA==}
     engines: {node: '>=22.18.0'}
     peerDependencies:
       react: '>=19'
@@ -528,34 +528,34 @@ snapshots:
 
   '@fontsource/source-serif-4@5.3.0': {}
 
-  '@openpromises/cli@0.16.0':
+  '@openpromises/cli@0.16.1':
     dependencies:
-      '@openpromises/core': 0.16.0
-      '@openpromises/files': 0.16.0
-      '@openpromises/publish': 0.16.0
-      '@openpromises/quotes': 0.16.0
+      '@openpromises/core': 0.16.1
+      '@openpromises/files': 0.16.1
+      '@openpromises/publish': 0.16.1
+      '@openpromises/quotes': 0.16.1
 
-  '@openpromises/core@0.16.0':
+  '@openpromises/core@0.16.1':
     dependencies:
-      '@openpromises/quotes': 0.16.0
+      '@openpromises/quotes': 0.16.1
       zod: 4.6.5
 
-  '@openpromises/files@0.16.0':
+  '@openpromises/files@0.16.1':
     dependencies:
-      '@openpromises/core': 0.16.0
-      '@openpromises/quotes': 0.16.0
+      '@openpromises/core': 0.16.1
+      '@openpromises/quotes': 0.16.1
       yaml: 2.9.1
 
-  '@openpromises/publish@0.16.0':
+  '@openpromises/publish@0.16.1':
     dependencies:
-      '@openpromises/core': 0.16.0
+      '@openpromises/core': 0.16.1
 
-  '@openpromises/quotes@0.16.0': {}
+  '@openpromises/quotes@0.16.1': {}
 
-  '@openpromises/react@0.16.0(react@19.3.0)':
+  '@openpromises/react@0.16.1(react@19.3.0)':
     dependencies:
-      '@openpromises/core': 0.16.0
-      '@openpromises/publish': 0.16.0
+      '@openpromises/core': 0.16.1
+      '@openpromises/publish': 0.16.1
       react: 19.3.0
 
   '@resvg/resvg-js-android-arm-eabi@2.6.2':
