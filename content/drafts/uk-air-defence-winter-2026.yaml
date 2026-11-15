@@ -9,6 +9,11 @@ venue_label:
   en: "HM Treasury news story “UK boosts support to Ukraine with £10 billion package”, Budget 2026"
 area: weapons
 status: promised
+status_note:
+  en: >-
+    The Treasury announced this as a £10bn package on 28 October 2026. The UK–Ukraine joint
+    statement of 13 November 2026 calls it "the £10.5 billion package announced this month". The
+    quote and cost stay as the Treasury worded them until a source says what the extra £0.5bn is.
 responsible:
   actor_id: uk-government
 origin: llm_intake
@@ -17,6 +22,8 @@ sources:
     url: "https://www.gov.uk/government/news/uk-boosts-support-to-ukraine-with-10-billion-package"
   - title: "Further support for Ukraine (HM Treasury, 28 October 2026)"
     url: "https://www.gov.uk/government/news/further-support-for-ukraine"
+  - title: "UK-Ukraine joint statement: Strategic Dialogue, November 2026 (FCDO, 13 November 2026)"
+    url: "https://www.gov.uk/government/publications/uk-ukraine-joint-statement-strategic-dialogue-november-2026"
 versions:
   - version: 1
     text: the package includes £500 million additional military support for Ukraine’s air defences this winter.
@@ -24,7 +31,7 @@ versions:
     source_url: "https://www.gov.uk/government/news/uk-boosts-support-to-ukraine-with-10-billion-package"
     parameters:
       who:
-        en: Ukraine’s air defences, as part of the UK’s £10bn package of 28 October 2026
+        en: Ukraine’s air defences, as part of the UK’s package of 28 October 2026 (£10bn at the Treasury, £10.5bn in the 13 November joint statement)
       cost:
         range: [0.54, 0.6, 0.66]
         quality: sourced
