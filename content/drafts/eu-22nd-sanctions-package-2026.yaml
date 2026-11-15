@@ -1,0 +1,38 @@
+format: openpromises/1
+id: eu-22nd-sanctions-package-2026
+headline:
+  en: A 22nd EU sanctions package by late November
+actor_id: european-union
+made_on: "2026-11-12"
+venue: statement
+venue_label:
+  en: Joint statement by the Presidents of the European Commission and the European Council after their meeting with President Zelenskyy, European Political Community summit, Dublin
+area: sanctions
+status: promised
+responsible:
+  actor_id: european-union
+origin: llm_intake
+sources:
+  - title: "Joint statement by President von der Leyen and President Costa following their meeting with President Zelenskyy in Dublin (STATEMENT/26/2425, 12 November 2026)"
+    url: "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2425"
+  - title: "Doorstep by President von der Leyen ahead of the informal meeting of the European Council of 13 November (STATEMENT/26/2431)"
+    url: "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2431"
+versions:
+  - version: 1
+    text: At our next European Council on 26–27 November, we will discuss Ukraine's urgent financing needs for 2027, based on the Commission's proposal. The Commission will in parallel present its 22nd package of sanctions against Russia.
+    recorded_on: "2026-11-15"
+    source_url: "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2425"
+    parameters:
+      who:
+        en: Russia, through a 22nd EU package of sanctions proposed by the European Commission
+      when:
+        en: In parallel with the European Council of 26–27 November 2026
+      deadline: "2026-11-27"
+events:
+  - date: "2026-11-12"
+    type: promised
+    text:
+      en: The Presidents of the Commission and the European Council say the Commission will present a 22nd sanctions package alongside the European Council of 26–27 November
+replies: []
+corrections: []
+reviews: []

@@ -167,6 +167,12 @@
     "checked_on": "2026-10-20",
     "sha256": "a6eaae30a88f4b5ede2fc27af9dc7b9431a50c68ea1872d50e9c92893a445a61"
   },
+  "b2af6ce2c0a2486cb59daa57154147f080a3195d23640af43ca7a5d4c8fc3246|https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2441": {
+    "match": "exact",
+    "url": "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2441",
+    "checked_on": "2026-11-15",
+    "sha256": "dca5b52f364c47d10eec2cf2658651b5ba7f9a256d740ffb0e289fc9082c9e22"
+  },
   "b9f0d3baf9911240ad02a5e2e0f6dcc5d810895d9eaa323fec47d69efd85feda|https://data.consilium.europa.eu/doc/document/ST-24-2025-INIT/en/pdf": {
     "match": "exact",
     "url": "https://data.consilium.europa.eu/doc/document/ST-24-2025-INIT/en/pdf",
@@ -202,6 +208,12 @@
     "url": "https://www.gov.uk/government/news/uk-strengthens-national-security-and-bolsters-ukraines-war-chest-with-226-billion-military-loan",
     "checked_on": "2026-10-20",
     "sha256": "a5d2678945c9a24b0ef5e35f22c2eab2374de6776436f2650aa1b2537085c333"
+  },
+  "d7bd9e5b6d0fea40a4674d5d728fa00ef9f21dd9cdca68e953da3dfff5dff7cc|https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2425": {
+    "match": "exact",
+    "url": "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2425",
+    "checked_on": "2026-11-15",
+    "sha256": "a4c2e5fb08e4a9a283e91ce5ca41160873344a8cfcc03b2c9172a9914214a743"
   },
   "e24db98757eb6ec74d54f4a44d0ad7965cdb3075e913f5c42283f9397bbc6065|https://www.gov.pl/attachment/75d2e925-db41-4810-89fd-d6302ec53908": {
     "match": "exact",

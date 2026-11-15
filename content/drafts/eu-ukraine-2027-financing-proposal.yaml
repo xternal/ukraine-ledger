@@ -1,0 +1,38 @@
+format: openpromises/1
+id: eu-ukraine-2027-financing-proposal
+headline:
+  en: A plan to close Ukraine’s 2027 funding gap
+actor_id: european-union
+made_on: "2026-11-13"
+venue: press_conference
+venue_label:
+  en: Statement by the President of the European Commission at the joint press conference after the informal meeting of the European Council, Dublin
+area: money_and_deals
+status: promised
+responsible:
+  actor_id: european-union
+origin: llm_intake
+sources:
+  - title: "Statement by President von der Leyen at the joint press conference with President Costa following the informal meeting of the European Council of November 2026 (STATEMENT/26/2441, 13 November 2026)"
+    url: "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2441"
+  - title: "Joint statement by President von der Leyen and President Costa following their meeting with President Zelenskyy in Dublin (STATEMENT/26/2425, 12 November 2026)"
+    url: "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2425"
+versions:
+  - version: 1
+    text: And before the next European Council, the Commission will put forward a proposal to close the gap in Ukraine's finances for 2027.
+    recorded_on: "2026-11-15"
+    source_url: "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2441"
+    parameters:
+      who:
+        en: Ukraine’s state budget and defence for 2027, through a proposal by the European Commission
+      when:
+        en: Before the European Council of 26–27 November 2026
+      deadline: "2026-11-26"
+events:
+  - date: "2026-11-13"
+    type: promised
+    text:
+      en: The Commission President says the Commission will propose how to close Ukraine’s 2027 funding gap before the next European Council
+replies: []
+corrections: []
+reviews: []
