@@ -9,6 +9,11 @@ venue_label:
   en: "HM Treasury news story “UK boosts support to Ukraine with £10 billion package”, Budget 2026"
 area: money_and_deals
 status: promised
+status_note:
+  en: >-
+    The Treasury announced this as a £10bn package on 28 October 2026. The UK–Ukraine joint
+    statement of 13 November 2026 calls it "the £10.5 billion package announced this month". The
+    quote and cost stay as the Treasury worded them until a source says what the extra £0.5bn is.
 responsible:
   actor_id: uk-government
 origin: llm_intake
@@ -17,6 +22,8 @@ sources:
     url: "https://www.gov.uk/government/news/uk-boosts-support-to-ukraine-with-10-billion-package"
   - title: "Further support for Ukraine (HM Treasury, 28 October 2026)"
     url: "https://www.gov.uk/government/news/further-support-for-ukraine"
+  - title: "UK-Ukraine joint statement: Strategic Dialogue, November 2026 (FCDO, 13 November 2026)"
+    url: "https://www.gov.uk/government/publications/uk-ukraine-joint-statement-strategic-dialogue-november-2026"
 versions:
   - version: 1
     text: The £10bn package includes £7 bn of economic support being made available over three years, including up to £5.5 billion of World Bank guarantees and a £500 million grant contribution to the World Bank International Development Association’s crisis facility, mobilising £1.5 billion of support for Ukraine.
