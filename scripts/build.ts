@@ -658,7 +658,7 @@ async function main() {
   });
 
   // Search engines and AI crawlers are welcome: everything here is public and open data. The preview is never deployed.
-  const crawlers = ["GPTBot", "ClaudeBot", "PerplexityBot", "Google-Extended"];
+  const crawlers = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended"];
   write(
     "/robots.txt",
     PREVIEW
