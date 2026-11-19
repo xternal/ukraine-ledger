@@ -300,3 +300,10 @@ a.fs-card:hover { border-color: var(--op-line-strong); }
   .fs-log li a { grid-column: 1 / -1; }
 }
 .home-h { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--op-line); }
+
+/* A page's "Last updated" line and the home page's one-paragraph answer (what the site is, in its own figures). */
+.updated { margin: 0.25rem 0 1rem; font-size: 0.85rem; color: var(--op-muted); }
+.fs-answer { margin: 0.5rem 0 0; max-width: 70ch; font-size: 1rem; line-height: 1.5; }
+.fs-answer .updated { margin: 0; white-space: nowrap; }
+.home-faq h3 { font-size: 1.05rem; margin: 1.25rem 0 0.25rem; }
+.home-faq p { max-width: 70ch; }

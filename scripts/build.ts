@@ -43,9 +43,12 @@ import { logbook, watchTiles, type LogEntry, type WatchPick } from "./home.ts";
 import { NOT_FOUND_FILE, notFoundBody, notFoundDescription, notFoundTitle } from "./notfound.ts";
 import { readFx } from "./fx.ts";
 import { faviconSvg, MARK_DOT, MARK_PATH, tileSvg } from "./mark.ts";
+import { INDEXNOW_KEY } from "./indexnow.ts";
 import { HEIGHT, shareImage, WIDTH, type Climb, type Share } from "./share-image.ts";
 
 const ROOT = join(import.meta.dirname, "..");
+/** When the Method page's text last changed: its "Last updated", dateModified and sitemap lastmod. Change it with the text. */
+export const METHOD_UPDATED = "2026-11-19";
 /** `--preview` builds drafts too, into public-preview/, so the editor sees a page before approving it; never deployed. */
 const PREVIEW = process.argv.includes("--preview");
 const OUT = join(ROOT, PREVIEW ? "public-preview" : "public");
@@ -123,8 +126,8 @@ async function main() {
   const trim = (x: string) => x.replace(/\/+$/, "") || "/";
   const menu = [
     { href: p.promises(L), label: "Promises", owns: (x: string) => /^\/promises?(\/|$)/.test(x) },
-    { href: "/actor/", label: "People", owns: (x: string) => x.startsWith("/actor") },
-    { href: "/about/", label: "Method", owns: (x: string) => x.startsWith("/about") },
+    { href: "/actor", label: "People", owns: (x: string) => x.startsWith("/actor") },
+    { href: "/about", label: "Method", owns: (x: string) => x.startsWith("/about") },
   ];
   const nav = (path: string) =>
     h(
@@ -271,6 +274,23 @@ async function main() {
     )
   );
   const ld: { config: Config; w: typeof w; today: string } = { config, w, today };
+  /**
+   * A page's visible "Last updated" line, the same date as its dateModified and its sitemap lastmod, so search engines
+   * and AI answers can tell how fresh a page is.
+   */
+  const stamp = (date: string) => h("p", { className: "updated" }, "Last updated ", h("time", { dateTime: date }, longDate(w, date)));
+  const websiteRef = { "@type": "WebSite", "@id": absolute(config, "/#website"), name, url: absolute(config, "/") };
+  /** The trail to a page the engine has no JSON-LD for, as on its own pages: the site, then each step. */
+  const crumbLd = (items: { name: string; path: string }[]): Ld => ({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [{ name, path: "/" }, ...items].map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.name, item: absolute(config, trim(c.path)) })),
+  });
+  /** A page the engine has no JSON-LD for: what it is, when it last changed and the trail to it. */
+  const pageLd = (type: string, path: string, title: string, description: string, date: string, trail: { name: string; path: string }[], extra: Record<string, unknown> = {}): Ld[] => [
+    { "@context": "https://schema.org", "@type": type, "@id": absolute(config, trim(path)), url: absolute(config, trim(path)), name: title, description, inLanguage: L, isPartOf: websiteRef, dateModified: date, ...extra },
+    crumbLd([...trail, { name: title, path }]),
+  ];
 
   // Share images: a commitment shows its words and where it stands; a list shows every commitment as a bar.
   const footer = (vs: readonly CardView[]) => `Updated ${longDate(w, updated(vs))} · ukraineledger.com`;
@@ -315,16 +335,34 @@ async function main() {
   const platform = platformPromises(views);
   /** The site and its open data, for search engines and AI search: who makes it, and where the data is. */
   const maker = { "@type": "Person", name: "Pavel Guzhikov", url: "https://guzh.uk" };
+  const org = {
+    "@type": "Organization",
+    "@id": absolute(config, "/#organization"),
+    name,
+    url: absolute(config, "/"),
+    logo: { "@type": "ImageObject", url: absolute(config, "/apple-touch-icon.png"), width: 180, height: 180 },
+    founder: maker,
+    sameAs: ["https://github.com/xternal/ukraine-ledger"],
+  };
+  const siteUpdated = updated(views);
   const siteLd: Ld[] = [
-    { "@context": "https://schema.org", "@type": "WebSite", name, url: absolute(config, "/"), description: config.site.description[L], inLanguage: L, creator: maker },
+    { "@context": "https://schema.org", ...org },
+    { "@context": "https://schema.org", ...websiteRef, description: config.site.description[L], inLanguage: L, creator: maker, publisher: { "@id": org["@id"] } },
     {
       "@context": "https://schema.org",
       "@type": "Dataset",
+      "@id": absolute(config, "/#dataset"),
       name: "Promises to Ukraine",
       description: "Every published commitment to Ukraine on this site: the exact words, who made it and when, the deadline, the cost range with its sources, the status and the evidence for each step.",
       url: absolute(config, "/"),
       license: config.publish.licence!.url,
       creator: maker,
+      publisher: { "@id": org["@id"] },
+      dateModified: siteUpdated,
+      temporalCoverage: "2022-02-24/..",
+      spatialCoverage: { "@type": "Place", name: "Ukraine" },
+      keywords: ["Ukraine", "military aid", "financial aid", "sanctions", "security guarantees", "promises", "commitments", "open data"],
+      variableMeasured: ["status", "deadline", "cost range", "area", "donor"],
       isAccessibleForFree: true,
       distribution: [
         { "@type": "DataDownload", encodingFormat: "application/json", contentUrl: absolute(config, "/data/promises.json") },
@@ -339,8 +377,36 @@ async function main() {
    * (scripts/home.ts).
    */
   const chartCtx = { config, w, L, today, usdPerEur, href: (id: string) => p.card(id, L) };
+  /**
+   * The home page's answer to "what is this", in one paragraph of plain sentences built from the same four figures, so
+   * a search result or an AI answer can quote it whole. Every number is from the published cards.
+   */
+  const figures = keyFigures(chartCtx, views);
+  const figure = (label: string) => figures.find((f) => f.label === label);
+  const amounts = figure("Amounts stated");
+  const costedCount = amounts?.sub.match(/of (\d+)/)?.[1];
+  const delivered = figure("Delivered");
+  /** "16 more under way" as a clause: "16 more are under way". */
+  const underWay = delivered ? delivered.sub.replace(/^(\d+) more under way$/, (_, n) => `${n} more ${n === "1" ? "is" : "are"} under way`) : "";
+  const answer = views.length
+    ? [
+        `${name} records ${views.length} ${views.length === 1 ? "commitment" : "commitments"} to Ukraine made since 24 February 2022 by ${figure("Donors")?.value ?? "its"} donors, governments and the EU, each in the donor's exact words with a link to where they were said.`,
+        amounts && costedCount ? `The ${costedCount} that state an amount add up to ${amounts.value} (${amounts.sub.split(";")[0]}) at their central figures.` : "",
+        delivered ? `${delivered.value} ${delivered.value === "1" ? "has" : "have"} been delivered and ${underWay}; a status moves only when a document shows it moved.` : "",
+      ]
+        .filter(Boolean)
+        .join(" ")
+    : `${name} records commitments to Ukraine, in each government's exact words, with the evidence since. None is published yet.`;
+  /** The questions people ask about promises to Ukraine, answered from the same figures; Method answers how. */
+  const homeFaq: [string, string][] = views.length
+    ? [
+        ["How much has been promised to Ukraine?", amounts && costedCount ? `The ${costedCount} commitments on this site that state an amount add up to ${amounts.value} (${amounts.sub.split(";")[0]}) at their central figures. Each amount is a range from the card's own sources; dollars use the European Central Bank's rate on the day each commitment was made. For the money already delivered, see the Kiel Institute's Ukraine Support Tracker.` : "No commitment on this site states an amount yet."],
+        ["How many promises to Ukraine have been kept?", `${delivered?.value ?? "None"} of the ${views.length} commitments on record have been delivered, and ${underWay || "none is under way"}. Where they all stand: ${tally(views)}.`],
+        ["Who has made promises to Ukraine?", `${figure("Donors")?.value ?? "Several"} donors: governments and the EU, from heads of government to ministers. Each person and government has a page listing their commitments by area, empty areas included.`],
+      ]
+    : [];
+  const faqLd = (qa: [string, string][]): Ld => ({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: qa.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
   const firstScreen = () => {
-    const figures = keyFigures(chartCtx, views);
     const counts = statusCounts(views, config);
     const kindOf = (status: string) => climbOf(config, { card: { status } } as CardView, 0).kind;
     const tiles = watchTiles(config, views, today);
@@ -390,6 +456,7 @@ async function main() {
         h("h1", null, `What is promised to Ukraine: ${views.length} commitments from ${donors} donors`),
         h("p", null, "Since 24 February 2022 · in each government's exact words, with the evidence since"),
       ),
+      h("p", { className: "fs-answer" }, answer, " ", h("span", { className: "updated" }, "Last updated ", h("time", { dateTime: siteUpdated }, longDate(w, siteUpdated)), ".")),
       h(
         "section",
         { className: "fs-kpis", "aria-labelledby": "fs-kpis-h" },
@@ -415,7 +482,7 @@ async function main() {
         h(
           "section",
           { className: "fs-card", "aria-labelledby": "fs-areas-h" },
-          h("div", { className: "fs-head" }, h("h2", { id: "fs-areas-h" }, h("a", { href: "/promises/area/" }, "By area")), h("span", null, "fixed before the first card, empty ones too")),
+          h("div", { className: "fs-head" }, h("h2", { id: "fs-areas-h" }, h("a", { href: "/promises/area" }, "By area")), h("span", null, "fixed before the first card, empty ones too")),
           h(
             "ul",
             { className: "fs-areas" },
@@ -463,7 +530,8 @@ async function main() {
       views.length
         ? h(PromiseSpotlight, { views, today, actors: result.actors, config })
         : h("p", null, "No promise is published yet. The first cards are being checked against their sources."),
-      h(JsonLd, { data: siteLd }),
+      homeFaq.length ? h("section", { className: "faq home-faq", "aria-labelledby": "home-faq-h" }, h("h2", { id: "home-faq-h", className: "home-h" }, "Questions"), homeFaq.map(([q, a]) => h(Fragment, { key: q }, h("h3", null, q), h("p", null, a)))) : null,
+      h(JsonLd, { data: [...siteLd, ...(homeFaq.length ? [faqLd(homeFaq)] : [])] }),
     ),
     {
       wide: true,
@@ -487,7 +555,7 @@ async function main() {
         coverage(config, views)
           .filter((c) => c.count)
           .map((c) => h("li", { key: c.area }, h("a", { href: p.area(c.area, L), "aria-current": current === c.area ? "page" : undefined }, areaLabel(config, c.area, L), " ", h("span", null, String(c.count))))),
-        h("li", null, h("a", { href: "/promises/area/", className: "area-filter__all" }, "Every area, empty ones too")),
+        h("li", null, h("a", { href: "/promises/area", className: "area-filter__all" }, "Every area, empty ones too")),
       ),
     );
 
@@ -499,6 +567,7 @@ async function main() {
       Fragment,
       null,
       h("h1", null, "Every promise"),
+      stamp(updated(views)),
       areaFilter(),
       h(PromiseList, { views, today, actors: result.actors, config, empty: "No promise is published yet." }),
       h(JsonLd, { data: collectionJsonLd({ path: p.promises(L), name: "Every promise", description: promisesDescription, views }, ld) }),
@@ -506,6 +575,7 @@ async function main() {
     { description: promisesDescription, share: chartShare("Every promise", `Every commitment on ${name}, and where each one stands`, views), alt: chartAlt(views) },
   );
 
+  const storyDescription = (v: CardView) => `The whole story of “${headline(v)}” in one dated line: every wording, every event and its evidence, and what is still to come.`;
   for (const v of views) {
     const crumbs = [{ name, href: "/" }, { name: "Promises", href: p.promises(L) }, { name: headline(v), href: p.card(v.id, L) }];
     page(
@@ -515,7 +585,7 @@ async function main() {
         Fragment,
         null,
         h(Breadcrumbs, { config, items: crumbs }),
-        h(PromiseCard, { view: v, config, today, related: relatedCards(v, views), actions: h("a", { href: `${p.card(v.id, L)}/story/` }, "The whole story in one line") }),
+        h(PromiseCard, { view: v, config, today, related: relatedCards(v, views), actions: h("a", { href: `${p.card(v.id, L)}/story` }, "The whole story in one line") }),
         h(JsonLd, { data: cardJsonLd(v, ld) }),
       ),
       { description: cardDescription(v, config, w), fullTitle: cardTitle(v, config, w).title, socialTitle: cardTitle(v, config, w).social, type: "article", share: promiseShare(v), alt: promiseAlt(v) },
@@ -523,26 +593,46 @@ async function main() {
     page(
       `${p.card(v.id, L)}/story`,
       `${headline(v)}: the story`,
-      h(Fragment, null, h(Breadcrumbs, { config, items: [...crumbs, { name: "Story", href: `${p.card(v.id, L)}/story/` }] }), h(PromiseStory, { view: v, config, today, headingLevel: 2 })),
-      { description: `The whole story of “${headline(v)}” in one dated line: every wording, every event and its evidence, and what is still to come.`, type: "article", share: promiseShare(v, "The whole story, step by step"), alt: promiseAlt(v) },
+      h(
+        Fragment,
+        null,
+        h(Breadcrumbs, { config, items: [...crumbs, { name: "Story", href: `${p.card(v.id, L)}/story` }] }),
+        h("h1", null, `${headline(v)}: the story`),
+        stamp(updated([v])),
+        h(PromiseStory, { view: v, config, today, headingLevel: 2 }),
+        h(JsonLd, {
+          data: pageLd("WebPage", `${p.card(v.id, L)}/story`, `${headline(v)}: the story`, storyDescription(v), updated([v]), [{ name: "Promises", path: p.promises(L) }, { name: headline(v), path: p.card(v.id, L) }], {
+            about: { "@id": absolute(config, p.card(v.id, L)) },
+          }),
+        }),
+      ),
+      { description: storyDescription(v), type: "article", share: promiseShare(v, "The whole story, step by step"), alt: promiseAlt(v) },
     );
   }
 
+  const peopleDescription = "The officials whose commitments to Ukraine are recorded here, with their roles and how many commitments each has made.";
   page(
     "/actor/",
     "People",
     h(
       Fragment,
       null,
+      h(Breadcrumbs, { config, items: [{ name, href: "/" }, { name: "People", href: "/actor" }] }),
       h("h1", null, "People"),
+      stamp(updated(views)),
       h(
         "ul",
         null,
         people.map((a) => h("li", { key: a.id }, h("a", { href: p.actor(a.id, L) }, actorName(a)), a.roles?.at(-1) ? `, ${a.roles.at(-1)!.title[L]}` : "", ` (${views.filter((v) => v.actor.id === a.id).length})`)),
       ),
+      h(JsonLd, {
+        data: pageLd("CollectionPage", "/actor", "People", peopleDescription, updated(views), [], {
+          mainEntity: { "@type": "ItemList", numberOfItems: people.length, itemListElement: people.map((a, i) => ({ "@type": "ListItem", position: i + 1, name: actorName(a), url: absolute(config, p.actor(a.id, L)) })) },
+        }),
+      }),
     ),
     {
-      description: "The officials whose commitments to Ukraine are recorded here, with their roles and how many commitments each has made.",
+      description: peopleDescription,
       share: pageShare("People", "Who promised what", "The officials whose commitments to Ukraine are recorded here, with their roles and how many commitments each has made."),
       alt: "Who promised what: the officials whose commitments to Ukraine are recorded on UkraineLedger.com.",
     },
@@ -557,8 +647,9 @@ async function main() {
       h(
         Fragment,
         null,
-        h(Breadcrumbs, { config, items: [{ name, href: "/" }, { name: "People", href: "/actor/" }, { name: actorName(a), href: p.actor(a.id, L) }] }),
+        h(Breadcrumbs, { config, items: [{ name, href: "/" }, { name: "People", href: "/actor" }, { name: actorName(a), href: p.actor(a.id, L) }] }),
         h("h1", null, actorName(a)),
+        own.length ? stamp(updated(own)) : null,
         a.roles?.length ? h("ul", null, a.roles.map((r, i) => h("li", { key: i }, r.title[L], r.from ? ` from ${r.from}` : "", r.to ? ` to ${r.to}` : ""))) : null,
         coverageTable(own, `${actorName(a)}: promises by area, every area listed`),
         h(PromiseList, { views: own, today, actors: result.actors, config, empty: "No promise is published yet." }),
@@ -577,12 +668,18 @@ async function main() {
     );
   }
 
+  const areasDescription = "Commitments to Ukraine by area, from weapons and money to sanctions, talks and membership. Every area is listed, empty ones included, so gaps show.";
   page(
     "/promises/area/",
     "Areas",
-    h(Fragment, null, h(Breadcrumbs, { config, items: [{ name, href: "/" }, { name: "Promises", href: p.promises(L) }, { name: "Areas", href: "/promises/area/" }] }), h("h1", null, "Promises by area"), h("p", null, "The areas are what a government can do about a war. They were fixed before the first card, so the list is never fitted to the cards."), coverageTable(views, "Every area, empty ones included")),
+    h(Fragment, null, h(Breadcrumbs, { config, items: [{ name, href: "/" }, { name: "Promises", href: p.promises(L) }, { name: "Areas", href: "/promises/area" }] }), h("h1", null, "Promises by area"),
+      stamp(updated(views)),
+      h("p", null, "The areas are what a government can do about a war. They were fixed before the first card, so the list is never fitted to the cards."),
+      coverageTable(views, "Every area, empty ones included"),
+      h(JsonLd, { data: pageLd("CollectionPage", "/promises/area", "Promises by area", areasDescription, updated(views), [{ name: "Promises", path: p.promises(L) }]) }),
+    ),
     {
-      description: "Commitments to Ukraine by area, from weapons and money to sanctions, talks and membership. Every area is listed, empty ones included, so gaps show.",
+      description: areasDescription,
       share: pageShare("Areas", "Promises by area", "Eight areas, fixed before the first card: talks, sanctions, weapons, money, security guarantees, intelligence, civilians and membership."),
       alt: "Promises by area on UkraineLedger.com: eight areas, fixed before the first card.",
     },
@@ -597,11 +694,12 @@ async function main() {
       h(
         Fragment,
         null,
-        h(Breadcrumbs, { config, items: [{ name, href: "/" }, { name: "Promises", href: p.promises(L) }, { name: "Areas", href: "/promises/area/" }, { name: label, href: p.area(area, L) }] }),
+        h(Breadcrumbs, { config, items: [{ name, href: "/" }, { name: "Promises", href: p.promises(L) }, { name: "Areas", href: "/promises/area" }, { name: label, href: p.area(area, L) }] }),
         h("h1", null, label),
+        inArea.length ? stamp(updated(inArea)) : null,
         areaFilter(area),
         h(PromiseList, { views: views.filter((v) => v.card.area === area), today, actors: result.actors, config, empty: "No promise is recorded in this area." }),
-        h(JsonLd, { data: collectionJsonLd({ path: p.area(area, L), name: label, description: areaDescription(label), views: views.filter((v) => v.card.area === area), breadcrumb: [{ name: "Promises", path: p.promises(L) }, { name: "Areas", path: "/promises/area/" }] }, ld) }),
+        h(JsonLd, { data: collectionJsonLd({ path: p.area(area, L), name: label, description: areaDescription(label), views: views.filter((v) => v.card.area === area), breadcrumb: [{ name: "Promises", path: p.promises(L) }, { name: "Areas", path: "/promises/area" }] }, ld) }),
       ),
       {
         description: areaDescription(label),
@@ -611,6 +709,7 @@ async function main() {
     );
   }
 
+  const aboutDescription = "How UkraineLedger.com records commitments to Ukraine: exact words, evidence for every change of status, nothing rewritten, one set of rules for all.";
   /** Short answers for readers and for search: what the pages do not already say. */
   const faq: [string, string][] = [
     ["Where do the amounts come from?", "Each amount comes from the card's own sources: the agreement, budget or official statement that states it, with who made the figure. A cost is a low-to-high range, never a single figure. Dollars use the European Central Bank's rate on the day the commitment was made."],
@@ -626,6 +725,7 @@ async function main() {
       null,
       h("h1", null, "Method"),
       h("p", { className: "lede" }, "How a commitment gets here, and how it moves."),
+      stamp(METHOD_UPDATED),
       h(
         "ul",
         null,
@@ -640,10 +740,10 @@ async function main() {
       ),
       h("p", null, "The money already given is counted by the ", h("a", { href: "https://www.kielinstitut.de/topics/war-against-ukraine/ukraine-support-tracker/" }, "Kiel Institute's Ukraine Support Tracker"), "; Donald Trump's 2024 campaign promises on every subject are rated by ", h("a", { href: "https://www.politifact.com/truth-o-meter/promises/maga-meter-tracking-donald-trumps-2024-promises/" }, "PolitiFact's MAGA-Meter"), ". This site keeps what each government said it would do, in its words, with the evidence since."),
       h("section", { className: "faq", "aria-labelledby": "faq-h" }, h("h2", { id: "faq-h" }, "Questions"), faq.map(([q, a]) => h(Fragment, { key: q }, h("h3", null, q), h("p", null, a)))),
-      h(JsonLd, { data: { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) } }),
+      h(JsonLd, { data: [faqLd(faq), ...pageLd("AboutPage", "/about", "Method", aboutDescription, METHOD_UPDATED, [])] }),
     ),
     {
-      description: "How UkraineLedger.com records commitments to Ukraine: exact words, evidence for every change of status, nothing rewritten, one set of rules for all.",
+      description: aboutDescription,
       socialTitle: "Method: how UkraineLedger.com works",
       share: pageShare("Method", "Exact words. A status that moves only on evidence.", "Nothing rewritten; costs with who made them; the same rules and words for every government."),
       alt: "How UkraineLedger.com works: exact words, and a status that moves only on evidence.",
@@ -668,14 +768,34 @@ async function main() {
   // The engine's sitemap lists the promise pages (the list, each card, each actor and area with cards); this one adds
   // the pages it does not model (home, the two indexes, about, each card's story), and sitemap.xml points to both.
   if (!PREVIEW) {
-    const rest: SitemapEntry[] = ["/", "/actor/", "/promises/area/", "/about/", ...views.map((v) => `${p.card(v.id, L)}/story`)]
-      .map((x) => absolute(config, trim(x)))
-      .map((loc) => ({ loc, alternates: { [L]: loc } }));
+    // Each with the same date as its "Last updated" line, so engines recrawl only what changed.
+    const rest: SitemapEntry[] = (
+      [
+        ["/", siteUpdated],
+        ["/actor", siteUpdated],
+        ["/promises/area", siteUpdated],
+        ["/about", METHOD_UPDATED],
+        ...views.map((v) => [`${p.card(v.id, L)}/story`, updated([v])]),
+      ] as [string, string][]
+    ).map(([x, lastmod]) => {
+      const loc = absolute(config, trim(x));
+      return { loc, lastmod, alternates: { [L]: loc } };
+    });
     write("/sitemap-pages.xml", sitemapXml(rest));
+    const newest = [siteUpdated, METHOD_UPDATED].sort().at(-1)!;
     write(
       "/sitemap.xml",
-      ['<?xml version="1.0" encoding="UTF-8"?>', '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', ...[p.sitemap(), "/sitemap-pages.xml"].map((x) => `  <sitemap><loc>${absolute(config, x)}</loc></sitemap>`), "</sitemapindex>", ""].join("\n"),
+      [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        `  <sitemap><loc>${absolute(config, p.sitemap())}</loc><lastmod>${siteUpdated}</lastmod></sitemap>`,
+        `  <sitemap><loc>${absolute(config, "/sitemap-pages.xml")}</loc><lastmod>${newest}</lastmod></sitemap>`,
+        "</sitemapindex>",
+        "",
+      ].join("\n"),
     );
+    // IndexNow: the key is public by design, served at /<key>.txt to show the site is ours (scripts/indexnow.ts).
+    write(`/${INDEXNOW_KEY}.txt`, INDEXNOW_KEY);
   }
 
   // The engine's llms.txt knows the promises; the home page's first screen, the areas and Method are added.
@@ -686,7 +806,7 @@ async function main() {
         f.path === "/llms.txt"
           ? String(f.body).replace(
               /\n## Promise cards\n/,
-              `\n## The site\n\n- [Home](${absolute(config, "/")}): the first screen: four figures (commitments, donors, amounts stated, delivered), the commitments at a glance, the areas, four commitments to watch picked by fixed rules, and a logbook of what was added, moved, corrected or checked; then who has promised what, and when\n- [Promises by area](${absolute(config, "/promises/area/")}): eight areas, fixed before the first card, empty ones too\n- [Method](${absolute(config, "/about/")}): how a commitment is recorded and how its status moves\n\n## Promise cards\n`,
+              `\n## The site\n\n- [Home](${absolute(config, "/")}): the first screen: four figures (commitments, donors, amounts stated, delivered), the commitments at a glance, the areas, four commitments to watch picked by fixed rules, and a logbook of what was added, moved, corrected or checked; then who has promised what, and when\n- [People](${absolute(config, "/actor")}): every official and government with a commitment on record, each with a page of their commitments by area\n- [Promises by area](${absolute(config, "/promises/area")}): eight areas, fixed before the first card, empty ones too\n- [Method](${absolute(config, "/about")}): how a commitment is recorded and how its status moves\n\n## Promise cards\n`,
             )
           : f.body,
       );

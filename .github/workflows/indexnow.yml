@@ -1,0 +1,43 @@
+name: Tell search engines what changed
+
+# Vercel reports each deploy to GitHub as a commit status named "Vercel" (this project sends no deployment events).
+# Once the production deploy of main has finished, send the pages it changed to IndexNow (scripts/indexnow.ts), so
+# Bing and the AI search tools it feeds pick them up without waiting for a crawl. Run it by hand with "all" to send
+# every page once.
+on:
+  status:
+  workflow_dispatch:
+    inputs:
+      all:
+        description: Send every page, not only the changed ones
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  indexnow:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.context == 'Vercel' && github.event.state == 'success' && contains(github.event.branches.*.name, 'main'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.sha || github.sha }}
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - run: npm install -g corepack@0.34.5 && corepack enable pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Send the changed pages
+        run: |
+          if [ "${{ inputs.all }}" = "true" ]; then
+            node scripts/indexnow.ts --all
+          else
+            # The day of the commit before this one on main: every page changed since then, and the pages of the
+            # cards and actors this deploy changed.
+            node scripts/indexnow.ts --since "$(git log -1 --format=%cs HEAD^1 2>/dev/null || date -u +%F)" $(git diff --name-only HEAD^1 HEAD -- content 2>/dev/null)
+          fi
