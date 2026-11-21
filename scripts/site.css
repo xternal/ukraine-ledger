@@ -207,13 +207,14 @@ main.main--wide { max-width: 72rem; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 
 /* The family of sites: a small button beside the logo, opening a panel of the sister sites. It hangs from the logo's
-   left edge, so it stays on screen on a phone. */
+   left edge, so it stays on screen on a phone: border-box, so its padding and border stay inside the 16px gutter (338px
+   is the old 320 plus both). */
 .family summary { list-style: none; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 6px; color: var(--op-muted); cursor: pointer; }
 .family summary::-webkit-details-marker { display: none; }
 .family summary:hover, .family[open] summary { color: var(--op-ink); background: var(--op-sunk); }
 .family summary svg { transition: transform 0.15s; }
 .family[open] summary svg { transform: rotate(180deg); }
-.family__panel { position: absolute; z-index: 30; top: 40px; left: 0; width: min(320px, calc(100vw - 32px)); padding: 8px; display: grid; gap: 4px; background: var(--op-surface); border: 1px solid var(--op-line-strong); border-radius: 12px; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18); }
+.family__panel { position: absolute; z-index: 30; top: 40px; left: 0; box-sizing: border-box; width: min(338px, calc(100vw - 32px)); padding: 8px; display: grid; gap: 4px; background: var(--op-surface); border: 1px solid var(--op-line-strong); border-radius: 12px; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18); }
 .family__panel p { margin: 0; padding: 6px 10px 4px; font-size: 0.8rem; color: var(--op-muted); }
 .family__panel ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
 .family__panel li a, .family__maker { display: grid; padding: 7px 10px; border-radius: 8px; color: var(--op-ink); text-decoration: none; }
