@@ -1,0 +1,42 @@
+format: openpromises/1
+id: uk-military-support-3bn-a-year
+headline:
+  en: £3bn of UK military aid every year
+actor_id: uk-government
+made_on: "2026-11-21"
+venue: statement
+venue_label:
+  en: "Ministry of Defence press release “Defence Secretary meets President Zelensky and Minister Khmara in Kyiv as UK deepens industrial support for Ukraine”"
+area: weapons
+status: promised
+status_note:
+  en: >-
+    The government has given this figure since at least December 2024; this card quotes its latest
+    wording. The 2024 card (£2.5bn in 2024) covers that one year only.
+responsible:
+  actor_id: uk-government
+origin: llm_intake
+sources:
+  - title: "Defence Secretary meets President Zelensky and Minister Khmara in Kyiv as UK deepens industrial support for Ukraine (21 November 2026)"
+    url: "https://www.gov.uk/government/news/defence-secretary-meets-president-zelensky-and-minister-khmara-in-kyiv-as-uk-deepens-industrial-support-for-ukraine"
+  - title: "UK and Norway further boost Ukrainian Navy at Coalition of the Willing meeting (19 November 2026)"
+    url: "https://www.gov.uk/government/news/uk-and-norway-further-boost-ukrainian-navy-at-coalition-of-the-willing-meeting--2"
+versions:
+  - version: 1
+    text: £3 billion a year of military support is committed for as long as it takes
+    recorded_on: "2026-11-22"
+    source_url: "https://www.gov.uk/government/news/defence-secretary-meets-president-zelensky-and-minister-khmara-in-kyiv-as-uk-deepens-industrial-support-for-ukraine"
+    parameters:
+      who:
+        en: Ukraine’s armed forces
+      when:
+        en: Every year, “for as long as it takes”
+      deadline: null
+events:
+  - date: "2026-11-21"
+    type: promised
+    text:
+      en: The Ministry of Defence says £3bn a year of military support is committed to Ukraine for as long as it takes
+replies: []
+corrections: []
+reviews: []
