@@ -1,0 +1,49 @@
+format: openpromises/1
+id: uk-norway-fast-attack-boats-2026
+headline:
+  en: Two fast attack boats for Ukraine’s navy
+actor_id: uk-government
+made_on: "2026-11-19"
+venue: statement
+venue_label:
+  en: "Prime Minister’s Office press release “UK and Norway further boost Ukrainian Navy at Coalition of the Willing meeting”, Berlin"
+area: weapons
+status: promised
+responsible:
+  actor_id: uk-government
+origin: llm_intake
+sources:
+  - title: "UK and Norway further boost Ukrainian Navy at Coalition of the Willing meeting (19 November 2026)"
+    url: "https://www.gov.uk/government/news/uk-and-norway-further-boost-ukrainian-navy-at-coalition-of-the-willing-meeting--2"
+  - title: "PM speech at Coalition of the Willing in Berlin: 19 November 2026"
+    url: "https://www.gov.uk/government/speeches/pm-speech-at-coalition-of-the-willing-in-berlin-19-november-2026"
+versions:
+  - version: 1
+    text: The two nations set to deliver more than £100 million joint investment for two advanced fast attack boats for Ukraine
+    recorded_on: "2026-11-22"
+    source_url: "https://www.gov.uk/government/news/uk-and-norway-further-boost-ukrainian-navy-at-coalition-of-the-willing-meeting--2"
+    parameters:
+      who:
+        en: Ukraine’s navy, through the Maritime Capability Coalition the UK and Norway lead
+      cost:
+        range: [0.06, 0.06, 0.066]
+        quality: sourced
+        by:
+          kind: official
+          name: Government of the United Kingdom
+        note:
+          en: "The UK’s half of “more than £100 million”, which the release says the UK and Norway fund equally: at least £50m, at the ECB rate of 0.83581 pounds to the euro on 19 November 2026, €0.06bn. Norway’s half is not counted here. The low end is that minimum; the high end is an editorial +10%."
+        sources:
+          - title: UK and Norway further boost Ukrainian Navy at Coalition of the Willing meeting
+            url: "https://www.gov.uk/government/news/uk-and-norway-further-boost-ukrainian-navy-at-coalition-of-the-willing-meeting--2"
+          - title: ECB euro reference rate, GBP, 2026-11-19
+            url: "https://data-api.ecb.europa.eu/service/data/EXR/D.GBP.EUR.SP00.A?startPeriod=2026-11-19&endPeriod=2026-11-19&format=csvdata"
+      deadline: null
+events:
+  - date: "2026-11-19"
+    type: promised
+    text:
+      en: The UK and Norway say they will jointly fund two UK-built fast attack boats for Ukraine, at more than £100m
+replies: []
+corrections: []
+reviews: []

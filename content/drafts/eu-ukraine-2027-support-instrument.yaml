@@ -1,0 +1,53 @@
+format: openpromises/1
+id: eu-ukraine-2027-support-instrument
+headline:
+  en: A further €45bn EU loan for 2027
+actor_id: european-union
+made_on: "2026-11-18"
+venue: press_conference
+venue_label:
+  en: Press point by the President of the European Commission with Commissioners Dombrovskis and Kubilius on an Instrument for Coordinated Support to Ukraine, Brussels
+area: money_and_deals
+status: promised
+responsible:
+  actor_id: european-union
+origin: llm_intake
+sources:
+  - title: "Press point by President von der Leyen together with Commissioners Dombrovskis and Kubilius on an Instrument for Coordinated Support to Ukraine (STATEMENT/26/2487, 18 November 2026)"
+    url: "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2487"
+  - title: "Commission proposes €45 billion in additional financial support for Ukraine in 2027 (IP/26/2454, 18 November 2026)"
+    url: "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_2454"
+  - title: "Questions and answers on new financial support package for Ukraine for 2027 (QANDA/26/2455)"
+    url: "https://ec.europa.eu/commission/presscorner/detail/en/qanda_26_2455"
+versions:
+  - version: 1
+    text: This instrument will provide €45 billion in 2027.
+    recorded_on: "2026-11-22"
+    source_url: "https://ec.europa.eu/commission/presscorner/detail/en/statement_26_2487"
+    parameters:
+      who:
+        en: "Ukraine: up to €25bn for military needs and up to €20bn of budget support, as a loan repaid only once Russia pays reparations"
+      cost:
+        range: [40.5, 45, 45]
+        quality: sourced
+        by:
+          kind: official
+          name: European Union
+        note:
+          en: "€45bn as worded. The Commission's release says “up to €45 billion”, so the high end is that ceiling; the low end is an editorial −10%. It comes on top of the €90bn Ukraine Support Loan for 2026–2027."
+        sources:
+          - title: Commission proposes €45 billion in additional financial support for Ukraine in 2027
+            url: "https://ec.europa.eu/commission/presscorner/detail/en/ip_26_2454"
+      when:
+        en: In 2027
+      deadline: "2027-12-31"
+      funded_by:
+        en: EU borrowing on the capital markets, guaranteed by the EU budget headroom
+events:
+  - date: "2026-11-18"
+    type: promised
+    text:
+      en: The Commission proposes an Instrument for Coordinated Support to Ukraine, a loan of up to €45bn for 2027, to the European Parliament and the Council
+replies: []
+corrections: []
+reviews: []
