@@ -39,4 +39,8 @@ events:
       en: The Ministry of Defence says £3bn a year of military support is committed to Ukraine for as long as it takes
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-11-23"
+    approves: true

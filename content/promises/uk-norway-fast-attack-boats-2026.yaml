@@ -46,4 +46,8 @@ events:
       en: The UK and Norway say they will jointly fund two UK-built fast attack boats for Ukraine, at more than £100m
 replies: []
 corrections: []
-reviews: []
+reviews:
+  - by: Pavel Guzhikov
+    kind: editor
+    "on": "2026-11-23"
+    approves: true
